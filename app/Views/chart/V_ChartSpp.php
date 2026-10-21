@@ -1,340 +1,201 @@
 <?= $this->extend('Views\layout.php') ?>
-
 <?= $this->section('css') ?>
-<div class="content-wrapper" style="min-height: 1345.31px;">
+<style>
+  .spp-kpi { font-size: 2rem; font-weight: 700; line-height: 1.2; }
+  .spp-muted { color: #5a6472; }
+  .spp-bar { display: flex; height: 22px; border-radius: 4px; overflow: hidden; background: #eef1f5; }
+  .spp-bar > div { height: 100%; }
+  .spp-lunas { background: #1f5fbf; }
+  .spp-kurang { background: #f0a030; }
+  .spp-beasiswa { background: #c9d1dc; }
+  .spp-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: middle; }
+  .spp-progress { height: 8px; background: #eef1f5; border-radius: 4px; overflow: hidden; flex: 1; }
+  .spp-progress > div { height: 100%; background: #1f5fbf; }
+  .spp-text-kurang { color: #b35c00; }
+  .spp-badge { padding: 3px 10px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+  .spp-badge-lunas { background: #e3ecfa; color: #174a94; }
+  .spp-badge-kurang { background: #fdf0dc; color: #8a4600; }
+  .spp-badge-beasiswaPenuh { background: #e4e8ee; color: #3a4350; }
+  .spp-table td, .spp-table th { vertical-align: middle; }
+  .spp-row-aktif { background: #eef4fd !important; }
+</style>
+<?= $this->endSection() ?>
+<?= $this->section('main') ?>
+<?php
+$rp = function ($n) {
+  return 'Rp ' . number_format($n, 0, ',', '.');
+};
+$persenLunas = $total['siswa'] ? round(($total['siswa'] - $total['kurang']) * 100 / $total['siswa']) : 0;
+$labelStatus = ['lunas' => 'Lunas', 'kurang' => 'Kurang bayar', 'beasiswaPenuh' => 'Beasiswa 100%'];
+?>
+<div class="content-wrapper">
   <section class="content-header">
     <div class="container-fluid">
-
+      <h1 class="m-0">Rekap SPP per Kelas</h1>
+      <div class="spp-muted">Tahun ajaran <?= esc($tahunAjaran) ?> · tagihan dihitung <?= $bulan ?> bulan</div>
     </div>
   </section>
+
   <section class="content">
-    <table border=1>
-      <tr>
-        <td valign=top>
-          <div class="card card-blue">
-            <div class="card-header">
-              <h3 class="card-title">Chart Jumlah Murid
-                <?php
-                //$id_kelas = [];
-                $cek = "";
-                $count = 0;
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <div class="card"><div class="card-body">
+            <div class="spp-muted font-weight-bold">Siswa aktif</div>
+            <div class="spp-kpi"><?= $total['siswa'] ?></div>
+            <div class="spp-muted"><?= count($kelas) ?> kelas</div>
+          </div></div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="card"><div class="card-body">
+            <div class="spp-muted font-weight-bold">Sudah lunas</div>
+            <div class="spp-kpi" style="color:#1f5fbf"><?= $total['lunas'] ?></div>
+            <div class="spp-muted"><?= $persenLunas ?>% tidak menunggak</div>
+          </div></div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="card"><div class="card-body">
+            <div class="spp-muted font-weight-bold">Kurang bayar</div>
+            <div class="spp-kpi spp-text-kurang"><?= $total['kurang'] ?></div>
+            <div class="spp-muted"><?= $total['beasiswa'] ?> siswa penerima beasiswa</div>
+          </div></div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="card"><div class="card-body">
+            <div class="spp-muted font-weight-bold">Total tunggakan</div>
+            <div class="spp-kpi spp-text-kurang"><?= $rp($total['tunggakan']) ?></div>
+            <div class="spp-muted">jumlah selisih yang belum dibayar</div>
+          </div></div>
+        </div>
+      </div>
 
-                foreach ($sumBelumbayar_perkelas as $k => $v) {
-                  if ($cek !== $v['nama_kelas']) {
-                    $count = $v['jml'];
-                  } else {
-                    $count = $count + $v['jml'];
-                  }
-                  $cek = $v['nama_kelas'];
-                  $id_kelas[$v['nama_kelas']] = $v['jml'];
-                  //echo $v["nama_kelas"] . "=" . $v['jml'] . "=" . $count . "<br>";
-                }
+      <div class="card">
+        <div class="card-header d-flex flex-wrap align-items-center">
+          <h3 class="card-title mr-auto">Status pembayaran per kelas</h3>
+          <div class="spp-muted small">
+            <span class="mr-3"><span class="spp-swatch spp-lunas"></span>Lunas</span>
+            <span class="mr-3"><span class="spp-swatch spp-kurang"></span>Kurang bayar</span>
+            <span><span class="spp-swatch spp-beasiswa"></span>Beasiswa penuh</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <?php foreach ($kelas as $k) { ?>
+            <div class="d-flex align-items-center mb-2">
+              <div style="width:90px" class="font-weight-bold"><?= esc($k['nama']) ?></div>
+              <div class="spp-bar flex-grow-1">
+                <div class="spp-lunas" style="width:<?= $k['lunas'] * 100 / $k['siswa'] ?>%"></div>
+                <div class="spp-kurang" style="width:<?= $k['kurang'] * 100 / $k['siswa'] ?>%"></div>
+                <div class="spp-beasiswa" style="width:<?= $k['beasiswaPenuh'] * 100 / $k['siswa'] ?>%"></div>
+              </div>
+              <div style="width:140px" class="text-right spp-muted small"><?= $k['kurang'] ?> dari <?= $k['siswa'] ?> kurang</div>
+            </div>
+          <?php } ?>
+        </div>
+      </div>
 
-                $cek = "";
-                $count = 0;
-                $besis = array();
-                foreach ($beasiswa as $k => $v) {
-                  $besis[$v['nama_kelas']] = $v['jml'];
-                }
-                //echo $id_kelas[9];
-                ?>
-              </h3>
-            </div>
-            <div class="card-body">
-              <canvas id="pieChart" style="min-height: 250px; height: 400px; max-height: 400px; max-width: 100%; display: block; width: 326px;" width="326" class="chartjs-render-monitor"></canvas>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="card card-blue">
-            <div class="card-header">
-              <h3 class="card-title">Chart Jumlah Murid Kurang Bayar</h3>
-            </div>
-            <div class="card-body">
-              <canvas id="barChart" style="min-height: 250px; height: 400px; max-height: 400px; max-width: 100%;"></canvas>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td VALIGN=TOP colspan=2>
-          <table class="table table-bordered table-striped table-sm">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Rincian per kelas</h3>
+        </div>
+        <div class="card-body p-0 table-responsive">
+          <table class="table table-sm spp-table mb-0" style="min-width:720px">
             <thead>
               <tr>
-                <td>Kelas</td>
-                <td>Jumlah </td>
-                <td>Beasiswa </td>
-                <td>Kurang Bayar </td>
-                <td>Total RP</td>
-                <td>view </td>
+                <th class="pl-3">Kelas</th>
+                <th class="text-right">Siswa</th>
+                <th class="text-right">Beasiswa</th>
+                <th class="text-right">Kurang bayar</th>
+                <th style="width:180px">Tidak menunggak</th>
+                <th class="text-right">Tunggakan</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <?php
-              $totalsiswa = 0;
-              $totalbesis = 0;
-              $totalkurangbayar = 0;
-              $totalrupiah = 0;
-              $i = 0;
-              foreach ($data as $datachart) { ?>
-                <tr>
-                  <td><?= $datachart['kelas']; ?> </td>
-                  <td><?= $datachart['jml']; ?> </td>
-                  <td><?= $besis[$datachart['kelas']]; ?></td>
-                  <td><?php
-                      if (isset($id_kelas[$datachart['kelas']]))
-                        $blmbayar = $id_kelas[$datachart['kelas']];
-                      else $blmbayar = 0;
-                      $blmbayar = $blmbayar - $besis[$datachart['kelas']];
-                      if ($blmbayar < 0) $blmbayar = 0;
-                      echo $blmbayar;
-                      ?>
-                  </td>
-                  <td align="right">
-                    <?php
-                    $id_kelasspp = id_kelas($datachart['kelas']);
-                    $tarifspp = tarifspp($id_kelasspp['id_kelas']);
-                    if (isset($tarifspp['tarif'])) {
-                      $totalrupiah += $blmbayar * $tarifspp['tarif'];
-                      echo number_format($blmbayar * $tarifspp['tarif'], 0);
-                    }
-                    ?>
-                  </td>
-                  <td><button data-toggle="modal" data-target="#Modal<?php echo $i; ?>" type="button" class="btn btn-primary"><i class="fas fa-search"></i></button> </td>
-
-                </tr>
-                <div class="modal fade" id="Modal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Data Siswa</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-
-                      <div class="modal-body">
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-2" style="background-color:green;border-style: ridge;">Beasiswa</div>
-                            <div class="col-2" style="background-color:blue;border-style: ridge;">Lunas</div>
-                            <div class="col-2" style="background-color:red;border-style: ridge;">Kurang Bayar</div>
-                            <div class="col-2" style="background-color:yellow;border-style: ridge;">Tarif SPP</div>
-                          </div>
-                        </div>
-                        <div class="container">
-                          <?php
-                          $data3 = list_siswa_blmbayar_perkelas($datachart['kelas']);
-                          $i = 1;
-                          foreach ($data3 as $datachart2) { ?>
-                            <div class="row">
-                              <div class="col-5" style="border-style: ridge;"><?php echo $i . " " . $datachart2['nama_siswa']; ?></div>
-                              <div class="col-2" style="border-style: ridge;">Beasiswa =
-                                <?php
-                                if ($datachart2['peserta'] == "") echo "no";
-                                else echo $datachart2['peserta'];
-                                $selisih = $datachart2['jmldibayar'] - $datachart2['jmlharusbayar'];
-                                if ($selisih >= 0) $bgcolor = 'blue';
-                                else $bgcolor = 'red';
-                                if ($datachart2['peserta'] == "yes") $bgcolor = 'green';
-                                ?>
-                              </div>
-                              <div class="col-2" style="background-color:<?= $bgcolor ?>;border-style: ridge;">Selisih = <?php echo number_format($selisih, 0); ?></div>
-                              <div class="col-2" style="background-color:yellow;border-style: ridge;"><?php echo number_format(isset($datachart2['rppersen']), 0); ?></div>
-                            </div>
-                          <?php $i++;
-                          } ?>
-                        </div>
-                      </div>
+              <?php foreach ($kelas as $i => $k) {
+                $persen = round(($k['siswa'] - $k['kurang']) * 100 / $k['siswa']); ?>
+                <tr data-kelas-row="<?= $i ?>">
+                  <td class="pl-3 font-weight-bold"><?= esc($k['nama']) ?></td>
+                  <td class="text-right"><?= $k['siswa'] ?></td>
+                  <td class="text-right"><?= $k['beasiswa'] ?></td>
+                  <td class="text-right font-weight-bold spp-text-kurang"><?= $k['kurang'] ?></td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="spp-progress mr-2"><div style="width:<?= $persen ?>%"></div></div>
+                      <span class="small"><?= $persen ?>%</span>
                     </div>
-                  </div>
-                </div>
-              <?php
-                $i++;
-                $totalsiswa = $totalsiswa + $datachart['jml'];
-                $totalbesis = $totalbesis + $besis[$datachart['kelas']];
-                $totalkurangbayar += $blmbayar;
-              } ?>
-              <tr>
-                <td>Total</td>
-                <td><?= $totalsiswa ?></td>
-                <td><?= $totalbesis ?></td>
-                <td><?= $totalkurangbayar ?></td>
-                <td align="right"><?= number_format(isset($totalrupiah), 0) ?></td>
+                  </td>
+                  <td class="text-right"><?= $rp($k['tunggakan']) ?></td>
+                  <td class="text-right pr-3">
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-kelas="<?= $i ?>">Lihat siswa</button>
+                  </td>
+                </tr>
+              <?php } ?>
+              <tr class="font-weight-bold" style="background:#f8f9fb">
+                <td class="pl-3">Total</td>
+                <td class="text-right"><?= $total['siswa'] ?></td>
+                <td class="text-right"><?= $total['beasiswa'] ?></td>
+                <td class="text-right spp-text-kurang"><?= $total['kurang'] ?></td>
+                <td><?= $persenLunas ?>%</td>
+                <td class="text-right"><?= $rp($total['tunggakan']) ?></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
-        </td>
+        </div>
+      </div>
 
-      </tr>
-    </table>
-
+      <?php foreach ($kelas as $i => $k) { ?>
+        <div class="card spp-detail" id="spp-detail-<?= $i ?>" style="display:none">
+          <div class="card-header d-flex flex-wrap align-items-baseline">
+            <h3 class="card-title mr-auto">Siswa kelas <?= esc($k['nama']) ?></h3>
+            <span class="spp-muted small">diurutkan dari tunggakan terbesar</span>
+          </div>
+          <div class="card-body p-0 table-responsive">
+            <table class="table table-sm spp-table mb-0" style="min-width:680px">
+              <thead>
+                <tr>
+                  <th class="pl-3">Nama siswa</th>
+                  <th>Status</th>
+                  <th class="text-right">Tarif/bulan</th>
+                  <th class="text-right">Harus bayar</th>
+                  <th class="text-right">Sudah bayar</th>
+                  <th class="text-right pr-3">Selisih</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($k['daftar'] as $s) { ?>
+                  <tr>
+                    <td class="pl-3"><?= esc($s['nama_siswa']) ?></td>
+                    <td>
+                      <span class="spp-badge spp-badge-<?= $s['status'] ?>"><?= $labelStatus[$s['status']] ?><?= ($s['beasiswa'] && $s['status'] !== 'beasiswaPenuh') ? ' · beasiswa ' . (0 + $s['persen']) . '%' : '' ?></span>
+                    </td>
+                    <td class="text-right"><?= $rp($s['tarif']) ?></td>
+                    <td class="text-right"><?= $rp($s['harus']) ?></td>
+                    <td class="text-right"><?= $rp($s['dibayar']) ?></td>
+                    <td class="text-right pr-3 font-weight-bold <?= $s['selisih'] < 0 ? 'spp-text-kurang' : '' ?>"><?= ($s['selisih'] < 0 ? '−' : '') . $rp(abs($s['selisih'])) ?></td>
+                  </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <?php } ?>
+    </div>
   </section>
 </div>
 <?= $this->endSection() ?>
-
 <?= $this->section('javascript') ?>
-
-<script src=" <?php echo BPATH; ?>/asset/dist/js/pages/dashboard.js">
-</script>
 <script src="<?php echo BPATH; ?>/asset/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo BPATH; ?>/asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo BPATH; ?>/asset/plugins/chart.js/Chart.min.js"></script>
 <script src="<?php echo BPATH; ?>/asset/dist/js/adminlte.min.js?v=3.2.0"></script>
-
 <script>
-  $(function() {
-    /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
-
-    //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieData = {
-      labels: [
-        <?php foreach ($data as $datachart) {
-          echo "'" . $datachart['kelas'] . "',";
-        }
-        ?>
-      ],
-      datasets: [{
-        data: [
-          <?php
-          $jmlsiswa = "";
-          foreach ($data as $datachart) {
-            echo "'" . $datachart['jml'] . "',";
-            $jmlsiswa .= "'" . $datachart['jml'] . "',";
-          }
-          ?>
-        ],
-        backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#FFF333', '#FF33B2', '#1CD7CC'],
-      }]
-    }
-    var pieOptions = {
-      maintainAspectRatio: false,
-      responsive: true,
-    }
-
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    new Chart(pieChartCanvas, {
-      type: 'pie',
-      data: pieData,
-      options: pieOptions
-    })
-
-    //-------------
-    //- BAR CHART -
-    //-------------
-    <?php
-
-    $data1 = "";
-    $data2 = "";
-    if (isset($id_kelas)) {
-      foreach ($id_kelas as $key => $val) {
-        //dd($val);
-        if ($besis[$key]) $val2 = $besis[$key];
-        else $val2 = 0;
-        $val = $val - $val2;
-        $data1 .=  $val . ",";
-        $data2 .= $val2 . ",";
-      }
-      $data1 = substr(trim($data1), 0, -1);
-      $data2 = substr(trim($data2), 0, -1);
-    }
-    ?>
-    var areaChartData = {
-      //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      labels: [<?php
-                $label = "";
-                if (isset($id_kelas)) {
-                  foreach (array_keys($id_kelas) as $k => $v) {
-                    $label .= "'" . $v . "',";
-                  }
-                  $label = substr($label, 0, -1);
-                }
-                echo $label;
-                ?>],
-
-      datasets: [{
-          label: 'Siswa kurang Bayar',
-          backgroundColor: 'rgba(255,102,102,0.9)',
-          borderColor: 'rgba(60,141,188,0.8)',
-          pointRadius: false,
-          pointColor: '#3b8bba',
-          pointStrokeColor: 'rgba(60,141,188,1)',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data: [<?= $data1 ?>]
-        },
-        {
-          label: 'Jumlah Siswa',
-          backgroundColor: 'rgba(210, 214, 222, 1)',
-          borderColor: 'rgba(210, 214, 222, 1)',
-          pointRadius: false,
-          pointColor: 'rgba(210, 214, 222, 1)',
-          pointStrokeColor: '#c1c7d1',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data: [<?= $jmlsiswa ?>]
-        },
-        {
-          label: 'Jumlah Beasiswa',
-          backgroundColor: 'rgba(111, 111, 222, 1)',
-          borderColor: 'rgba(210, 214, 222, 1)',
-          pointRadius: false,
-          pointColor: 'rgba(210, 214, 222, 1)',
-          pointStrokeColor: '#c1c7d1',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data: [<?= $data2 ?>]
-        },
-      ]
-    }
-    var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    var barChartData = $.extend(true, {}, areaChartData)
-    var temp0 = areaChartData.datasets[0]
-    var temp1 = areaChartData.datasets[1]
-    barChartData.datasets[0] = temp1
-    barChartData.datasets[1] = temp0
-    var barChartOptions = {
-      responsive: true,
-      maintainAspectRatio: false,
-      datasetFill: false
-    }
-    new Chart(barChartCanvas, {
-      type: 'bar',
-      data: barChartData,
-      options: barChartOptions
-    })
-
-    //---------------------
-    //- STACKED BAR CHART -
-    //---------------------
-    var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-    var stackedBarChartData = $.extend(true, {}, barChartData)
-    var stackedBarChartOptions = {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [{
-          stacked: true,
-        }],
-        yAxes: [{
-          stacked: true
-        }]
-      }
-    }
-    new Chart(stackedBarChartCanvas, {
-      type: 'bar',
-      data: stackedBarChartData,
-      options: stackedBarChartOptions
-    })
-  })
+  // Tampilkan daftar siswa kelas yang dipilih di bawah tabel rincian
+  $('[data-kelas]').on('click', function() {
+    var i = $(this).data('kelas');
+    $('.spp-detail').hide();
+    $('[data-kelas-row]').removeClass('spp-row-aktif');
+    $('[data-kelas-row="' + i + '"]').addClass('spp-row-aktif');
+    $('#spp-detail-' + i).show()[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 </script>
 <?= $this->endSection() ?>
