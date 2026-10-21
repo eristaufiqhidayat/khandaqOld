@@ -54,7 +54,7 @@ class M_DataPembayaran extends Model
         left join tbl_beasiswa f on a.id_siswa = f.id_siswa
         left join setup_periode g on e.periode = g.id_periode
         where b.tanggal between '$tanggalAwal' and '$tanggalAkhir' and b.kodetransaksi = 'TDSPP' and
-        g.status_aktif = 'yes'
+        g.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
         and a.id_siswa = '$id_siswa'";
         $query = $db->query($sql);
         return $query->getRowArray();
@@ -75,7 +75,7 @@ class M_DataPembayaran extends Model
         left join tbl_beasiswa f on a.id_siswa = f.id_siswa
         left join setup_periode g on e.periode = g.id_periode
         where b.tanggal between '$tanggalAwal' and '$tanggalAkhir' and b.kodetransaksi = 'TDLDR' and
-        g.status_aktif = 'yes'
+        g.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
         and a.id_siswa = '$id_siswa'";
         $query = $db->query($sql);
         return $query->getRowArray();
@@ -96,7 +96,7 @@ class M_DataPembayaran extends Model
         left join tbl_beasiswa f on a.id_siswa = f.id_siswa
         left join setup_periode g on e.periode = g.id_periode
         where b.tanggal between '$tanggalAwal' and '$tanggalAkhir' and b.kodetransaksi = 'TDKES' and
-        g.status_aktif = 'yes'
+        g.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
         and a.id_siswa = '$id_siswa'";
         $query = $db->query($sql);
         return $query->getRowArray();

@@ -264,9 +264,11 @@ function tahunajaran()
 {
     $cekspp = new M_Helper();
     $periode = $cekspp->periodetahunajaran();
-    $tahunajaran = explode("/", $periode['tahun_ajaran']);
-    $tahunajaran['awal'] = $tahunajaran[0];
-    return $tahunajaran['awal'];
+    // Belum ada periode aktif atau format salah: pakai tahun ajaran dari tanggal (mulai Juli)
+    if (!$periode || !preg_match('/^(\d{4})\//', (string) $periode['tahun_ajaran'], $m)) {
+        return (string) ((int) date('n') >= 7 ? date('Y') : date('Y') - 1);
+    }
+    return $m[1];
 }
 function cekloundry($id_siswa)
 {

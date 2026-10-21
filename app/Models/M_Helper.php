@@ -408,7 +408,7 @@ class M_Helper extends Model
     public function periodetahunajaran()
     {
         $db = db_connect('arafah');
-        $query = "SELECT * FROM `setup_periode` where status_aktif = 'yes'";
+        $query = "SELECT * FROM `setup_periode` where status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1";
         $query = $db->query($query);
         return $query->getRowArray();
         //return 'Ini adalah Method getData didalam ProductModel';
@@ -537,7 +537,7 @@ LIMIT 2";
         $db = db_connect('arafah');
         $query = "select * from tbl_tarif_spp a
         left join setup_periode b on a.periode = b.id_periode
-        where b.status_aktif = 'yes'
+        where b.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
         ";
         $query = $db->query($query);
         return $query->getResult('array');
@@ -596,7 +596,7 @@ LIMIT 2";
         a.TANGGAL > '$tahunAjaran-06-30' and
         c.locked = 'no' and
         e.nama_kelas = '$id_kelas' and
-        h.status_aktif = 'yes'
+        h.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
         group by c.id_siswa
         order by e.nama_kelas
         ";
@@ -623,7 +623,7 @@ LIMIT 2";
         a.TANGGAL > '$tahunAjaran-06-30' and
         c.locked = 'no' and
         e.nama_kelas = '$id_kelas' and
-        h.status_aktif = 'yes'
+        h.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
         group by d.id_kelas
         order by e.nama_kelas
         ";
@@ -692,7 +692,7 @@ LIMIT 2";
     public function periodeaktif()
     {
         $db = db_connect('arafah');
-        $sql = "SELECT * FROM setup_periode where status_aktif = 'yes'";
+        $sql = "SELECT * FROM setup_periode where status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1";
         $query = $db->query($sql);
         return $query->getRowArray();
     }
