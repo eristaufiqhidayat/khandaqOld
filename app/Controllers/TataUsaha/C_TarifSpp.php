@@ -8,154 +8,76 @@ use App\Models\TataUsaha\M_TarifSpp;
 
 class C_TarifSpp extends BaseController
 {
+    private $tarifMaks = 100000000;
 
     public function  index($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = "";
-            #$monthyear = date('Y-m');
-        } else {
-            $monthyear = $this->request->getPost('monthyear');
-        }
-        if (!$this->request->getPost('id_kelas')) {
-            $id_kelas = "%";
-        } else {
-            $id_kelas =  $this->request->getPost('id_kelas');
-        }
-        if (!$this->request->getPost('id_periode')) {
-            $id_periode = "%";
-        } else {
-            $id_periode =  $this->request->getPost('id_periode');
-        }
+        $model = new M_TarifSpp();
         $menu = new M_Menu();
-        $datamenu = $menu->listing();
-        $data = new M_TarifSpp();
-        $dataTarifSpp = $data->listing($id_periode);
-        $dataKelas = $data->dataKelas();
-        $dataPeriode = $data->dataPeriode();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
+        $dataPeriode = $model->dataPeriode();
+        $petaTarif = $model->petaTarif();
+        $ids = array_column($dataPeriode, 'id_periode');
+
+        // Periode yang diisi: dari pilihan, default periode aktif
+        $id_periode = $this->request->getGet('periode');
+        if (!in_array($id_periode, $ids)) {
+            $aktif = periodeaktif();
+            $id_periode = $aktif['id_periode'] ?? ($ids[0] ?? null);
+        }
+        // Sumber salinan default: periode sebelumnya yang sudah punya tarif
+        // (daftar terbaru di atas, jadi "sebelumnya" = sesudahnya di daftar), kalau tidak ada pakai periode lain mana saja
+        $posisi = (int) array_search($id_periode, $ids);
+        $punyaTarif = array_filter($dataPeriode, function ($p) use ($id_periode) {
+            return $p['id_periode'] != $id_periode && $p['jml_tarif'] > 0;
+        });
+        $sebelumnya = array_filter($punyaTarif, function ($i) use ($posisi) {
+            return $i > $posisi;
+        }, ARRAY_FILTER_USE_KEY);
+        $sumber = $sebelumnya ? array_key_first($sebelumnya) : ($punyaTarif ? array_key_first($punyaTarif) : null);
+
         $data = array(
-            'title'        => 'Data Menu',
+            'title'        => 'Tarif SPP',
             'menuAktip' => $menuAktip,
             'moduleAktip' => $moduleAktip,
-            'dataTarifSpp'    => $dataTarifSpp,
-            'dataKelas' => $dataKelas,
             'dataPeriode' => $dataPeriode,
-            'monthyear' => $monthyear,
-            'menu'   =>  $datamenu,
-            'id_kelas' => $id_kelas,
+            'dataKelas' => $model->dataKelas(),
+            'petaTarif' => $petaTarif,
             'id_periode' => $id_periode,
-            'session' => $session
+            'sumber' => $sumber === null ? null : $dataPeriode[$sumber]['id_periode'],
+            'kelasGanda' => $id_periode ? $model->kelasGanda($id_periode) : [],
+            'menu'   =>  $menu->listing(),
         );
         return view('TataUsaha/V_TarifSpp', $data);
     }
-    public function  insert($menuAktip = '', $moduleAktip = '')
-    {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = date('Y-m');
-        } else {
-            $monthyear = $this->request->getPost('monthyear');
-        }
 
-        $data = new M_TarifSpp();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
-        $validated =  $this->validate([
-            'id_kelas'     => 'required',
-            'tarif'     => 'required',
-            'periode'     => 'required',
-            'tanggal'     => 'required',
-        ]);
-        if ($validated) {
-            $dataTambah = array(
-                'id_kelas'    => $this->request->getVar('id_kelas'),
-                'tarif'    => $this->request->getVar('tarif'),
-                'periode'    => $this->request->getVar('periode'),
-                'tanggal'    => $this->request->getVar('tanggal'),
-            );
-            $data->tambah($dataTambah);
-            $session->setFlashdata('sukses', 'Data Berhasil');
-            return redirect()->back()->with('success', 'Data Berhasi disimpan');
-        } else {
-            echo "error";
-        }
-        //return view('Transaksi/V_DataPengeluaran', $data);
-    }
-    public function  update($menuAktip = '', $moduleAktip = '')
+    // Simpan tarif semua kelas untuk satu periode. Input kosong = hapus tarif kelas itu.
+    public function  simpan($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = date('Y-m');
-        } else {
-            $monthyear = $this->request->getPost('monthyear');
+        $model = new M_TarifSpp();
+        $id_periode = $this->request->getPost('id_periode');
+        $kembali = redirect()->to(base_url('index.php/TataUsaha/TarifSpp/index/' . $menuAktip . '/' . $moduleAktip) . '?periode=' . urlencode((string) $id_periode));
+        if (!$model->periodeAda($id_periode)) {
+            session()->setFlashdata('error', 'Periode tidak ditemukan.');
+            return $kembali;
         }
-
-        $data = new M_TarifSpp();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
-        $validated =  $this->validate([
-            'no'     => 'required',
-        ]);
-        if ($validated) {
-            $dataUpdate = array(
-                'no'    => $this->request->getVar('no'),
-                'id_kelas'    => $this->request->getVar('id_kelas'),
-                'tarif'    => $this->request->getVar('tarif'),
-                'periode'    => $this->request->getVar('periode'),
-                'tanggal'    => $this->request->getVar('tanggal'),
-            );
-            $data->edit($dataUpdate);
-            $session->setFlashdata('sukses', 'Data Berhasil di Edit');
-            return redirect()->to(base_url('index.php/TataUsaha/TarifSpp/index/' . $menuAktip . "/" . $moduleAktip));
-        } else {
-            echo "error";
+        $input = (array) $this->request->getPost('tarif');
+        $tarif = [];
+        foreach ($model->dataKelas() as $k) {
+            if (!array_key_exists($k['id_kelas'], $input)) continue;
+            // Titik ribuan boleh: "150.000" => 150000
+            $angka = preg_replace('/[^0-9]/', '', (string) $input[$k['id_kelas']]);
+            if ($angka !== '' && (int) $angka > $this->tarifMaks) {
+                session()->setFlashdata('error', 'Tarif ' . $k['nama_kelas'] . ' terlalu besar. Tidak ada yang disimpan.');
+                return $kembali;
+            }
+            $tarif[$k['id_kelas']] = $angka === '' ? null : (int) $angka;
         }
-        //return view('Transaksi/V_DataPengeluaran', $data);
-    }
-    public function  delete($menuAktip = '', $moduleAktip = '')
-    {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = date('Y-m');
+        $hasil = $model->simpanPeriode($id_periode, $tarif);
+        if ($hasil === false) {
+            session()->setFlashdata('error', 'Gagal menyimpan tarif, tidak ada data yang berubah.');
         } else {
-            $monthyear = $this->request->getPost('monthyear');
+            session()->setFlashdata('success', $hasil ? "Tarif $hasil kelas disimpan." : 'Tidak ada perubahan tarif.');
         }
-
-        $data = new M_TarifSpp();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
-        $validated =  $this->validate([
-            'no'     => 'required',
-        ]);
-        if ($validated) {
-            $datadelete = array(
-                'no'    => $this->request->getVar('no'),
-            );
-            $data->hapus($datadelete);
-            $session->setFlashdata('sukses', 'Data Berhasil di Delete');
-            return redirect()->to(base_url('index.php/TataUsaha/TarifSpp/index/' . $menuAktip . "/" . $moduleAktip));
-        } else {
-            echo "error";
-        }
-        //return view('Transaksi/V_DataPengeluaran', $data);
+        return $kembali;
     }
 }

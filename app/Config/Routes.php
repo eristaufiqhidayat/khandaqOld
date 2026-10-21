@@ -92,9 +92,7 @@ $routes->add('/TataUsaha/KalenderAkademik/update/(:any)/(:any)', 'TataUsaha\C_Ka
 $routes->add('/TataUsaha/KalenderAkademik/delete/(:any)/(:any)', 'TataUsaha\C_KalenderAkademik::delete/$1/$2');
 
 $routes->add('/TataUsaha/TarifSpp/index/(:any)/(:any)', 'TataUsaha\C_TarifSpp::index/$1/$2');
-$routes->add('/TataUsaha/TarifSpp/insert/(:any)/(:any)', 'TataUsaha\C_TarifSpp::insert/$1/$2');
-$routes->add('/TataUsaha/TarifSpp/update/(:any)/(:any)', 'TataUsaha\C_TarifSpp::update/$1/$2');
-$routes->add('/TataUsaha/TarifSpp/delete/(:any)/(:any)', 'TataUsaha\C_TarifSpp::delete/$1/$2');
+$routes->post('/TataUsaha/TarifSpp/simpan/(:any)/(:any)', 'TataUsaha\C_TarifSpp::simpan/$1/$2');
 
 $routes->add('/TataUsaha/Kelas/index/(:any)/(:any)', 'TataUsaha\C_Kelas::index/$1/$2');
 $routes->add('/TataUsaha/Kelas/update/(:any)/(:any)', 'TataUsaha\C_Kelas::update/$1/$2');
