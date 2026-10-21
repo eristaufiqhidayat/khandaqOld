@@ -14,26 +14,47 @@ class M_DataTransaksiTabungan extends Model
 	];
 
 	// Listing sub query
+	// Query transaksi + nama siswa & kelas. Join beasiswa/tarif dibuang karena
+	// kolomnya tidak dipakai dan membuat setiap transaksi muncul berkali-kali.
+	private function builderLengkap($start_date, $end_date, $id_siswa = "")
+	{
+		$builder = db_connect('arafah')->table('tbl_tabungan_transaksi a')
+			->select('a.notransaksi, a.kode_tab_trans, a.kodetransaksi, a.tanggal, a.rp, a.keterangan_trans, a.spp, a.buktitransfer, a.tahunajaran, e.nama_kelas, c.nama_siswa')
+			->join('tbl_tabungan_siswa b', 'a.kode_tab_trans = b.kode_tab', 'left')
+			->join('data_siswa c', 'b.kode_siswa = c.id_siswa', 'left')
+			->join('tbl_ruangan d', 'c.id_siswa = d.id_siswa', 'left')
+			->join('setup_kelas e', 'd.id_kelas = e.id_kelas', 'left')
+			->where('a.tanggal >=', $start_date)
+			->where('a.tanggal <', date('Y-m-d', strtotime($end_date . ' +1 day')));
+		if ($id_siswa) $builder->where('c.id_siswa', $id_siswa);
+		return $builder;
+	}
 	public function listingLengkap($start_date, $end_date, $id_siswa = "")
 	{
-		$db = db_connect('arafah');
-		if ($id_siswa) $id_siswa = " and c.id_siswa = '$id_siswa'";
-		$sql = "SELECT
-		a.notransaksi, a.kode_tab_trans,
-		a.kodetransaksi, a.tanggal,
-		a.rp, a.keterangan_trans, a.spp,a.buktitransfer,a.tahunajaran,
-		e.nama_kelas,c.nama_siswa
-        FROM `tbl_tabungan_transaksi` a
-        left join tbl_tabungan_siswa b on a.kode_tab_trans = b.kode_tab
-        left join data_siswa c on b.kode_siswa = c.id_siswa
-        left join tbl_ruangan d on c.id_siswa = d.id_siswa
-        left join setup_kelas e on d.id_kelas = e.id_kelas
-        left join tbl_beasiswa f on c.id_siswa = f.id_siswa
-        left join tbl_tarif_spp g on e.id_kelas = g.id_kelas
-		 WHERE date_format(a.tanggal,'%Y-%m-%d') BETWEEN " .
-			"'$start_date' and '$end_date' $id_siswa";
-		$query = $db->query($sql);
-		return $query->getResultArray();
+		return $this->builderLengkap($start_date, $end_date, $id_siswa)->get()->getResultArray();
+	}
+	// Satu halaman data untuk DataTables server-side
+	public function listingServerSide($start_date, $end_date, $id_siswa, $search, $orderColumn, $orderDir, $offset, $limit)
+	{
+		$recordsTotal = $this->builderLengkap($start_date, $end_date, $id_siswa)->countAllResults();
+		$builder = $this->builderLengkap($start_date, $end_date, $id_siswa);
+		if ($search !== '') {
+			$builder->groupStart()
+				->like('a.notransaksi', $search)
+				->orLike('a.kode_tab_trans', $search)
+				->orLike('a.kodetransaksi', $search)
+				->orLike('a.keterangan_trans', $search)
+				->orLike('e.nama_kelas', $search)
+				->orLike('c.nama_siswa', $search)
+				->groupEnd();
+		}
+		$recordsFiltered = $builder->countAllResults(false);
+		$data = $builder->orderBy($orderColumn, $orderDir)->limit($limit, $offset)->get()->getResultArray();
+		return [
+			'recordsTotal' => $recordsTotal,
+			'recordsFiltered' => $recordsFiltered,
+			'data' => $data,
+		];
 	}
 	public function listing($start_date, $end_date)
 	{

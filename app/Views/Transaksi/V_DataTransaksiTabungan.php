@@ -131,123 +131,96 @@
                     <th scope="col">buktitransfer</th>
                     <th scope="col">Kelas</th>
                     <th scope="col">Nama Siswa</th>
-
                   </tr>
                 </thead>
-                <tbody>
-                  <?php foreach ($DataTransaksiTabungan as $DataMenuv) { ?>
-                    <tr>
-                      <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#Modal<?php echo $DataMenuv['notransaksi']; ?>" type="button" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-primary btn-danger" data-toggle="modal" data-target="#ModalDelete<?php echo $DataMenuv['notransaksi']; ?>" type="button" class="btn btn-primary"><i class="fas fa-trash"></i></button>
-                      </td>
-                      <td><?php echo $DataMenuv['notransaksi']; ?></td>
-                      <td><?php echo $DataMenuv['kode_tab_trans']; ?></td>
-                      <td><?php echo $DataMenuv['kodetransaksi']; ?></td>
-                      <td><?php echo $DataMenuv['tanggal']; ?></td>
-                      <td><?php echo $DataMenuv['rp']; ?></td>
-                      <td><?php echo $DataMenuv['keterangan_trans']; ?></td>
-                      <td><?php echo $DataMenuv['spp']; ?></td>
-                      <td><?php echo $DataMenuv['buktitransfer']; ?></td>
-                      <td><?php echo $DataMenuv['nama_kelas']; ?></td>
-                      <td><?php echo $DataMenuv['nama_siswa']; ?></td>
-
-                    </tr>
-                    <!-- Modal Edit  -->
-                    <div class="modal fade" id="Modal<?php echo $DataMenuv['notransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Data Transaksi</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="<?php echo base_url('index.php/transaksi/edit/' . $menuAktip . "/" . $moduleAktip) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">No Transaksi</span>
-                                <input name="notransaksi" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['notransaksi']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">kode_tab_trans</span>
-                                <input name="kode_tab_trans" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['kode_tab_trans']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">kodetransaksi</span>
-                                <input name="kodetransaksi" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['kodetransaksi']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">tanggal</span>
-                                <input name="tanggal" type="datetime-local" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['tanggal']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">Rp</span>
-                                <input name="rp" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['rp']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">keterangan_trans</span>
-                                <input name="keterangan_trans" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['keterangan_trans']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">spp</span>
-                                <input name="spp" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['spp']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">buktitransfer</span>
-                                <input name="buktitransfer" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['buktitransfer']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">tahunajaran</span>
-                                <input name="tahunajaran" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['tahunajaran']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <input name="start_date" type="hidden" value="<?php echo $start_date; ?>">
-                                <input name="end_date" type="hidden" value="<?php echo $end_date; ?>">
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button class="btn btn-primary"><i class="fas fa-save"> Save</i></button>
-                              </div>
-                            </form>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /Modal Delete -->
-                    <div class="modal fade" id="ModalDelete<?php echo $DataMenuv['notransaksi']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Data Transaksi</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body danger">
-                            <form action="<?php echo base_url('index.php/transaksi/delete/' . $menuAktip . "/" . $moduleAktip) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon3">No Transaksi</span>
-                                <input name="notransaksi" type="text" class="form-control" id="recipient-name" value="<?php echo $DataMenuv['notransaksi']; ?>">
-                                <input name="start_date" type="hidden" value="<?php echo $start_date; ?>">
-                                <input name="end_date" type="hidden" value="<?php echo $end_date; ?>">
-                              </div>
-
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button class="btn btn-primary btn-danger"><i class="fas fa-trash"> Delete</i></button>
-                              </div>
-                            </form>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  <?php } ?>
-                </tbody>
+                <tbody></tbody>
               </table>
+              <!-- Modal Edit (satu untuk semua baris, diisi lewat JS) -->
+              <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Data Transaksi</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="<?php echo base_url('index.php/transaksi/edit/' . $menuAktip . "/" . $moduleAktip) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">No Transaksi</span>
+                        <input name="notransaksi" type="text" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">kode_tab_trans</span>
+                        <input name="kode_tab_trans" type="text" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">kodetransaksi</span>
+                        <input name="kodetransaksi" type="text" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">tanggal</span>
+                        <input name="tanggal" type="datetime-local" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Rp</span>
+                        <input name="rp" type="text" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">keterangan_trans</span>
+                        <input name="keterangan_trans" type="text" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">spp</span>
+                        <input name="spp" type="text" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">buktitransfer</span>
+                        <input name="buktitransfer" type="text" class="form-control" value="">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">tahunajaran</span>
+                        <input name="tahunajaran" type="text" class="form-control" value="">
+                      </div>
+                        <input name="start_date" type="hidden" value="<?php echo $start_date; ?>">
+                        <input name="end_date" type="hidden" value="<?php echo $end_date; ?>">
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button class="btn btn-primary"><i class="fas fa-save"> Save</i></button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal Delete -->
+              <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Delete Data Transaksi</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body danger">
+                      <form action="<?php echo base_url('index.php/transaksi/delete/' . $menuAktip . "/" . $moduleAktip) ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text">No Transaksi</span>
+                          <input name="notransaksi" type="text" class="form-control" value="">
+                          <input name="start_date" type="hidden" value="<?php echo $start_date; ?>">
+                          <input name="end_date" type="hidden" value="<?php echo $end_date; ?>">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button class="btn btn-primary btn-danger"><i class="fas fa-trash"> Delete</i></button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -330,12 +303,63 @@
 </script>
 <script>
   $(function() {
-    $("#datatable").DataTable({
+    // Data diambil per halaman dari server supaya memori PHP tidak habis
+    var tabelTransaksi = $("#datatable").DataTable({
       "responsive": true,
       "autoWidth": false,
       "paging": true,
+      "pageLength": 50,
+      "processing": true,
+      "serverSide": true,
+      "ajax": {
+        url: '<?= base_url('index.php/transaksi/readjson/' . $menuAktip . '/' . $moduleAktip) ?>',
+        type: 'POST',
+        data: {
+          start_date: '<?= esc($start_date, 'js') ?>',
+          end_date: '<?= esc($end_date, 'js') ?>',
+          id_siswa: '<?= esc((string) $session->get('id_siswa_transaksi'), 'js') ?>'
+        }
+      },
+      "order": [[1, 'asc']],
+      "columns": [
+        {
+          data: null,
+          orderable: false,
+          searchable: false,
+          render: function() {
+            return '<button class="btn btn-primary btn-edit" type="button"><i class="fas fa-pencil-alt"></i></button> ' +
+              '<button class="btn btn-primary btn-danger btn-delete" type="button"><i class="fas fa-trash"></i></button>';
+          }
+        },
+        { data: "notransaksi", render: $.fn.dataTable.render.text() },
+        { data: "kode_tab_trans", render: $.fn.dataTable.render.text() },
+        { data: "kodetransaksi", render: $.fn.dataTable.render.text() },
+        { data: "tanggal", render: $.fn.dataTable.render.text() },
+        { data: "rp", render: $.fn.dataTable.render.text() },
+        { data: "keterangan_trans", render: $.fn.dataTable.render.text() },
+        { data: "spp", render: $.fn.dataTable.render.text() },
+        { data: "buktitransfer", render: $.fn.dataTable.render.text() },
+        { data: "nama_kelas", render: $.fn.dataTable.render.text() },
+        { data: "nama_siswa", render: $.fn.dataTable.render.text() }
+      ],
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');;
+    });
+    tabelTransaksi.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
+    $('#datatable tbody').on('click', '.btn-edit', function() {
+      var row = tabelTransaksi.row($(this).closest('tr')).data();
+      var form = $('#ModalEdit form');
+      ['notransaksi', 'kode_tab_trans', 'kodetransaksi', 'rp', 'keterangan_trans', 'spp', 'buktitransfer', 'tahunajaran'].forEach(function(f) {
+        form.find('[name="' + f + '"]').val(row[f]);
+      });
+      // input datetime-local butuh format "YYYY-MM-DDTHH:MM:SS"
+      form.find('[name="tanggal"]').val(row.tanggal ? String(row.tanggal).replace(' ', 'T') : '');
+      $('#ModalEdit').modal('show');
+    });
+    $('#datatable tbody').on('click', '.btn-delete', function() {
+      var row = tabelTransaksi.row($(this).closest('tr')).data();
+      $('#ModalDelete [name="notransaksi"]').val(row.notransaksi);
+      $('#ModalDelete').modal('show');
+    });
     $("#example1").DataTable({
       "responsive": true,
       "lengthChange": false,
