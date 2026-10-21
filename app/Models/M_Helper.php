@@ -852,14 +852,14 @@ LIMIT 2";
     }
 
     // Status langkah pergantian periode untuk peringatan admin (lihat peringatanPeriode()).
-    // $nomorSemester: '1' Ganjil / '2' Genap
-    public function statusPergantianPeriode($tahunAjaran, $namaSemester, $nomorSemester, $tahunLalu)
+    // $semester: 'ganjil' / 'genap' (kolom enum setup_periode.semester)
+    public function statusPergantianPeriode($tahunAjaran, $semester, $tahunLalu)
     {
         $db = db_connect('arafah');
         $periode = $db->query("SELECT * FROM setup_periode
-            WHERE tahun_ajaran = ? AND (LOWER(nama_semester) LIKE ? OR semester = ?)
+            WHERE tahun_ajaran = ? AND semester = ?
             ORDER BY status_aktif = 'yes' DESC, id_periode DESC LIMIT 1",
-            [$tahunAjaran, '%' . strtolower($namaSemester) . '%', $nomorSemester])->getRowArray();
+            [$tahunAjaran, $semester])->getRowArray();
         $hasil = [
             'periode'     => $periode,
             'jmlKelas'    => (int) $db->query("SELECT COUNT(*) n FROM setup_kelas")->getRow()->n,

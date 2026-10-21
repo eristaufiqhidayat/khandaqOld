@@ -28,7 +28,7 @@ foreach ($dataKelas as $k) $namaKelas[$k['id_kelas']] = $k['nama_kelas'];
 if ($lihatSaja) $judulAsal = 'Semua kelas';
 elseif ($id_kelas === '-') $judulAsal = 'Belum ada kelas';
 else $judulAsal = 'Kelas ' . ($namaKelas[$id_kelas] ?? '');
-$periodeLabel = $dataPeriodeAktif ? $dataPeriodeAktif['tahun_ajaran'] . ' ' . $dataPeriodeAktif['nama_semester'] : '';
+$periodeLabel = labelPeriode($dataPeriodeAktif);
 ?>
 <div class="content-wrapper">
   <section class="content-header">
