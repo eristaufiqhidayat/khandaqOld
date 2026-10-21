@@ -1,9 +1,0 @@
-CRITICAL - 2026-02-11 01:48:00 --> file_get_contents(https://restapi.lembaharafah.com/public/index.php/BERITA/553da6a93aa6c69f0363048aa677efee): Failed to open stream: HTTP request failed! HTTP/1.1 503 Service Unavailable
-
-in APPPATH/Controllers/C_Home.php on line 14.
- 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
- 2 APPPATH/Controllers/C_Home.php(14): file_get_contents()
- 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\C_Home->index()
- 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
- 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
- 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
