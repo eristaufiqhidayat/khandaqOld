@@ -850,4 +850,40 @@ LIMIT 2";
         $query = $db->query($query);
         return $query->getRowArray();
     }
+
+    // Status langkah pergantian periode untuk peringatan admin (lihat peringatanPeriode()).
+    // $nomorSemester: '1' Ganjil / '2' Genap
+    public function statusPergantianPeriode($tahunAjaran, $namaSemester, $nomorSemester, $tahunLalu)
+    {
+        $db = db_connect('arafah');
+        $periode = $db->query("SELECT * FROM setup_periode
+            WHERE tahun_ajaran = ? AND (LOWER(nama_semester) LIKE ? OR semester = ?)
+            ORDER BY status_aktif = 'yes' DESC, id_periode DESC LIMIT 1",
+            [$tahunAjaran, '%' . strtolower($namaSemester) . '%', $nomorSemester])->getRowArray();
+        $hasil = [
+            'periode'     => $periode,
+            'jmlKelas'    => (int) $db->query("SELECT COUNT(*) n FROM setup_kelas")->getRow()->n,
+            'jmlSiswa'    => (int) $db->query("SELECT COUNT(*) n FROM data_siswa WHERE locked = 'no'")->getRow()->n,
+            'kelasTarif'  => 0,
+            'siswaRuang'  => 0,
+            'siswaBanding' => 0,
+            'siswaSama'   => 0,
+        ];
+        if ($periode) {
+            $hasil['kelasTarif'] = (int) $db->query("SELECT COUNT(DISTINCT id_kelas) n FROM tbl_tarif_spp WHERE periode = ?", [$periode['id_periode']])->getRow()->n;
+            $hasil['siswaRuang'] = (int) $db->query("SELECT COUNT(DISTINCT r.id_siswa) n FROM tbl_ruangan_periode r
+                JOIN data_siswa s ON s.id_siswa = r.id_siswa AND s.locked = 'no' WHERE r.id_periode = ?", [$periode['id_periode']])->getRow()->n;
+        }
+        // Naik kelas: bandingkan kelas sekarang dengan kelas di periode terakhir tahun ajaran lalu
+        $lalu = $db->query("SELECT id_periode FROM setup_periode WHERE tahun_ajaran = ? ORDER BY id_periode DESC LIMIT 1", [$tahunLalu])->getRowArray();
+        if ($lalu) {
+            $row = $db->query("SELECT COUNT(*) n, SUM(CASE WHEN r.id_kelas = p.id_kelas THEN 1 ELSE 0 END) sama
+                FROM (SELECT id_siswa, MAX(id_kelas) id_kelas FROM tbl_ruangan GROUP BY id_siswa) r
+                JOIN data_siswa s ON s.id_siswa = r.id_siswa AND s.locked = 'no'
+                JOIN tbl_ruangan_periode p ON p.id_siswa = r.id_siswa AND p.id_periode = ?", [$lalu['id_periode']])->getRow();
+            $hasil['siswaBanding'] = (int) $row->n;
+            $hasil['siswaSama'] = (int) $row->sama;
+        }
+        return $hasil;
+    }
 }

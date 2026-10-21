@@ -635,3 +635,38 @@ function wa1($to, $message, $appkey, $authkey, $file)
     $response = curl_exec($curl);
     curl_close($curl);
 }
+
+// Peringatan untuk admin kalau periode aktif tidak sesuai bulan berjalan atau langkah
+// pergantian periode belum lengkap. Tahun ajaran mulai Juli: Juli–Desember = Ganjil,
+// Januari–Juni = Genap. Mengembalikan ['judul' => ..., 'langkah' => [...]] atau null.
+function peringatanPeriode()
+{
+    if (!function_exists('in_groups') || !in_groups(['admin', 'superadmin'])) return null;
+    $bulan = (int) date('n');
+    $tahunMulai = $bulan >= 7 ? (int) date('Y') : (int) date('Y') - 1;
+    $harusTahun = $tahunMulai . '/' . ($tahunMulai + 1);
+    $ganjil = $bulan >= 7;
+    $harusSemester = $ganjil ? 'Ganjil' : 'Genap';
+    $harus = $harusTahun . ' ' . $harusSemester;
+
+    $st = (new M_Helper())->statusPergantianPeriode($harusTahun, $harusSemester, $ganjil ? '1' : '2', ($tahunMulai - 1) . '/' . $tahunMulai);
+    $p = $st['periode'];
+    $langkah = [];
+    if (!$p) {
+        $langkah[] = "1. Tambah periode $harus.";
+        $langkah[] = '2. Isi tarif SPP untuk periode itu.';
+        $langkah[] = '3. Jadikan aktif.';
+        $langkah[] = '4. Proses ruang.';
+    } else {
+        if ($st['kelasTarif'] === 0) $langkah[] = '2. Isi tarif SPP untuk periode ini (belum ada tarif).';
+        elseif ($st['kelasTarif'] < $st['jmlKelas']) $langkah[] = "2. Tarif SPP baru diisi untuk {$st['kelasTarif']} dari {$st['jmlKelas']} kelas.";
+        if ($p['status_aktif'] !== 'yes') $langkah[] = '3. Jadikan periode ini aktif.';
+        if ($st['siswaRuang'] < $st['jmlSiswa']) $langkah[] = "4. Proses ruang: baru {$st['siswaRuang']} dari {$st['jmlSiswa']} siswa aktif tercatat di periode ini.";
+    }
+    // Naik kelas hanya di awal tahun ajaran (Ganjil): kalau sebagian besar siswa masih di kelas yang sama dengan tahun lalu
+    if ($ganjil && $st['siswaBanding'] > 0 && $st['siswaSama'] * 2 > $st['siswaBanding']) {
+        $langkah[] = "5. Naik kelas: {$st['siswaSama']} dari {$st['siswaBanding']} siswa masih di kelas yang sama dengan tahun ajaran lalu.";
+    }
+    if (!$langkah) return null;
+    return ['judul' => "Pergantian ke periode $harus belum lengkap.", 'langkah' => $langkah];
+}
