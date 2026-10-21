@@ -24,13 +24,7 @@ function addData() {
     },
     error: function (xhr, status, error) {
       console.log(xhr);
-      if (xhr == "undefined" || xhr == undefined) {
-        alert("undefined");
-      } else {
-        alert("object is there");
-      }
-      alert(status);
-      alert(error);
+      alert(xhr.responseText || error || status);
     },
   });
 }
