@@ -51,7 +51,7 @@ class C_Periode extends BaseController
     {
         $db = db_connect('arafah');
 
-        $jumlah = $db->table('tbl_ruang_periode')
+        $jumlah = $db->table('tbl_ruangan_periode')
             ->where('id_periode', $id_periode)
             ->countAllResults();
 

@@ -11,103 +11,57 @@ class C_Kelas extends BaseController
 
     public function  index($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        if (!$this->request->getVar('monthyear')) {
-            $monthyear = "";
-            #$monthyear = date('Y-m') ;
-        } else {
-            $monthyear = $this->request->getVar('monthyear');
-        }
-        if (!$this->request->getVar('id_kelas')) {
-            $id_kelas = "";
-        } else {
-            $id_kelas =  $this->request->getVar('id_kelas');
-        }
-        if (!$this->request->getVar('id_periode')) {
-            $id_periode = "%";
-        } else {
-            $id_periode =  $this->request->getVar('id_periode');
-        }
+        $model = new M_Kelas();
+        $id_kelas = (string) $this->request->getVar('id_kelas');
+        if ($id_kelas !== '-' && $id_kelas !== '' && !$model->kelasAda($id_kelas)) $id_kelas = '';
         $menu = new M_Menu();
-        $datamenu = $menu->listing();
-        $data = new M_Kelas();
-        $dataSiswa = $data->dataSiswa($id_kelas);
-        $dataKelas = $data->dataKelas();
-        $dataPeriode = $data->dataPeriode();
-        $dataPeriodeAktif = $data->dataPeriodeAktif();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
         $data = array(
-            'title'        => 'Data Menu',
+            'title'        => 'Data Kelas Siswa',
             'menuAktip' => $menuAktip,
             'moduleAktip' => $moduleAktip,
-            'dataSiswa'    => $dataSiswa,
-            'dataKelas' => $dataKelas,
-            'dataPeriode' => $dataPeriode,
-            'dataPeriodeAktif' => $dataPeriodeAktif,
-            'monthyear' => $monthyear,
-            'menu'   =>  $datamenu,
+            'dataSiswa'    => $model->dataSiswa($id_kelas),
+            'dataKelas' => $model->dataKelas(),
+            'jmlTanpaKelas' => $model->jumlahTanpaKelas(),
+            'dataPeriodeAktif' => $model->dataPeriodeAktif(),
+            'menu'   =>  $menu->listing(),
             'id_kelas' => $id_kelas,
-            'id_periode' => $id_periode,
-            'session' => $session
+            'session' => session()
         );
         return view('TataUsaha/VKelas', $data);
     }
 
     public function  update($menuAktip = '', $moduleAktip = '')
     {
-        $id_kelas = $this->request->getVar('id_kelas');
-        $id_kelasnew = $this->request->getVar('id_kelasnew');
-        $data = new M_Kelas();
-        $id_periode = $data->dataPeriodeAktif();
-        $config = null;
-        $session = \Config\Services::session($config);
-        foreach ($this->request->getVar('id_siswa') as $id_siswa => $val) {
-            $cek = $data->cekKelasPeriode($id_siswa,  $id_periode['id_periode']);
-            if ($cek) $data->updateKelasPeriode($id_siswa, $id_kelasnew, $id_periode['id_periode']);
-            else $data->insertKelasPeriode($id_siswa, $id_kelasnew, $id_periode['id_periode']);
-            $cek2 = $data->cekKelas($id_siswa);
-            if ($cek2) $data->updateKelasRuangan($id_siswa, $id_kelasnew);
-            else $data->insertKelasRuangan($id_siswa, $id_kelasnew);
-            $data->updateKelasRuangan($id_siswa, $id_kelasnew);
+        $model = new M_Kelas();
+        $session = session();
+        $id_kelas = (string) $this->request->getPost('id_kelas');
+        $id_kelasnew = (string) $this->request->getPost('id_kelasnew');
+        $kembali = redirect()->to(base_url('index.php/TataUsaha/Kelas/index/' . $menuAktip . '/' . $moduleAktip . '?id_kelas=' . urlencode($id_kelas)));
+
+        $periode = $model->dataPeriodeAktif();
+        if (!$periode) {
+            $session->setFlashdata('gagal', 'Belum ada periode aktif. Aktifkan periode dulu di menu Periode.');
+            return $kembali;
         }
-        $session->setFlashdata('sukses', 'Data Berhasil di Edit');
-        return redirect()->to(base_url('index.php/TataUsaha/Kelas/index/' . $menuAktip . "/" . $moduleAktip));
-        // helper('form');
-        // if (!$this->request->getPost('monthyear')) {
-        //     $monthyear = date('Y-m');
-        // } else {
-        //     $monthyear = $this->request->getPost('monthyear');
-        // }
-        // $id_siswa = $this->request->getVar('id_siswa');
-        // $id_kelas = $this->request->getVar('id_kelas');
-        // $data = new M_Kelas();
-        // $id_periode = $data->dataPeriodeAktif();
-        // $newdata = [
-        //     'monthyear'  => $monthyear
-        // ];
-        // $config = null;
-        // $session = \Config\Services::session($config);
-        // $session->set($newdata);
-        // $validated =  $this->validate([
-        //     'id_siswa'     => 'required',
-        //     'id_kelas'     => 'required',
-        //     'id_periode'     => 'required',
-        // ]);
-        // if ($validated) {
-        //     $cek = $data->cekKelasPeriode($id_siswa,  $id_periode['id_periode']);
-        //     if ($cek) $data->updateKelasPeriode($id_siswa, $id_kelas, $id_periode['id_periode']);
-        //     else $data->insertKelasPeriode($id_siswa, $id_kelas, $id_periode['id_periode']);
-        //     $data->updateKelasRuangan($id_siswa, $id_kelas);
-        //     $session->setFlashdata('sukses', 'Data Berhasil di Edit');
-        //     return redirect()->to(base_url('index.php/TataUsaha/Kelas/index/' . $menuAktip . "/" . $moduleAktip));
-        // } else {
-        //     echo "error";
-        // }
-        //return view('Transaksi/V_DataPengeluaran', $data);
+        if ($id_kelas === '' || !$model->kelasAda($id_kelasnew) || $id_kelasnew === $id_kelas) {
+            $session->setFlashdata('gagal', 'Pilih kelas asal dan kelas tujuan yang berbeda.');
+            return $kembali;
+        }
+        // Hanya siswa yang memang ada di kelas asal yang boleh dipindah
+        $dipilih = array_map('strval', (array) $this->request->getPost('id_siswa'));
+        $diKelas = array_column($model->dataSiswa($id_kelas), 'id_siswa');
+        $idSiswa = array_values(array_intersect(array_map('strval', $diKelas), $dipilih));
+        if (!$idSiswa) {
+            $session->setFlashdata('gagal', 'Belum ada siswa yang dipilih.');
+            return $kembali;
+        }
+
+        $jumlah = $model->pindahKelas($idSiswa, $id_kelasnew, $periode['id_periode']);
+        if ($jumlah === false) {
+            $session->setFlashdata('gagal', 'Gagal menyimpan, tidak ada data yang berubah.');
+        } else {
+            $session->setFlashdata('sukses', $jumlah . ' siswa berhasil dipindahkan.');
+        }
+        return $kembali;
     }
 }

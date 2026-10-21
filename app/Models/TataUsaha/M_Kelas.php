@@ -7,153 +7,84 @@ use CodeIgniter\Model;
 class M_Kelas extends Model
 {
     protected $DBGroup       = 'arafah';
-    protected $table         = 'tbl_kelas_periode';
+    protected $table         = 'tbl_ruangan_periode';
     protected $primaryKey    = 'id';
-    protected $allowedFields = ['id', 'id_siswa', 'id_kelas', 'id_periode'];
+    protected $allowedFields = ['id_siswa', 'id_kelas', 'id_periode'];
 
-    // Listing sub query 
-    public function listing($id_siswa)
-    {
-        $tahun = date('Y');
-        $tahun1 = $tahun - 1;
-        $db = db_connect('arafah');
-        $sql = "SELECT *
-				FROM " . $this->table;
-        //echo $sql;
-        $query = $db->query($sql);
-        return $query->getResultArray();
-    }
     public function dataKelas()
     {
         $db = db_connect('arafah');
-        $query = $db->query("SELECT * from setup_kelas");
-        return $query->getResult('array');
+        return $db->query("SELECT k.id_kelas, k.nama_kelas, COUNT(DISTINCT s.id_siswa) jml
+            FROM setup_kelas k
+            LEFT JOIN tbl_ruangan r ON r.id_kelas = k.id_kelas
+            LEFT JOIN data_siswa s ON s.id_siswa = r.id_siswa AND s.locked = 'no'
+            GROUP BY k.id_kelas, k.nama_kelas
+            ORDER BY k.nama_kelas")->getResultArray();
     }
+
+    public function jumlahTanpaKelas()
+    {
+        $db = db_connect('arafah');
+        $row = $db->query("SELECT COUNT(*) jml FROM data_siswa s
+            WHERE s.locked = 'no' AND NOT EXISTS (
+                SELECT 1 FROM tbl_ruangan r JOIN setup_kelas k ON k.id_kelas = r.id_kelas
+                WHERE r.id_siswa = s.id_siswa)")->getRowArray();
+        return (int) ($row['jml'] ?? 0);
+    }
+
     public function dataPeriodeAktif()
     {
         $db = db_connect('arafah');
-        $query = $db->query("SELECT * FROM `setup_periode` where status_aktif = 'yes'");
-        return $query->getRowArray();
-    }
-    public function dataPeriode()
-    {
-        $db = db_connect('arafah');
-        $query = $db->query("SELECT * FROM `setup_periode`");
-        return $query->getResult('array');
-    }
-    public function dataSiswa($id_kelas)
-    {
-        $db = db_connect('arafah');
-        ($id_kelas) ? $where = " and setup_kelas.id_kelas like '$id_kelas'" : $where = "";
-        $sql = "SELECT 	
-        password,username,data_siswa.id_siswa,nama_siswa,nis,kelamin,alamat_siswa,tanggal_lahir,nisn,
-        locked,setup_kelas.id_kelas,photo,tanggal_masuk,tempat_lahir,telpon_siswa,email,unik,nama_ortu,
-        setup_kelas.nama_kelas,data_siswa.keterangan
-        from data_siswa 
-        left join tbl_ruangan on data_siswa.id_siswa = tbl_ruangan.id_siswa
-        left join setup_kelas on tbl_ruangan.id_kelas = setup_kelas.id_kelas
-        where locked = 'no' $where";
-        $query = $db->query($sql);
-        //echo $sql;
-        return $query->getResult('array');
-    }
-    public function periode($id_periode = "")
-    {
-        $db = db_connect('arafah');
-        if ($id_periode) $where = "where id_periode = '$id_periode'";
-        $query = $db->query("SELECT id_periode,nama_semester,tahun_ajaran,semester,status_aktif
-		                     from setup_periode $where");
-        return $query->getResult('array');
-    }
-    public function detail2($id_siswa)
-    {
-        $db = db_connect('arafah');
-        $sql = "select `data_siswa`.`id_siswa`, `nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, 
-		`telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, 
-		`tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, 
-		`unik`, `image`,`setup_kelas`.`nama_kelas`,`tbl_ruangan`.`id_kelas`  
-		from data_siswa
-		left join tbl_ruangan on data_siswa.id_siswa = tbl_ruangan.id_siswa
-		left join setup_kelas on tbl_ruangan.id_kelas = setup_kelas.id_kelas
-		where data_siswa.locked  in('no','baru') and data_siswa.id_siswa = '$id_siswa'";
-        $query = $db->query($sql);
-        return $query->getRowArray();
-    }
-    public function updateKelasPeriode($id_siswa, $id_kelas, $id_periode)
-    {
-        $db = db_connect('arafah');
-        $sql = "UPDATE tbl_ruangan_periode
-        SET id_kelas = '$id_kelas'
-        WHERE id_siswa = '$id_siswa' and id_periode = '$id_periode'";
-        //echo $sql;
-        $db->query($sql);
-    }
-    public function insertKelasPeriode($id_siswa, $id_kelas, $id_periode)
-    {
-        $db = db_connect('arafah');
-        $sql = "INSERT INTO tbl_ruangan_periode (id_siswa, id_kelas, id_periode) 
-        VALUES($id_siswa, $id_kelas, $id_periode) ON DUPLICATE KEY UPDATE id_kelas = $id_kelas";
-        //echo $sql;
-        $db->query($sql);
-    }
-    public function cekKelasPeriode($id_siswa, $id_periode)
-    {
-        $db = db_connect('arafah');
-        $sql = "select id_siswa from tbl_ruangan_periode where id_siswa = '$id_siswa' and id_periode = '$id_periode'";
-        $query = $db->query($sql);
-        return $query->getRowArray();
-    }
-    public function cekKelas($id_siswa)
-    {
-        $db = db_connect('arafah');
-        $sql = "select id_siswa from tbl_ruangan where id_siswa = '$id_siswa'";
-        $query = $db->query($sql);
-        return $query->getRowArray();
-    }
-    public function insertKelasRuangan($id_siswa, $id_kelas)
-    {
-        $db = db_connect('arafah');
-        $sql = "INSERT INTO tbl_ruangan (id_siswa, id_kelas) 
-        VALUES($id_siswa, $id_kelas)";
-        //echo $sql;
-        $db->query($sql);
-    }
-    public function updateKelasRuangan($id_siswa, $id_kelas)
-    {
-        $db = db_connect('arafah');
-        $sql = "UPDATE tbl_ruangan
-        SET id_kelas = '$id_kelas'
-        WHERE id_siswa = '$id_siswa'";
-        echo $sql;
-        $db->query($sql);
-    }
-    // Detail
-    public function detail($no)
-    {
-        $this->select('*');
-        $this->where(array('id_siswa'    => $no));
-        $query = $this->get();
-        return $query->getRowArray();
+        return $db->query("SELECT * FROM setup_periode WHERE status_aktif = 'yes' LIMIT 1")->getRowArray();
     }
 
-    // Insert
-    public function tambah($data)
+    // $id_kelas: '' = semua kelas, '-' = siswa yang belum punya kelas
+    public function dataSiswa($id_kelas = '')
     {
-        $this->save($data);
+        $db = db_connect('arafah');
+        $sql = "SELECT s.id_siswa, s.nama_siswa, s.nis, k.id_kelas, k.nama_kelas
+            FROM data_siswa s
+            LEFT JOIN (SELECT id_siswa, MAX(id_kelas) id_kelas FROM tbl_ruangan GROUP BY id_siswa) r ON r.id_siswa = s.id_siswa
+            LEFT JOIN setup_kelas k ON k.id_kelas = r.id_kelas
+            WHERE s.locked = 'no'";
+        $bind = [];
+        if ($id_kelas === '-') {
+            $sql .= " AND k.id_kelas IS NULL";
+        } elseif ($id_kelas !== '') {
+            $sql .= " AND k.id_kelas = ?";
+            $bind[] = $id_kelas;
+        }
+        $sql .= " ORDER BY k.nama_kelas, s.nama_siswa";
+        return $db->query($sql, $bind)->getResultArray();
     }
 
-    // Edit
-    public function edit($data)
+    public function kelasAda($id_kelas)
     {
-        //var_dump($data);
-        $this->where('no', $data['no']);
-        $this->replace($data);
+        $db = db_connect('arafah');
+        return $db->query("SELECT id_kelas FROM setup_kelas WHERE id_kelas = ?", [$id_kelas])->getRowArray() !== null;
     }
 
-    // Delete
-    public function hapus($no)
+    // Pindahkan siswa ke kelas baru: kelas sekarang (tbl_ruangan) dan riwayat periode aktif (tbl_ruangan_periode).
+    // Semua dalam satu transaksi; mengembalikan jumlah siswa yang dipindahkan, atau false kalau gagal.
+    public function pindahKelas(array $idSiswa, $idKelasBaru, $idPeriode)
     {
-        $this->where('no', $no);
-        $this->delete();
+        $db = db_connect('arafah');
+        $db->transStart();
+        foreach ($idSiswa as $id) {
+            $ada = $db->query("SELECT 1 FROM tbl_ruangan WHERE id_siswa = ?", [$id])->getRowArray();
+            if ($ada) {
+                $db->query("UPDATE tbl_ruangan SET id_kelas = ? WHERE id_siswa = ?", [$idKelasBaru, $id]);
+            } else {
+                $db->query("INSERT INTO tbl_ruangan (id_siswa, id_kelas) VALUES (?, ?)", [$id, $idKelasBaru]);
+            }
+            $ada = $db->query("SELECT 1 FROM tbl_ruangan_periode WHERE id_siswa = ? AND id_periode = ?", [$id, $idPeriode])->getRowArray();
+            if ($ada) {
+                $db->query("UPDATE tbl_ruangan_periode SET id_kelas = ? WHERE id_siswa = ? AND id_periode = ?", [$idKelasBaru, $id, $idPeriode]);
+            } else {
+                $db->query("INSERT INTO tbl_ruangan_periode (id_siswa, id_kelas, id_periode) VALUES (?, ?, ?)", [$id, $idKelasBaru, $idPeriode]);
+            }
+        }
+        $db->transComplete();
+        return $db->transStatus() ? count($idSiswa) : false;
     }
 }

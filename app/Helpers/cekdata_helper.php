@@ -355,19 +355,20 @@ function sppkelas($id_siswa)
     $cek = new M_Helper();
     $row = $cek->msppkelas($id_siswa);
     $tarifspp = rowdatatarifspp2(); //Dari table tarif spp
+    // Siswa tanpa kelas atau kelas yang belum punya tarif: SPP 0, bukan error
+    if (!isset($row["id_kelas"])) return 0;
+    $tarif = (float) ($tarifspp[$row["id_kelas"]] ?? 0);
     $persen = cekbeasiswa($id_siswa);
     if (isset($persen)) {
         if (!empty($persen['rp'])) {
-            $diskon = $tarifspp[$row["id_kelas"]] - $persen['rp'];
+            $diskon = $tarif - $persen['rp'];
         } else {
-            $diskon = ($persen['persen'] / 100) * $tarifspp[$row["id_kelas"]];
+            $diskon = ($persen['persen'] / 100) * $tarif;
         }
     } else {
         $diskon = 0;
     }
-    if (isset($row["id_kelas"])) $sppsiswa = $tarifspp[$row["id_kelas"]] - $diskon;
-    else $sppsiswa = 0;
-    return $sppsiswa;
+    return $tarif - $diskon;
 }
 function rowdatatarifspp()
 {
@@ -378,6 +379,7 @@ function rowdatatarifspp()
 function rowdatatarifspp2()
 {
     $data = rowdatatarifspp();
+    $row = [];
     foreach ($data as $x => $val) {
         $row[$val["id_kelas"]] = $val["tarif"];
     }
