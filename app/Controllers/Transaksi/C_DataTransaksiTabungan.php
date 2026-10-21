@@ -14,55 +14,58 @@ class C_DataTransaksiTabungan extends BaseController
     public function index($menuAktip = '', $moduleAktip = '')
     {
         helper('form');
-         ini_set('memory_limit', '512M');
+        $menu = new M_Menu();
+        $datamenu = $menu->listing();
+        $config = null;
+        $session = \Config\Services::session($config);
+        // Data tabel diambil per halaman lewat readjson, di sini hanya simpan filter
         if ($this->request->getPost('start_date') && $this->request->getPost('end_date')) {
-            $menu = new M_Menu();
-            $datamenu = $menu->listing();
-            $model = new M_DataTransaksiTabungan();
             $newdata = [
                 'start_date'  => $this->request->getPost('start_date'),
                 'end_date'     => $this->request->getPost('end_date'),
+                'id_siswa_transaksi' => (string) $this->request->getPost('id_siswa'),
             ];
-            $config = null;
-            $session = \Config\Services::session($config);
-            $session->set($newdata);
-            $datamenu2 = $model->listingLengkap($this->request->getPost('start_date'), $this->request->getPost('end_date'), $this->request->getPost('id_siswa'));
-            $data = array(
-                'title'        => 'Data Menu',
-                'DataTransaksiTabungan'    => $datamenu2,
-                'menu'   =>  $datamenu,
-                'menuAktip' => $menuAktip,
-                'moduleAktip' => $moduleAktip,
-                'session' => $session
-            );
-            //var_dump($data);            
-            return view('Transaksi/V_DataTransaksiTabungan', $data);
         } else {
-            $start_date =  date('Y-m-d');
-            $end_date = date('Y-m-d');
-            $menu = new M_Menu();
-            $menu = $menu->listing();
-            $model = new M_DataTransaksiTabungan();
-            $datamenu2 = $model->listingLengkap($start_date, $end_date);
-
             $newdata = [
                 'start_date'  => date('Y-m-d'),
                 'end_date'     => date('Y-m-d'),
+                'id_siswa_transaksi' => '',
             ];
-
-            $config = null;
-            $session = \Config\Services::session($config);
-            $session->set($newdata);
-            $data = array(
-                'title'        => 'Data Menu',
-                'DataTransaksiTabungan'    => $datamenu2,
-                'menu'   =>  $menu,
-                'menuAktip' => $menuAktip,
-                'moduleAktip' => $moduleAktip,
-                'session' => $session
-            );
-            return view('Transaksi/V_DataTransaksiTabungan', $data);
         }
+        $session->set($newdata);
+        $data = array(
+            'title'        => 'Data Menu',
+            'menu'   =>  $datamenu,
+            'menuAktip' => $menuAktip,
+            'moduleAktip' => $moduleAktip,
+            'session' => $session
+        );
+        return view('Transaksi/V_DataTransaksiTabungan', $data);
+    }
+    public function readjson($menuAktip = '', $moduleAktip = '')
+    {
+        $start_date = (string) $this->request->getPost('start_date');
+        $end_date = (string) $this->request->getPost('end_date');
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $start_date)) $start_date = date('Y-m-d');
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $end_date)) $end_date = date('Y-m-d');
+
+        // Urutan kolom sama dengan urutan <th> di view
+        $columns = [null, 'a.notransaksi', 'a.kode_tab_trans', 'a.kodetransaksi', 'a.tanggal', 'a.rp', 'a.keterangan_trans', 'a.spp', 'a.buktitransfer', 'e.nama_kelas', 'c.nama_siswa'];
+        $order = $this->request->getPost('order');
+        $orderIndex = isset($order[0]['column']) ? (int) $order[0]['column'] : 1;
+        $orderColumn = $columns[$orderIndex] ?? 'a.notransaksi';
+        if ($orderColumn === null) $orderColumn = 'a.notransaksi';
+        $orderDir = (isset($order[0]['dir']) && $order[0]['dir'] === 'desc') ? 'desc' : 'asc';
+        $search = $this->request->getPost('search');
+        $search = isset($search['value']) ? trim($search['value']) : '';
+        $offset = max(0, (int) $this->request->getPost('start'));
+        $limit = (int) $this->request->getPost('length');
+        if ($limit <= 0 || $limit > 500) $limit = 50;
+
+        $model = new M_DataTransaksiTabungan();
+        $result = $model->listingServerSide($start_date, $end_date, (string) $this->request->getPost('id_siswa'), $search, $orderColumn, $orderDir, $offset, $limit);
+        $result['draw'] = (int) $this->request->getPost('draw');
+        return $this->response->setJSON($result);
     }
     public function indexTabungan($menuAktip = '', $moduleAktip = '')
     {
@@ -404,11 +407,8 @@ class C_DataTransaksiTabungan extends BaseController
             );
             $model->edit($dataEdit);
 
-            //data di tampilkan setelah di delete
-            $datamenu2 = $model->listingLengkap($this->request->getPost('start_date'), $this->request->getPost('end_date'));
             $data = array(
                 'notransaksi'    => $this->request->getVar('notransaksi'),
-                'DataTransaksiTabungan'    => $datamenu2,
                 'menu'    => $datamenu,
                 'menuAktip' => $menuAktip,
                 'moduleAktip' => $moduleAktip,
@@ -417,6 +417,7 @@ class C_DataTransaksiTabungan extends BaseController
             $newdata = [
                 'start_date'  => $this->request->getPost('start_date'),
                 'end_date'     => $this->request->getPost('end_date'),
+                'id_siswa_transaksi' => '',
             ];
             $session->set($newdata);
             $session->setFlashdata('sukses', 'Data telah diedit transaksi no ' . $this->request->getVar('notransaksi'));
@@ -448,11 +449,8 @@ class C_DataTransaksiTabungan extends BaseController
             );
             $model->delete($dataDelete);
 
-            //data di tampilkan setelah di delete
-            $datamenu2 = $model->listingLengkap($this->request->getPost('start_date'), $this->request->getPost('end_date'));
             $data = array(
                 'notransaksi'    => $this->request->getVar('notransaksi'),
-                'DataTransaksiTabungan'    => $datamenu2,
                 'menu'    => $datamenu,
                 'menuAktip' => $menuAktip,
                 'moduleAktip' => $moduleAktip,
@@ -461,6 +459,7 @@ class C_DataTransaksiTabungan extends BaseController
             $newdata = [
                 'start_date'  => $this->request->getPost('start_date'),
                 'end_date'     => $this->request->getPost('end_date'),
+                'id_siswa_transaksi' => '',
             ];
             $session->set($newdata);
             $session->setFlashdata('sukses', 'Data telah dihapus transaksi no ' . $this->request->getVar('notransaksi'));
