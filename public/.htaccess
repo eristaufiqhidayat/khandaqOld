@@ -1,0 +1,17 @@
+# CodeIgniter 4 - public/.htaccess
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Jangan rewrite file dan folder yang memang ada
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Semua request masuk ke CodeIgniter
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+# Jangan izinkan akses ke file tersembunyi
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

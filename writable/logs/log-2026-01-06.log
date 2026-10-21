@@ -1,0 +1,9 @@
+CRITICAL - 2026-01-06 23:53:45 --> Undefined variable $totalTime
+in SYSTEMPATH/Debug/Toolbar/Views/toolbar.tpl.php on line 40.
+ 1 SYSTEMPATH/Debug/Toolbar/Views/toolbar.tpl.php(40): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/Debug/Toolbar.php(513): include('SYSTEMPATH/Debug/Toolbar/Views/toolbar.tpl.php')
+ 3 SYSTEMPATH/Debug/Toolbar.php(476): CodeIgniter\Debug\Toolbar->format()
+ 4 APPPATH/Config/Events.php(46): CodeIgniter\Debug\Toolbar->respond()
+ 5 SYSTEMPATH/Events/Events.php(149): CodeIgniter\Events\Events::Config\{closure}()
+ 6 SYSTEMPATH/CodeIgniter.php(317): CodeIgniter\Events\Events::trigger()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

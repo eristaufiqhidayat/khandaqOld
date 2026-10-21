@@ -1,0 +1,116 @@
+ERROR - 2023-01-07 18:31:50 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where nis = '132' and tahunajaran = '2022'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('Update tbl_spp ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('Update tbl_spp ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('Update tbl_spp ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(355): CodeIgniter\Database\BaseConnection->query('Update tbl_spp ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(326): App\Models\M_Helper->inserttblspp('132', false, '2022')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(250): insertspp()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-01-07 18:45:17 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673138717.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-07 18:45:27 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673138727.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-07 18:46:32 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673138792.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-07 18:47:29 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673138849.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-07 18:49:02 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673138942.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-01-07 19:10:53 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where nis = '242' and tahunajaran = '2022'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('Update tbl_spp ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('Update tbl_spp ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('Update tbl_spp ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(355): CodeIgniter\Database\BaseConnection->query('Update tbl_spp ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(326): App\Models\M_Helper->inserttblspp('242', false, '2022')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(250): insertspp()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-01-07 19:12:01 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where nis = '224' and tahunajaran = '2022'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('Update tbl_spp ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('Update tbl_spp ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('Update tbl_spp ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(355): CodeIgniter\Database\BaseConnection->query('Update tbl_spp ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(326): App\Models\M_Helper->inserttblspp('224', false, '2022')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(250): insertspp()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2023-01-07 19:13:22 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where nis = '236' and tahunajaran = '2022'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('Update tbl_spp ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('Update tbl_spp ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('Update tbl_spp ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(355): CodeIgniter\Database\BaseConnection->query('Update tbl_spp ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(326): App\Models\M_Helper->inserttblspp('236', false, '2022')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(250): insertspp()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-01-07 20:06:26 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673143586.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-07 20:08:56 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673143736.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-01-07 20:59:41 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(232): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/tabungan', 'Bukti1673146781.png')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

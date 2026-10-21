@@ -1,0 +1,10 @@
+CRITICAL - 2023-04-30 09:29:49 --> syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN)
+in APPPATH/Models/Report/M_Report.php on line 162.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Models/Report/M_Report.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Report\\M_Report')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Report\\M_Report')
+ 4 APPPATH/Controllers/Report/C_Report.php(20): spl_autoload_call('App\\Models\\Report\\M_Report')
+ 5 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->index('21', '6')
+ 6 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

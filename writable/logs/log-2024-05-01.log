@@ -1,0 +1,8 @@
+CRITICAL - 2024-05-01 03:24:34 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1714551874.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

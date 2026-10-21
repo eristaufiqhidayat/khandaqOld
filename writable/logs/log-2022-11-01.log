@@ -1,0 +1,119 @@
+ERROR - 2022-11-01 01:32:34 --> mysqli_sql_exception: Duplicate entry 'nurdin' for key 'username' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, true)
+#7 /home/lembaha1/khandaq.lembaharafah.com/app/Models/Admin/M_Users.php(27): CodeIgniter\Model->insert(Array)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/TataUsaha/C_UserOrtu.php(49): App\Models\Admin\M_Users->tambah(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\TataUsaha\C_UserOrtu->tambah('26', '1')
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_UserOrtu))
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2022-11-01 01:54:31 --> You do not have sufficient permissions to access that page.
+in VENDORPATH/myth/auth/src/Filters/RoleFilter.php on line 45.
+ 1 SYSTEMPATH/Filters/Filters.php(173): Myth\Auth\Filters\RoleFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), [...])
+ 2 SYSTEMPATH/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('users/index/10/2', 'before')
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 01:57:04 --> You do not have sufficient permissions to access that page.
+in VENDORPATH/myth/auth/src/Filters/RoleFilter.php on line 45.
+ 1 SYSTEMPATH/Filters/Filters.php(173): Myth\Auth\Filters\RoleFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), [...])
+ 2 SYSTEMPATH/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('users/index/10/2', 'before')
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 02:43:47 --> Call to a member function get_cookie() on null
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 52.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 4 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(145): view('Transaksi/V_DataTabunganSiswa', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 6 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 02:43:59 --> Call to a member function get_cookie() on null
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 52.
+ 1 SYSTEMPATH/View/View.php(213): include()
+ 2 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 4 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(145): view('Transaksi/V_DataTabunganSiswa', [...])
+ 5 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 6 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 02:46:18 --> You do not have sufficient permissions to access that page.
+in VENDORPATH/myth/auth/src/Filters/RoleFilter.php on line 45.
+ 1 SYSTEMPATH/Filters/Filters.php(173): Myth\Auth\Filters\RoleFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), [...])
+ 2 SYSTEMPATH/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('users/index/10/2', 'before')
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 02:46:51 --> You do not have sufficient permissions to access that page.
+in VENDORPATH/myth/auth/src/Filters/RoleFilter.php on line 45.
+ 1 SYSTEMPATH/Filters/Filters.php(173): Myth\Auth\Filters\RoleFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), [...])
+ 2 SYSTEMPATH/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('users/index/10/2', 'before')
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-01 18:33:11 --> mysqli_sql_exception: Unknown column 'foto' in 'field list' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT \r\n      ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT \r\n      ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT \r\n      ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/TataUsaha/M_Formulir.php(24): CodeIgniter\Database\BaseConnection->query('SELECT \r\n      ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/TataUsaha/C_Formulir.php(23): App\Models\TataUsaha\M_Formulir->listing('2022-11')
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->index('28', '1')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-11-01 18:33:11 --> Call to a member function getResultArray() on bool
+in APPPATH/Models/TataUsaha/M_Formulir.php on line 25.
+ 1 APPPATH/Controllers/TataUsaha/C_Formulir.php(23): App\Models\TataUsaha\M_Formulir->listing('2022-11')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->index('28', '1')
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 18:35:46 --> Invalid file: TataUsaha/V_Formulir.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('TataUsaha/V_Formulir.php')
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('TataUsaha/V_Formulir', [], true)
+ 3 APPPATH/Controllers/TataUsaha/C_Formulir.php(41): view('TataUsaha/V_Formulir', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->index('28', '1')
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 18:35:49 --> Invalid file: TataUsaha/V_Formulir.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('TataUsaha/V_Formulir.php')
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('TataUsaha/V_Formulir', [], true)
+ 3 APPPATH/Controllers/TataUsaha/C_Formulir.php(41): view('TataUsaha/V_Formulir', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->index('28', '1')
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-01 18:36:22 --> Invalid file: TataUsaha/V_Formulir.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('TataUsaha/V_Formulir.php')
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('TataUsaha/V_Formulir', [], true)
+ 3 APPPATH/Controllers/TataUsaha/C_Formulir.php(41): view('TataUsaha/V_Formulir', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->index('28', '1')
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-01 20:58:13 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where nis = '244' and tahunajaran = '2022'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('Update tbl_spp ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('Update tbl_spp ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('Update tbl_spp ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(234): CodeIgniter\Database\BaseConnection->query('Update tbl_spp ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(193): App\Models\M_Helper->inserttblspp('244', false, '2022')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(241): insertspp()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}

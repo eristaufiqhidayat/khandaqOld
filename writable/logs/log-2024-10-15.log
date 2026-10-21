@@ -1,0 +1,56 @@
+CRITICAL - 2024-10-15 15:21:07 --> Undefined variable $where
+in APPPATH/Models/Nilai/M_UploadNilai.php on line 51.
+ 1 APPPATH/Models/Nilai/M_UploadNilai.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Nilai/C_UploadNilai.php(35): App\Models\Nilai\M_UploadNilai->periode()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Nilai\C_UploadNilai->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-15 15:21:24 --> Undefined variable $where
+in APPPATH/Models/Nilai/M_UploadNilai.php on line 51.
+ 1 APPPATH/Models/Nilai/M_UploadNilai.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Nilai/C_UploadNilai.php(35): App\Models\Nilai\M_UploadNilai->periode()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Nilai\C_UploadNilai->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-15 15:22:27 --> Undefined variable $where
+in APPPATH/Models/Nilai/M_UploadNilai.php on line 51.
+ 1 APPPATH/Models/Nilai/M_UploadNilai.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Nilai/C_UploadNilai.php(35): App\Models\Nilai\M_UploadNilai->periode()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Nilai\C_UploadNilai->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-15 15:23:50 --> Undefined variable $where
+in APPPATH/Models/Nilai/M_UploadNilai.php on line 51.
+ 1 APPPATH/Models/Nilai/M_UploadNilai.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Nilai/C_UploadNilai.php(35): App\Models\Nilai\M_UploadNilai->periode()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Nilai\C_UploadNilai->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-15 17:26:34 --> Undefined variable $where
+in APPPATH/Models/Nilai/M_UploadNilai.php on line 51.
+ 1 APPPATH/Models/Nilai/M_UploadNilai.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Nilai/C_UploadNilai.php(35): App\Models\Nilai\M_UploadNilai->periode()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Nilai\C_UploadNilai->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-15 17:29:00 --> Undefined variable $where
+in APPPATH/Models/Nilai/M_UploadNilai.php on line 51.
+ 1 APPPATH/Models/Nilai/M_UploadNilai.php(51): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Nilai/C_UploadNilai.php(35): App\Models\Nilai\M_UploadNilai->periode()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Nilai\C_UploadNilai->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-15 17:31:59 --> Undefined variable $where
+in APPPATH/Models/Nilai/M_UploadNilai.php on line 50.
+ 1 APPPATH/Models/Nilai/M_UploadNilai.php(50): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/Nilai/C_UploadNilai.php(35): App\Models\Nilai\M_UploadNilai->periode()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Nilai\C_UploadNilai->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

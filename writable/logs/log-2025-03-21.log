@@ -1,0 +1,118 @@
+CRITICAL - 2025-03-21 02:01:47 --> file_get_contents(): SSL: Handshake timed out
+in APPPATH/Controllers/C_Home.php on line 14.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/C_Home.php(14): file_get_contents()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\C_Home->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:44:44 --> foreach() argument must be of type array|object, int given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:44:58 --> foreach() argument must be of type array|object, int given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:45:31 --> foreach() argument must be of type array|object, string given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:47:15 --> foreach() argument must be of type array|object, int given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:47:43 --> foreach() argument must be of type array|object, string given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:47:48 --> foreach() argument must be of type array|object, string given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:47:49 --> foreach() argument must be of type array|object, string given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:47:50 --> foreach() argument must be of type array|object, string given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:47:51 --> foreach() argument must be of type array|object, string given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-21 23:47:58 --> foreach() argument must be of type array|object, string given
+in APPPATH/Views/Report/V_ReportEksFormulir.php on line 125.
+ 1 APPPATH/Views/Report/V_ReportEksFormulir.php(125): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksFormulir.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/Report/C_Report.php(128): view()
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexFormulir()
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

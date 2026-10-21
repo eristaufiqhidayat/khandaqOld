@@ -1,0 +1,37 @@
+ERROR - 2025-01-19 21:05:56 --> Error connecting to the database: mysqli_sql_exception: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:170
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(170): mysqli->real_connect()
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(418): CodeIgniter\Database\BaseConnection->query()
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(266): App\Models\M_Helper->periodetahunajaran()
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(85): tahunajaran()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(418): CodeIgniter\Database\BaseConnection->query()
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(266): App\Models\M_Helper->periodetahunajaran()
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(85): tahunajaran()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2025-01-19 21:05:56 --> Unable to connect to the database.
+Main connection [MySQLi]: Too many connections
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH/Models/M_Helper.php(418): CodeIgniter\Database\BaseConnection->query()
+ 3 APPPATH/Helpers/cekdata_helper.php(266): App\Models\M_Helper->periodetahunajaran()
+ 4 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(85): tahunajaran()
+ 5 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 6 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

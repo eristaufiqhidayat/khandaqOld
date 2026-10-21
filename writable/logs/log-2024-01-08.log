@@ -1,0 +1,64 @@
+CRITICAL - 2024-01-08 01:23:39 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704698619.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-08 01:24:03 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704698643.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-08 01:31:45 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704699105.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-08 01:36:00 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704699360.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-08 01:43:16 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704699796.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-08 01:45:51 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704699951.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-08 02:59:29 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704704369.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-08 02:59:36 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1704704376.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

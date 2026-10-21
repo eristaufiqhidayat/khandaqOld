@@ -1,0 +1,16 @@
+ERROR - 2022-11-09 23:33:59 --> mysqli_sql_exception: Duplicate entry 'permadi@google.com' for key 'email' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, true)
+#7 /home/lembaha1/khandaq.lembaharafah.com/app/Models/Admin/M_Users.php(28): CodeIgniter\Model->insert(Array)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/TataUsaha/C_UserOrtu.php(95): App\Models\Admin\M_Users->tambah(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\TataUsaha\C_UserOrtu->tambah('26', '1')
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_UserOrtu))
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}

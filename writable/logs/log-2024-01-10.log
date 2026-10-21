@@ -1,0 +1,98 @@
+ERROR - 2024-01-10 20:49:09 --> Error connecting to the database: mysqli_sql_exception: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:171
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(171): mysqli->real_connect('localhost', 'lembaha1_igni39...', 'Sp)u38@1rd', 'lembaha1_igni39...', 3306, '', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(182): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(523): CodeIgniter\Model->doFind(true, '66')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/AuthenticationBase.php(130): CodeIgniter\BaseModel->find('66')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Filters/LoginFilter.php(29): Myth\Auth\Authentication\LocalAuthenticator->check()
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Filters/Filters.php(173): Myth\Auth\Filters\LoginFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('siswa/raport/25...', 'before')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(182): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(523): CodeIgniter\Model->doFind(true, '66')
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/AuthenticationBase.php(130): CodeIgniter\BaseModel->find('66')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Filters/LoginFilter.php(29): Myth\Auth\Authentication\LocalAuthenticator->check()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Filters/Filters.php(173): Myth\Auth\Filters\LoginFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('siswa/raport/25...', 'before')
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-01-10 20:49:09 --> Unable to connect to the database.
+Main connection [MySQLi]: Too many connections
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `users`.`deleted_at` IS NULL
+AND `users`.`id` = :users.id:', [...], false)
+ 3 SYSTEMPATH/Model.php(182): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(523): CodeIgniter\Model->doFind(true, '66')
+ 5 VENDORPATH/myth/auth/src/Authentication/AuthenticationBase.php(130): CodeIgniter\BaseModel->find('66')
+ 6 VENDORPATH/myth/auth/src/Authentication/LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+ 7 VENDORPATH/myth/auth/src/Filters/LoginFilter.php(29): Myth\Auth\Authentication\LocalAuthenticator->check()
+ 8 SYSTEMPATH/Filters/Filters.php(173): Myth\Auth\Filters\LoginFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 9 SYSTEMPATH/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('siswa/raport/25/8', 'before')
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-01-10 20:49:13 --> Error connecting to the database: mysqli_sql_exception: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:171
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(171): mysqli->real_connect('localhost', 'lembaha1_igni39...', 'Sp)u38@1rd', 'lembaha1_igni39...', 3306, '', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(182): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(523): CodeIgniter\Model->doFind(true, '66')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/AuthenticationBase.php(130): CodeIgniter\BaseModel->find('66')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Filters/LoginFilter.php(29): Myth\Auth\Authentication\LocalAuthenticator->check()
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Filters/Filters.php(173): Myth\Auth\Filters\LoginFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('siswa/raport/25...', 'before')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(182): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(523): CodeIgniter\Model->doFind(true, '66')
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/AuthenticationBase.php(130): CodeIgniter\BaseModel->find('66')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Filters/LoginFilter.php(29): Myth\Auth\Authentication\LocalAuthenticator->check()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Filters/Filters.php(173): Myth\Auth\Filters\LoginFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('siswa/raport/25...', 'before')
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-01-10 20:49:13 --> Unable to connect to the database.
+Main connection [MySQLi]: Too many connections
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `users`.`deleted_at` IS NULL
+AND `users`.`id` = :users.id:', [...], false)
+ 3 SYSTEMPATH/Model.php(182): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(523): CodeIgniter\Model->doFind(true, '66')
+ 5 VENDORPATH/myth/auth/src/Authentication/AuthenticationBase.php(130): CodeIgniter\BaseModel->find('66')
+ 6 VENDORPATH/myth/auth/src/Authentication/LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+ 7 VENDORPATH/myth/auth/src/Filters/LoginFilter.php(29): Myth\Auth\Authentication\LocalAuthenticator->check()
+ 8 SYSTEMPATH/Filters/Filters.php(173): Myth\Auth\Filters\LoginFilter->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 9 SYSTEMPATH/CodeIgniter.php(431): CodeIgniter\Filters\Filters->run('siswa/raport/25/8', 'before')
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

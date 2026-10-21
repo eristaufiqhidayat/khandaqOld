@@ -1,0 +1,553 @@
+ERROR - 2024-05-23 02:20:32 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and b.locked = 'baru'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(a.rp...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(a.rp...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(a.rp...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(a.rp...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:20:32 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:10 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:10 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:14 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:14 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:34 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:34 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:35 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:35 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:36 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:36 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:41 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:41 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:42 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:42 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:43 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:43 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:51 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:51 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:52 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:52 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:22:53 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:22:53 --> Call to a member function getRowArray() on bool
+in APPPATH/Models/M_Helper.php on line 193.
+ 1 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 2 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:23:24 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:23:24 --> Unknown column 'a.id_siswa' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 4 APPPATH/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 6 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 7 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 8 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+10 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+11 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+12 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:23:45 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:23:45 --> Unknown column 'a.id_siswa' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 4 APPPATH/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 6 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 7 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 8 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+10 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+11 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+12 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:23:55 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:23:55 --> Unknown column 'a.id_siswa' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 4 APPPATH/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 6 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 7 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 8 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+10 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+11 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+12 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:24:04 --> mysqli_sql_exception: Unknown column 'a.id_siswa' in 'on clause' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:24:04 --> Unknown column 'a.id_siswa' in 'on clause'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 4 APPPATH/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(tbl_dsb.rp) total
+				FROM tbl_dsb left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE tbl_dsb.tanggal between \'2023-07-01\' and \'2024-06-30\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 6 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 7 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 8 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+10 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+11 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+12 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-23 02:24:14 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and b.locked = 'baru'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(a.rp...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(a.rp...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(a.rp...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(a.rp...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(213): include('/home/lembaha1/...')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report...', Array, true)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(155): view('Report/V_Report...', Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-05-23 02:24:14 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and b.locked = 'baru'' at line 3
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT sum(a.rp) total
+				FROM tbl_dsb a left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE a.tanggal between \'2023-07-01\' and \'2024-06-30\' and and b.locked = \'baru\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sum(a.rp) total
+				FROM tbl_dsb a left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE a.tanggal between \'2023-07-01\' and \'2024-06-30\' and and b.locked = \'baru\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sum(a.rp) total
+				FROM tbl_dsb a left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE a.tanggal between \'2023-07-01\' and \'2024-06-30\' and and b.locked = \'baru\'')
+ 4 APPPATH/Models/M_Helper.php(192): CodeIgniter\Database\BaseConnection->query('SELECT sum(a.rp) total
+				FROM tbl_dsb a left join data_siswa b on a.id_siswa = b.id_siswa
+			     WHERE a.tanggal between \'2023-07-01\' and \'2024-06-30\' and and b.locked = \'baru\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(86): App\Models\M_Helper->sumDSBpertahunajaran('2024-05')
+ 6 APPPATH/Views/Report/V_ReportEksDSB.php(95): sumDSBpertahunajaran('2024-05')
+ 7 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_ReportEksDSB.php')
+ 8 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_ReportEksDSB', [], true)
+10 APPPATH/Controllers/Report/C_Report.php(155): view('Report/V_ReportEksDSB', [...])
+11 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->indexDSB('32', '7')
+12 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

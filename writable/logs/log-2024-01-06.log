@@ -1,0 +1,13 @@
+ERROR - 2024-01-06 22:22:07 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where nis = '261' and tahunajaran = '2023'' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('Update tbl_spp ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('Update tbl_spp ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('Update tbl_spp ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(481): CodeIgniter\Database\BaseConnection->query('Update tbl_spp ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(338): App\Models\M_Helper->inserttblspp('261', false, '2023')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php(250): insertspp()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->saveKredit('17', '4')
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}

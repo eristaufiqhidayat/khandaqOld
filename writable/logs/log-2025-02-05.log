@@ -1,0 +1,101 @@
+ERROR - 2025-02-05 21:42:24 --> Error connecting to the database: mysqli_sql_exception: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:170
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(170): mysqli->real_connect()
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(140): CodeIgniter\BaseModel->first()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(19): Myth\Auth\Authentication\LocalAuthenticator->validate()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Controllers/AuthController.php(88): Myth\Auth\Authentication\LocalAuthenticator->attempt()
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptLogin()
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#12 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(140): CodeIgniter\BaseModel->first()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(19): Myth\Auth\Authentication\LocalAuthenticator->validate()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Controllers/AuthController.php(88): Myth\Auth\Authentication\LocalAuthenticator->attempt()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptLogin()
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-02-05 21:42:24 --> Unable to connect to the database.
+Main connection [MySQLi]: Too many connections
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 5 VENDORPATH/myth/auth/src/Authentication/LocalAuthenticator.php(140): CodeIgniter\BaseModel->first()
+ 6 VENDORPATH/myth/auth/src/Authentication/LocalAuthenticator.php(19): Myth\Auth\Authentication\LocalAuthenticator->validate()
+ 7 VENDORPATH/myth/auth/src/Controllers/AuthController.php(88): Myth\Auth\Authentication\LocalAuthenticator->attempt()
+ 8 SYSTEMPATH/CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptLogin()
+ 9 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-05 21:43:07 --> Error connecting to the database: mysqli_sql_exception: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:170
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(170): mysqli->real_connect()
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(140): CodeIgniter\BaseModel->first()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(19): Myth\Auth\Authentication\LocalAuthenticator->validate()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Controllers/AuthController.php(88): Myth\Auth\Authentication\LocalAuthenticator->attempt()
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptLogin()
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#12 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Too many connections in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(140): CodeIgniter\BaseModel->first()
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Authentication/LocalAuthenticator.php(19): Myth\Auth\Authentication\LocalAuthenticator->validate()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/myth/auth/src/Controllers/AuthController.php(88): Myth\Auth\Authentication\LocalAuthenticator->attempt()
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptLogin()
+#9 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-02-05 21:43:07 --> Unable to connect to the database.
+Main connection [MySQLi]: Too many connections
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 5 VENDORPATH/myth/auth/src/Authentication/LocalAuthenticator.php(140): CodeIgniter\BaseModel->first()
+ 6 VENDORPATH/myth/auth/src/Authentication/LocalAuthenticator.php(19): Myth\Auth\Authentication\LocalAuthenticator->validate()
+ 7 VENDORPATH/myth/auth/src/Controllers/AuthController.php(88): Myth\Auth\Authentication\LocalAuthenticator->attempt()
+ 8 SYSTEMPATH/CodeIgniter.php(902): Myth\Auth\Controllers\AuthController->attemptLogin()
+ 9 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+11 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-05 22:07:00 --> file_get_contents(https://restapi.lembaharafah.com/public/index.php/BERITA/553da6a93aa6c69f0363048aa677efee): Failed to open stream: HTTP request failed! HTTP/1.1 500 Internal Server Error
+
+in APPPATH/Controllers/C_Home.php on line 14.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Controllers/C_Home.php(14): file_get_contents()
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\C_Home->index()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

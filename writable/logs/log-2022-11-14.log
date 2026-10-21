@@ -1,0 +1,14 @@
+CRITICAL - 2022-11-14 03:57:42 --> Argument 2 passed to set_cookie() must be of the type string, null given, called in /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php on line 420
+in SYSTEMPATH/Helpers/cookie_helper.php on line 39.
+ 1 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(420): set_cookie('start_date', null)
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->delete('12', '3')
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-14 03:57:46 --> Argument 2 passed to set_cookie() must be of the type string, null given, called in /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Transaksi/C_DataTransaksiTabungan.php on line 420
+in SYSTEMPATH/Helpers/cookie_helper.php on line 39.
+ 1 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(420): set_cookie('start_date', null)
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->delete('12', '3')
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

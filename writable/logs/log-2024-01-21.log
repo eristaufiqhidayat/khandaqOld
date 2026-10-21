@@ -1,0 +1,232 @@
+ERROR - 2024-01-21 17:03:59 --> mysqli_sql_exception: Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `da...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah(Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+ERROR - 2024-01-21 17:05:46 --> mysqli_sql_exception: Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `da...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah(Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+ERROR - 2024-01-21 17:15:40 --> mysqli_sql_exception: Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `da...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah(Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+ERROR - 2024-01-21 17:24:25 --> mysqli_sql_exception: Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `da...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah(Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+ERROR - 2024-01-21 17:33:21 --> mysqli_sql_exception: Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `da...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah(Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-01-21 17:33:21 --> Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (\'Abdurrahman Al Dzaki\', \'1\', \'laki laki\', \'perumahan gramapuri persada blok NI/51 rt 07rw 013\', \'081808565672\', \'lembaharafah@lembaharafah.com\', NULL, NULL, \'baru\', \'2024 2025\', \'\', \'\', \'jakarta \', \'2012-03-08\', \'Dedi Maryanto\', \'\', \'\', \'\', \'\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (\'Abdurrahman Al Dzaki\', \'1\', \'laki laki\', \'perumahan gramapuri persada blok NI/51 rt 07rw 013\', \'081808565672\', \'lembaharafah@lembaharafah.com\', NULL, NULL, \'baru\', \'2024 2025\', \'\', \'\', \'jakarta \', \'2012-03-08\', \'Dedi Maryanto\', \'\', \'\', \'\', \'\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (\'Abdurrahman Al Dzaki\', \'1\', \'laki laki\', \'perumahan gramapuri persada blok NI/51 rt 07rw 013\', \'081808565672\', \'lembaharafah@lembaharafah.com\', NULL, NULL, \'baru\', \'2024 2025\', \'\', \'\', \'jakarta \', \'2012-03-08\', \'Dedi Maryanto\', \'\', \'\', \'\', \'\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (:nama_siswa:, :nis:, :kelamin:, :alamat_siswa:, :telpon_siswa:, :email:, :username:, :password:, :locked:, :id_periode:, :photo:, :tanggal_masuk:, :tempat_lahir:, :tanggal_lahir:, :nama_ortu:, :nisn:, :keterangan:, :unik:, :image:)', [...], false)
+ 5 SYSTEMPATH/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(748): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH/Model.php(667): CodeIgniter\BaseModel->insert([...], false)
+ 8 SYSTEMPATH/BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+ 9 APPPATH/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save([...])
+10 APPPATH/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah([...])
+11 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+12 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-01-21 17:42:19 --> mysqli_sql_exception: Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email' in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `da...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Model.php(667): CodeIgniter\BaseModel->insert(Array, false)
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/BaseModel.php(658): CodeIgniter\Model->insert(Array, false)
+#8 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save(Array)
+#9 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah(Array)
+#10 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+#11 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+#12 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-01-21 17:42:19 --> Duplicate entry 'lembaharafah@lembaharafah.com' for key 'email'
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (\'Abdurrahman Al Dzaki\', \'1\', \'laki laki\', \'perumahan gramapuri persada blok NI/51 rt 07rw 013\', \'081808565672\', \'lembaharafah@lembaharafah.com\', NULL, NULL, \'baru\', \'2024 2025\', \'\', \'\', \'jakarta \', \'2012-03-08\', \'Dedi Maryanto\', \'\', \'\', \'\', \'\')', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (\'Abdurrahman Al Dzaki\', \'1\', \'laki laki\', \'perumahan gramapuri persada blok NI/51 rt 07rw 013\', \'081808565672\', \'lembaharafah@lembaharafah.com\', NULL, NULL, \'baru\', \'2024 2025\', \'\', \'\', \'jakarta \', \'2012-03-08\', \'Dedi Maryanto\', \'\', \'\', \'\', \'\')')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (\'Abdurrahman Al Dzaki\', \'1\', \'laki laki\', \'perumahan gramapuri persada blok NI/51 rt 07rw 013\', \'081808565672\', \'lembaharafah@lembaharafah.com\', NULL, NULL, \'baru\', \'2024 2025\', \'\', \'\', \'jakarta \', \'2012-03-08\', \'Dedi Maryanto\', \'\', \'\', \'\', \'\')')
+ 4 SYSTEMPATH/Database/BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `data_siswa` (`nama_siswa`, `nis`, `kelamin`, `alamat_siswa`, `telpon_siswa`, `email`, `username`, `password`, `locked`, `id_periode`, `photo`, `tanggal_masuk`, `tempat_lahir`, `tanggal_lahir`, `nama_ortu`, `nisn`, `keterangan`, `unik`, `image`) VALUES (:nama_siswa:, :nis:, :kelamin:, :alamat_siswa:, :telpon_siswa:, :email:, :username:, :password:, :locked:, :id_periode:, :photo:, :tanggal_masuk:, :tempat_lahir:, :tanggal_lahir:, :nama_ortu:, :nisn:, :keterangan:, :unik:, :image:)', [...], false)
+ 5 SYSTEMPATH/Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(748): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH/Model.php(667): CodeIgniter\BaseModel->insert([...], false)
+ 8 SYSTEMPATH/BaseModel.php(658): CodeIgniter\Model->insert([...], false)
+ 9 APPPATH/Models/M_DataSiswa.php(122): CodeIgniter\BaseModel->save([...])
+10 APPPATH/Controllers/C_DataSiswa.php(154): App\Models\M_DataSiswa->tambah([...])
+11 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\C_DataSiswa->tambah('1', '1')
+12 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\C_DataSiswa))
+13 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-01-21 18:47:00 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between '2023-07-01' and '2024-06-30' group by a.id_siswa' at line 4 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT @rownum ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT @rownum ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT @rownum ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(243): CodeIgniter\Database\BaseConnection->query('SELECT @rownum ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(104): App\Models\M_Helper->rowDSBpertahunajaran('2024-01')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024-01')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-01-21 18:47:00 --> Call to a member function getResultArray() on bool
+in APPPATH/Models/M_Helper.php on line 244.
+ 1 APPPATH/Helpers/cekdata_helper.php(104): App\Models\M_Helper->rowDSBpertahunajaran('2024-01')
+ 2 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024-01')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:50:10 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024-01')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:50:13 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024-01')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:50:22 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024-01')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:50:24 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:50:50 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:50:52 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:50:55 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:51:06 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:51:26 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:51:28 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024-01')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-01-21 18:52:10 --> Class 'App\Models\M_Helper' not found
+in APPPATH/Helpers/cekdata_helper.php on line 103.
+ 1 APPPATH/Controllers/Report/C_Report.php(314): rowDSBpertahunajaran('2024-01')
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILDSB()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

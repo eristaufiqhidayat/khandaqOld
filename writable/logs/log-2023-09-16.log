@@ -1,0 +1,106 @@
+CRITICAL - 2023-09-16 00:21:09 --> Undefined variable: DataModelv
+in APPPATH/Views/Guru/VGuru.php on line 139.
+ 1 APPPATH/Views/Guru/VGuru.php(139): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: DataModelv', 'APPPATH/Views/Guru/VGuru.php', 139, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Guru/VGuru.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Guru/VGuru', [], true)
+ 5 APPPATH/Controllers/Guru/CGuru.php(40): view('Guru/VGuru', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Guru\CGuru->index('52', '1')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Guru\CGuru))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 00:24:19 --> Undefined variable: DataModelv
+in APPPATH/Views/Guru/VGuru.php on line 142.
+ 1 APPPATH/Views/Guru/VGuru.php(142): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: DataModelv', 'APPPATH/Views/Guru/VGuru.php', 142, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Guru/VGuru.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Guru/VGuru', [], true)
+ 5 APPPATH/Controllers/Guru/CGuru.php(40): view('Guru/VGuru', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Guru\CGuru->index('52', '1')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Guru\CGuru))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:09:47 --> Illegal string offset ''
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 220.
+ 1 APPPATH/Views/Transaksi/V_DataTabunganSiswa.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'\'', 'APPPATH/Views/Transaksi/V_DataTabunganSiswa.php', 220, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Transaksi/V_DataTabunganSiswa.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 5 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(154): view('Transaksi/V_DataTabunganSiswa', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:10:04 --> Illegal string offset ''
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 220.
+ 1 APPPATH/Views/Transaksi/V_DataTabunganSiswa.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'\'', 'APPPATH/Views/Transaksi/V_DataTabunganSiswa.php', 220, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Transaksi/V_DataTabunganSiswa.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 5 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(154): view('Transaksi/V_DataTabunganSiswa', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:10:46 --> Illegal string offset ''
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 220.
+ 1 APPPATH/Views/Transaksi/V_DataTabunganSiswa.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'\'', 'APPPATH/Views/Transaksi/V_DataTabunganSiswa.php', 220, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Transaksi/V_DataTabunganSiswa.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 5 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(154): view('Transaksi/V_DataTabunganSiswa', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:15:12 --> Illegal string offset ''
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 220.
+ 1 APPPATH/Views/Transaksi/V_DataTabunganSiswa.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'\'', 'APPPATH/Views/Transaksi/V_DataTabunganSiswa.php', 220, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Transaksi/V_DataTabunganSiswa.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 5 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(154): view('Transaksi/V_DataTabunganSiswa', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:16:36 --> Illegal string offset ''
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 220.
+ 1 APPPATH/Views/Transaksi/V_DataTabunganSiswa.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'\'', 'APPPATH/Views/Transaksi/V_DataTabunganSiswa.php', 220, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Transaksi/V_DataTabunganSiswa.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 5 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(154): view('Transaksi/V_DataTabunganSiswa', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:20:53 --> Illegal string offset ''
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 220.
+ 1 APPPATH/Views/Transaksi/V_DataTabunganSiswa.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'\'', 'APPPATH/Views/Transaksi/V_DataTabunganSiswa.php', 220, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Transaksi/V_DataTabunganSiswa.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 5 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(154): view('Transaksi/V_DataTabunganSiswa', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:25:58 --> Illegal string offset ''
+in APPPATH/Views/Transaksi/V_DataTabunganSiswa.php on line 220.
+ 1 APPPATH/Views/Transaksi/V_DataTabunganSiswa.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string offset \'\'', 'APPPATH/Views/Transaksi/V_DataTabunganSiswa.php', 220, [...])
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Transaksi/V_DataTabunganSiswa.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Transaksi/V_DataTabunganSiswa', [], true)
+ 5 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(154): view('Transaksi/V_DataTabunganSiswa', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan('17', '4')
+ 7 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi\C_DataTransaksiTabungan))
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-16 03:41:34 --> Trying to access array offset on value of type null
+in APPPATH/Controllers/orangtua/C_Ortu.php on line 20.
+ 1 APPPATH/Controllers/orangtua/C_Ortu.php(20): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to access array offset on value of type null', 'APPPATH/Controllers/orangtua/C_Ortu.php', 20, [...])
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\orangtua\C_Ortu->index('24', '8')
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\orangtua\C_Ortu))
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

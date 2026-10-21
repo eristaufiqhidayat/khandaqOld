@@ -1,0 +1,204 @@
+CRITICAL - 2025-07-15 21:36:25 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:36:30 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:36:42 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:37:05 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:37:07 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:37:44 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:37:46 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:39:42 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:39:43 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:41:42 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:43:12 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:43:14 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:43:33 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:43:39 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:44:19 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:44:23 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:45:45 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:46:23 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:50:09 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 21:50:23 --> Undefined variable $row
+in APPPATH/Helpers/cekdata_helper.php on line 383.
+ 1 APPPATH/Helpers/cekdata_helper.php(383): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Helpers/cekdata_helper.php(356): rowdatatarifspp2()
+ 3 APPPATH/Controllers/Transaksi/C_DataTransaksiTabungan.php(92): sppkelas()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Transaksi\C_DataTransaksiTabungan->indexTabungan()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 22:07:59 --> number_format(): Passing null to parameter #1 ($num) of type float is deprecated
+in APPPATH/Views/chart/V_ChartSpp.php on line 143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/chart/V_ChartSpp.php(143): number_format()
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/chart/V_ChartSpp.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/chart/C_ChartSpp.php(35): view()
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\chart\C_ChartSpp->index()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-15 22:08:29 --> number_format(): Passing null to parameter #1 ($num) of type float is deprecated
+in APPPATH/Views/chart/V_ChartSpp.php on line 143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 APPPATH/Views/chart/V_ChartSpp.php(143): number_format()
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/chart/V_ChartSpp.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 6 APPPATH/Controllers/chart/C_ChartSpp.php(35): view()
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\chart\C_ChartSpp->index()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

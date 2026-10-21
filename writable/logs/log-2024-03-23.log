@@ -1,0 +1,90 @@
+CRITICAL - 2024-03-23 23:13:52 --> Class 'App\Entities\EGroupwa' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:14:40 --> Class 'App\Entities\EGroupwa' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:14:55 --> Class 'App\Entities\EGroupwa' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:16:47 --> Class 'App\Entities\EGroupwa' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:17:29 --> Class 'App\Entities\EGroupwa' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:18:03 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:18:40 --> Class 'App\Entities\EMessage' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:19:00 --> Class 'App\Entities\EMyapp' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:19:19 --> Class 'App\Models\Whatsapp\M_Template' not found
+in APPPATH/Controllers/Whatsapp/C_Template.php on line 33.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Template->index('65', '12')
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Template))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:19:42 --> Class 'App\Entities\ETemplate' not found
+in SYSTEMPATH/Database/MySQLi/Result.php on line 148.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-03-23 23:20:14 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:23:16 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:23:40 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:23:48 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:24:06 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:24:50 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:27:00 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:29:48 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-23 23:31:12 --> Class 'App\Models\Whatsapp\M_Log' not found
+in APPPATH/Controllers/Whatsapp/C_Sendwa.php on line 85.
+ 1 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Whatsapp\C_Sendwa->readjsonLogstatus()
+ 2 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Whatsapp\C_Sendwa))
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,20 @@
+CRITICAL - 2023-09-13 00:18:41 --> unlink(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1694582024.261727.json): No such file or directory
+in SYSTEMPATH/Debug/Toolbar/Collectors/History.php on line 76.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1694582024.261727.json): No such file or directory', 'SYSTEMPATH/Debug/Toolbar/Collectors/History.php', 76, [...])
+ 2 SYSTEMPATH/Debug/Toolbar/Collectors/History.php(76): unlink('ROOTPATH/writable/debugbar/debugbar_1694582024.261727.json')
+ 3 SYSTEMPATH/Debug/Toolbar.php(499): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles('1694582317.143271', 20)
+ 4 SYSTEMPATH/Debug/Toolbar.php(476): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 5 APPPATH/Config/Events.php(46): CodeIgniter\Debug\Toolbar->respond()
+ 6 SYSTEMPATH/Events/Events.php(149): CodeIgniter\Events\Events::Config\{closure}()
+ 7 SYSTEMPATH/CodeIgniter.php(317): CodeIgniter\Events\Events::trigger('pre_system')
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-09-13 20:36:47 --> file_get_contents(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1694649730.013501.json): failed to open stream: No such file or directory
+in SYSTEMPATH/Debug/Toolbar/Collectors/History.php on line 82.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1694649730.013501.json): failed to open stream: No such file or directory', 'SYSTEMPATH/Debug/Toolbar/Collectors/History.php', 82, [...])
+ 2 SYSTEMPATH/Debug/Toolbar/Collectors/History.php(82): file_get_contents('ROOTPATH/writable/debugbar/debugbar_1694649730.013501.json')
+ 3 SYSTEMPATH/Debug/Toolbar.php(499): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles('1694655397.761396', 20)
+ 4 SYSTEMPATH/Debug/Toolbar.php(476): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 5 APPPATH/Config/Events.php(46): CodeIgniter\Debug\Toolbar->respond()
+ 6 SYSTEMPATH/Events/Events.php(149): CodeIgniter\Events\Events::Config\{closure}()
+ 7 SYSTEMPATH/CodeIgniter.php(317): CodeIgniter\Events\Events::trigger('pre_system')
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,36 @@
+CRITICAL - 2023-07-10 10:16:00 --> Too few arguments to function App\Models\M_Helper::sumsiswakelas(), 1 passed in /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php on line 154 and exactly 2 expected
+in APPPATH/Models/M_Helper.php on line 42.
+ 1 APPPATH/Helpers/cekdata_helper.php(154): App\Models\M_Helper->sumsiswakelas('7')
+ 2 APPPATH/Views/Report/V_Report.php(106): sumsiswakelas('7')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_Report.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(35): view('Report/V_Report', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->index('21', '6')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-07-10 10:16:17 --> Too few arguments to function App\Models\M_Helper::sumsiswakelas(), 1 passed in /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php on line 154 and exactly 2 expected
+in APPPATH/Models/M_Helper.php on line 42.
+ 1 APPPATH/Helpers/cekdata_helper.php(154): App\Models\M_Helper->sumsiswakelas('7')
+ 2 APPPATH/Views/Report/V_Report.php(106): sumsiswakelas('7', '2023')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_Report.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(35): view('Report/V_Report', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->index('21', '6')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-07-10 10:16:20 --> Too few arguments to function App\Models\M_Helper::sumsiswakelas(), 1 passed in /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php on line 154 and exactly 2 expected
+in APPPATH/Models/M_Helper.php on line 42.
+ 1 APPPATH/Helpers/cekdata_helper.php(154): App\Models\M_Helper->sumsiswakelas('7')
+ 2 APPPATH/Views/Report/V_Report.php(106): sumsiswakelas('7', '2023')
+ 3 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Report/V_Report.php')
+ 4 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render('Report/V_Report', [], true)
+ 6 APPPATH/Controllers/Report/C_Report.php(35): view('Report/V_Report', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->index('21', '6')
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

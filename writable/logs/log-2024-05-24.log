@@ -1,0 +1,161 @@
+ERROR - 2024-05-24 09:15:46 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT \r\n      ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT \r\n      ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT \r\n      ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT \r\n      ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-24 09:15:46 --> Call to a member function getResultArray() on bool
+in APPPATH/Models/M_Helper.php on line 255.
+ 1 APPPATH/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+ 2 APPPATH/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-24 09:15:57 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT \r\n      ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT \r\n      ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT \r\n      ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT \r\n      ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-24 09:15:57 --> Call to a member function getResultArray() on bool
+in APPPATH/Models/M_Helper.php on line 255.
+ 1 APPPATH/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+ 2 APPPATH/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-24 09:16:55 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT \r\n      ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT \r\n      ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT \r\n      ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT \r\n      ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-24 09:16:55 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 4 APPPATH/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+ 6 APPPATH/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-24 09:17:53 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT \r\n      ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT \r\n      ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT \r\n      ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT \r\n      ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-24 09:17:53 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 4 APPPATH/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+ 6 APPPATH/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-24 09:17:58 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3 in /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:292
+Stack trace:
+#0 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(292): mysqli->query('SELECT \r\n      ...', 0)
+#1 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT \r\n      ...')
+#2 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT \r\n      ...')
+#3 /home/lembaha1/khandaq.lembaharafah.com/app/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT \r\n      ...')
+#4 /home/lembaha1/khandaq.lembaharafah.com/app/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+#5 /home/lembaha1/khandaq.lembaharafah.com/app/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+#6 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+#7 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+#8 /home/lembaha1/khandaq.lembaharafah.com/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /home/lembaha1/khandaq.lembaharafah.com/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-24 09:17:58 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where ...' at line 3
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 292.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(292): mysqli->query('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'', 0)
+ 2 SYSTEMPATH/Database/BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 3 SYSTEMPATH/Database/BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 4 APPPATH/Models/M_Helper.php(254): CodeIgniter\Database\BaseConnection->query('SELECT 
+                no, tanggal, tbl_akun.kode_akun, tbl_akun.nama_akun,kode_pengusul, rutin, rp, keterangan
+				FROM  left join tbl_akun on .kode_akun = tbl_akun.kode_akun
+                where DATE_FORMAT(tanggal, \'%Y-%m\') = \'2024-05\'')
+ 5 APPPATH/Helpers/cekdata_helper.php(110): App\Models\M_Helper->rowDSBpengeluaranpertahunajaran('2024-05')
+ 6 APPPATH/Controllers/Report/C_Report.php(324): rowDSBpengeluaranpertahunajaran('2024-05')
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Report\C_Report->JSONEKSDETILPENGELUARANDSB()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Report\C_Report))
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()

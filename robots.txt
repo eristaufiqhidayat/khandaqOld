@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap:https://khandaq.lembaharafah.com/sitemap.xml

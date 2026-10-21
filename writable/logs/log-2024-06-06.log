@@ -1,0 +1,28 @@
+CRITICAL - 2024-06-06 03:20:04 --> unlink(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1717661721.557599.json): No such file or directory
+in SYSTEMPATH/Debug/Toolbar/Collectors/History.php on line 76.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1717661721.557599.json): No such file or directory', 'SYSTEMPATH/Debug/Toolbar/Collectors/History.php', 76, [...])
+ 2 SYSTEMPATH/Debug/Toolbar/Collectors/History.php(76): unlink('ROOTPATH/writable/debugbar/debugbar_1717661721.557599.json')
+ 3 SYSTEMPATH/Debug/Toolbar.php(499): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles('1717662001.609679', 20)
+ 4 SYSTEMPATH/Debug/Toolbar.php(476): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 5 APPPATH/Config/Events.php(46): CodeIgniter\Debug\Toolbar->respond()
+ 6 SYSTEMPATH/Events/Events.php(149): CodeIgniter\Events\Events::Config\{closure}()
+ 7 SYSTEMPATH/CodeIgniter.php(317): CodeIgniter\Events\Events::trigger('pre_system')
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-06 03:20:25 --> unlink(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1717661765.585534.json): No such file or directory
+in SYSTEMPATH/Debug/Toolbar/Collectors/History.php on line 76.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(/home/lembaha1/khandaq.lembaharafah.com/writable/debugbar/debugbar_1717661765.585534.json): No such file or directory', 'SYSTEMPATH/Debug/Toolbar/Collectors/History.php', 76, [...])
+ 2 SYSTEMPATH/Debug/Toolbar/Collectors/History.php(76): unlink('ROOTPATH/writable/debugbar/debugbar_1717661765.585534.json')
+ 3 SYSTEMPATH/Debug/Toolbar.php(499): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles('1717662024.065621', 20)
+ 4 SYSTEMPATH/Debug/Toolbar.php(476): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 5 APPPATH/Config/Events.php(46): CodeIgniter\Debug\Toolbar->respond()
+ 6 SYSTEMPATH/Events/Events.php(149): CodeIgniter\Events\Events::Config\{closure}()
+ 7 SYSTEMPATH/CodeIgniter.php(317): CodeIgniter\Events\Events::trigger('pre_system')
+ 8 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-06 03:32:49 --> The original file is not a valid file.
+in SYSTEMPATH/HTTP/Files/UploadedFile.php on line 137.
+ 1 SYSTEMPATH/HTTP/Files/UploadedFile.php(137): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH/Controllers/TataUsaha/C_Formulir.php(90): CodeIgniter\HTTP\Files\UploadedFile->move('FCPATH/uploads/formulir', 'Formulir1717662769.')
+ 3 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\TataUsaha\C_Formulir->insertPengeluaran('28', '1')
+ 4 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TataUsaha\C_Formulir))
+ 5 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
