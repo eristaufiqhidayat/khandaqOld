@@ -17,31 +17,26 @@ class C_Report extends BaseController
         $menu = new M_Menu();
         $datamenu = $menu->listing();
 
-        $tahunAjaran = tahunajaran();
-
-        $data = new M_Report();
-        if ($this->request->getVar('tahunajaranselect')) {
-            if ($this->request->getVar('tahunajaranselect') !== $tahunAjaran) {
-                $tahunAjaran = $this->request->getVar('tahunajaranselect');
-                $tahunAjaran2 = $tahunAjaran + 1;
-                $dataCrostab = $data->kelasPeriodeBeforeGroupByIdKelas("", $tahunAjaran, $tahunAjaran2);
-                $dataCrostab2 = $data->kelasPeriodeBeforeGroupByIdSiswa($tahunAjaran, $tahunAjaran2);
-            } else {
-                $tahunAjaran2 = $tahunAjaran + 1;
-                $dataCrostab = $data->listing("", $tahunAjaran, $tahunAjaran2);
-                $dataCrostab2 = $data->listing2($tahunAjaran, $tahunAjaran2);
-            }
-        } else {
-            $tahunAjaran2 = $tahunAjaran + 1;
-            $dataCrostab = $data->listing("", $tahunAjaran, $tahunAjaran2);
-            $dataCrostab2 = $data->listing2($tahunAjaran, $tahunAjaran2);
+        $tahunAktif = (int) tahunajaran();
+        $pilihanTahun = array_map('intval', array_column(selecttahunajaran(), 'tahun'));
+        // Hanya tahun yang ada di daftar periode yang boleh dipilih (nilai ini dipakai untuk nama tabel)
+        $tahunAjaran = (int) $this->request->getVar('tahunajaranselect');
+        if (!in_array($tahunAjaran, $pilihanTahun, true)) {
+            $tahunAjaran = $tahunAktif;
         }
 
+        // Jumlah bulan yang sudah berjalan (Juli = 1), tahun lalu dihitung penuh 12 bulan
+        $bulanBerjalan = ((int) date('Y') - $tahunAjaran) * 12 + (int) date('n') - 6;
+        $bulanBerjalan = max(0, min(12, $bulanBerjalan));
+
+        $model = new M_Report();
+        $report = $model->reportSpp($tahunAjaran, $tahunAktif, $bulanBerjalan);
 
         $data = array(
-            'dataCrosstab' => $dataCrostab,
-            'dataCrosstab2' => $dataCrostab2,
+            'report' => $report,
             'tahunAjaran' => $tahunAjaran,
+            'pilihanTahun' => $pilihanTahun,
+            'bulanBerjalan' => $bulanBerjalan,
             'menu'   =>  $datamenu,
             'menuAktip' => $menuAktip,
             'moduleAktip' => $moduleAktip,
