@@ -85,6 +85,7 @@ $routes->add('/TataUsaha/Periode/insert/(:any)/(:any)', 'TataUsaha\C_Periode::in
 $routes->add('/TataUsaha/Periode/update/(:any)/(:any)', 'TataUsaha\C_Periode::update/$1/$2');
 $routes->add('/TataUsaha/Periode/delete/(:any)/(:any)', 'TataUsaha\C_Periode::delete/$1/$2');
 $routes->add('/TataUsaha/Periode/prosesRuang/(:any)', 'TataUsaha\C_Periode::prosesRuang/$1');
+$routes->add('/TataUsaha/Periode/cekPeriode/(:any)', 'TataUsaha\C_Periode::cekPeriode/$1');
 
 $routes->add('/TataUsaha/KalenderAkademik/index/(:any)/(:any)', 'TataUsaha\C_KalenderAkademik::index/$1/$2');
 $routes->add('/TataUsaha/KalenderAkademik/insert/(:any)/(:any)', 'TataUsaha\C_KalenderAkademik::insert/$1/$2');

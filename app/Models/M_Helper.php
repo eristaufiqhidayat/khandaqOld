@@ -43,14 +43,10 @@ class M_Helper extends Model
     {
         $db = db_connect('arafah');
         $tahunAjaran = tahunajaran();
-        if ($tahunAjaran == $tahunajaran) {
-            $query = "SELECT
-                COUNT(*) AS jml
-            FROM tbl_ruangan r
-            INNER JOIN data_siswa s
-                ON s.id_siswa = r.id_siswa
-            WHERE s.locked = 'no'
-            AND r.id_kelas = '$id_kelas'";
+        $snapshot = 'tbl_ruangan_' . (int) $tahunajaran;
+        if ((int) $tahunAjaran !== (int) $tahunajaran && $db->tableExists($snapshot)) {
+            // Tahun lalu: jumlah siswa dari salinan tbl_ruangan tahun itu
+            $query = "SELECT COUNT(*) AS jml FROM `$snapshot` WHERE id_kelas = ?";
         } else {
             $query = "SELECT
                 COUNT(*) AS jml
@@ -58,10 +54,9 @@ class M_Helper extends Model
             INNER JOIN data_siswa s
                 ON s.id_siswa = r.id_siswa
             WHERE s.locked = 'no'
-            AND r.id_kelas = '$id_kelas'";
+            AND r.id_kelas = ?";
         }
-        //echo $query;
-        $query = $db->query($query);
+        $query = $db->query($query, [$id_kelas]);
         return $query->getRowArray();
     }
     public function sumpengeluaransppbulan($bulan, $tahun)
@@ -449,21 +444,23 @@ LIMIT 2";
     }
     public function sumbeasiswakelas($id_kelas)
     {
+        $db = db_connect('arafah');
         $tahunAjaran = tahunajaran();
-        if (isset($_REQUEST['tahunajaranselect']) && $tahunAjaran !== $_REQUEST['tahunajaranselect'])
-            $query = "SELECT count(`id_kelas`) jml,`persen` FROM tbl_ruangan_" . $_REQUEST['tahunajaranselect']
-                . " where id_kelas = '$id_kelas' and peserta = 'yes'";
+        // Nama tabel snapshot hanya dari angka tahun, dan hanya kalau tabelnya ada
+        $tahunPilih = (int) service('request')->getVar('tahunajaranselect');
+        $snapshot = 'tbl_ruangan_' . $tahunPilih;
+        if ($tahunPilih && $tahunPilih !== (int) $tahunAjaran && $db->tableExists($snapshot))
+            $query = "SELECT count(`id_kelas`) jml,`persen` FROM `$snapshot`
+                where id_kelas = ? and peserta = 'yes'";
         else
             $query = "SELECT count(`setup_kelas`.`id_kelas`) jml,`tbl_beasiswa`.`persen` FROM `tbl_beasiswa`
         		left join tbl_ruangan on tbl_beasiswa.id_siswa = tbl_ruangan.id_siswa
                 left join setup_kelas on tbl_ruangan.id_kelas = setup_kelas.id_kelas
                 where `tbl_beasiswa`.`peserta` = 'yes'
-                and `setup_kelas`.`id_kelas` = '$id_kelas'
+                and `setup_kelas`.`id_kelas` = ?
                 group by `setup_kelas`.`id_kelas`,`tbl_beasiswa`.`persen`";
 
-        //echo $query;
-        $db = db_connect('arafah');
-        $query = $db->query($query);
+        $query = $db->query($query, [$id_kelas]);
         return $query->getRowArray();
     }
     public function saldotabungan($id_siswa)
