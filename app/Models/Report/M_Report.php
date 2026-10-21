@@ -463,4 +463,110 @@ class M_Report extends Model
         return $query->getResult('array');
         //return 'Ini adalah Method getData didalam ProductModel';
     }
+    // Report SPP satu tahun ajaran (Juli $tahun s.d. Juni $tahun+1), semua dihitung dari 3 query:
+    // daftar siswa + tarif + beasiswa, transaksi TDSPP, dan pengeluaran. Bulan disusun di PHP.
+    public function reportSpp($tahun, $tahunAktif, $bulanBerjalan)
+    {
+        $db = db_connect('arafah');
+        $tahun = (int) $tahun;
+        $mulai = $tahun . '-07-01';
+        $sampai = ($tahun + 1) . '-07-01';
+        $periode = $db->query("SELECT id_periode FROM setup_periode WHERE tahun_ajaran LIKE ? ORDER BY id_periode DESC LIMIT 1", [$tahun . '/%'])->getRowArray();
+        $idPeriode = $periode['id_periode'] ?? '';
+
+        $snapshot = 'tbl_ruangan_' . $tahun;
+        if ($tahun !== (int) $tahunAktif && $db->tableExists($snapshot)) {
+            // Tahun lalu: kelas dan beasiswa diambil dari salinan tbl_ruangan tahun itu
+            $sqlSiswa = "SELECT a.id_siswa, a.nama_siswa, a.id_kelas, a.nama_kelas,
+                    COALESCE(g.tarif, 0) tarif,
+                    CASE WHEN a.peserta = 'yes' THEN 1 ELSE 0 END beasiswa,
+                    CASE WHEN a.peserta = 'yes' THEN COALESCE(a.persen, 0) ELSE 0 END persen
+                FROM `$snapshot` a
+                LEFT JOIN tbl_tarif_spp g ON g.id_kelas = a.id_kelas AND g.periode = ?
+                ORDER BY a.nama_kelas, a.nama_siswa";
+        } else {
+            $sqlSiswa = "SELECT c.id_siswa, c.nama_siswa, e.id_kelas, e.nama_kelas,
+                    COALESCE(g.tarif, 0) tarif,
+                    CASE WHEN f.id_siswa IS NULL THEN 0 ELSE 1 END beasiswa,
+                    COALESCE(f.persen, 0) persen
+                FROM data_siswa c
+                JOIN tbl_ruangan d ON c.id_siswa = d.id_siswa
+                JOIN setup_kelas e ON d.id_kelas = e.id_kelas
+                LEFT JOIN tbl_tarif_spp g ON g.id_kelas = e.id_kelas AND g.periode = ?
+                LEFT JOIN (
+                    SELECT id_siswa, MAX(persen) persen FROM tbl_beasiswa
+                    WHERE peserta = 'yes' GROUP BY id_siswa
+                ) f ON f.id_siswa = c.id_siswa
+                WHERE c.locked = 'no'
+                ORDER BY e.nama_kelas, c.nama_siswa";
+        }
+        $siswaRows = $db->query($sqlSiswa, [$idPeriode])->getResultArray();
+
+        $bayarRows = $db->query("SELECT b.kode_siswa, a.tanggal, a.rp
+            FROM tbl_tabungan_transaksi a
+            JOIN tbl_tabungan_siswa b ON a.kode_tab_trans = b.kode_tab
+            WHERE a.kodetransaksi = 'TDSPP' AND a.tanggal >= ? AND a.tanggal < ?", [$mulai, $sampai])->getResultArray();
+
+        $keluarRows = $db->query("SELECT tanggal, rp FROM tbl_pengeluaran
+            WHERE tanggal >= ? AND tanggal < ?", [$mulai, $sampai])->getResultArray();
+
+        // Indeks bulan 0..11 = Juli..Juni
+        $idxBulan = function ($tanggal) {
+            return ((int) substr($tanggal, 5, 2) + 5) % 12;
+        };
+        $kosong = array_fill(0, 12, 0);
+
+        $bayarSiswa = [];
+        foreach ($bayarRows as $r) {
+            $id = $r['kode_siswa'];
+            if (!isset($bayarSiswa[$id])) $bayarSiswa[$id] = $kosong;
+            $bayarSiswa[$id][$idxBulan($r['tanggal'])] += (float) $r['rp'];
+        }
+
+        $kelas = [];
+        $siswa = [];
+        foreach ($siswaRows as $r) {
+            $persen = $r['beasiswa'] ? min(100, max(0, (float) $r['persen'])) : 0;
+            $bulan = $bayarSiswa[$r['id_siswa']] ?? $kosong;
+            $s = [
+                'nama_siswa' => $r['nama_siswa'],
+                'nama_kelas' => $r['nama_kelas'],
+                'bulan' => $bulan,
+                'total' => array_sum($bulan),
+            ];
+            $siswa[] = $s;
+
+            $nama = $r['nama_kelas'];
+            if (!isset($kelas[$nama])) {
+                $kelas[$nama] = ['nama' => $nama, 'siswa' => 0, 'beasiswa' => 0, 'target' => 0, 'bulan' => $kosong, 'total' => 0];
+            }
+            $kelas[$nama]['siswa']++;
+            if ($r['beasiswa']) $kelas[$nama]['beasiswa']++;
+            $kelas[$nama]['target'] += (float) $r['tarif'] * (1 - $persen / 100);
+            foreach ($bulan as $i => $v) $kelas[$nama]['bulan'][$i] += $v;
+            $kelas[$nama]['total'] += $s['total'];
+        }
+
+        $masuk = $kosong;
+        $target = 0;
+        foreach ($kelas as $k) {
+            foreach ($k['bulan'] as $i => $v) $masuk[$i] += $v;
+            $target += $k['target'];
+        }
+        $keluar = $kosong;
+        foreach ($keluarRows as $r) {
+            $keluar[$idxBulan($r['tanggal'])] += (float) $r['rp'];
+        }
+
+        return [
+            'kelas' => array_values($kelas),
+            'siswa' => $siswa,
+            'masuk' => $masuk,
+            'keluar' => $keluar,
+            'targetBulan' => $target,
+            'totalMasuk' => array_sum($masuk),
+            'totalKeluar' => array_sum($keluar),
+            'targetBerjalan' => $target * $bulanBerjalan,
+        ];
+    }
 }
