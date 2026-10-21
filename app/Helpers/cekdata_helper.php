@@ -636,34 +636,37 @@ function wa1($to, $message, $appkey, $authkey, $file)
     curl_close($curl);
 }
 
-// Peringatan untuk admin kalau periode aktif tidak sesuai bulan berjalan.
-// Tahun ajaran mulai Juli: Juli–Desember = Ganjil, Januari–Juni = Genap.
-// Mengembalikan teks peringatan, atau null kalau sudah sesuai / bukan admin.
+// Peringatan untuk admin kalau periode aktif tidak sesuai bulan berjalan atau langkah
+// pergantian periode belum lengkap. Tahun ajaran mulai Juli: Juli–Desember = Ganjil,
+// Januari–Juni = Genap. Mengembalikan ['judul' => ..., 'langkah' => [...]] atau null.
 function peringatanPeriode()
 {
     if (!function_exists('in_groups') || !in_groups(['admin', 'superadmin'])) return null;
     $bulan = (int) date('n');
     $tahunMulai = $bulan >= 7 ? (int) date('Y') : (int) date('Y') - 1;
     $harusTahun = $tahunMulai . '/' . ($tahunMulai + 1);
-    $harusSemester = $bulan >= 7 ? 'Ganjil' : 'Genap';
+    $ganjil = $bulan >= 7;
+    $harusSemester = $ganjil ? 'Ganjil' : 'Genap';
     $harus = $harusTahun . ' ' . $harusSemester;
 
-    $periode = (new M_Helper())->periodeaktif();
-    if (!$periode) {
-        return "Belum ada periode aktif. Seharusnya periode $harus diaktifkan.";
+    $st = (new M_Helper())->statusPergantianPeriode($harusTahun, $harusSemester, $ganjil ? '1' : '2', ($tahunMulai - 1) . '/' . $tahunMulai);
+    $p = $st['periode'];
+    $langkah = [];
+    if (!$p) {
+        $langkah[] = "1. Tambah periode $harus.";
+        $langkah[] = '2. Isi tarif SPP untuk periode itu.';
+        $langkah[] = '3. Jadikan aktif.';
+        $langkah[] = '4. Proses ruang.';
+    } else {
+        if ($st['kelasTarif'] === 0) $langkah[] = '2. Isi tarif SPP untuk periode ini (belum ada tarif).';
+        elseif ($st['kelasTarif'] < $st['jmlKelas']) $langkah[] = "2. Tarif SPP baru diisi untuk {$st['kelasTarif']} dari {$st['jmlKelas']} kelas.";
+        if ($p['status_aktif'] !== 'yes') $langkah[] = '3. Jadikan periode ini aktif.';
+        if ($st['siswaRuang'] < $st['jmlSiswa']) $langkah[] = "4. Proses ruang: baru {$st['siswaRuang']} dari {$st['jmlSiswa']} siswa aktif tercatat di periode ini.";
     }
-    $aktif = trim($periode['tahun_ajaran'] . ' ' . $periode['nama_semester']);
-    if (trim($periode['tahun_ajaran']) !== $harusTahun) {
-        return "Periode aktif masih $aktif, padahal bulan ini sudah masuk tahun ajaran $harusTahun ($harusSemester).";
+    // Naik kelas hanya di awal tahun ajaran (Ganjil): kalau sebagian besar siswa masih di kelas yang sama dengan tahun lalu
+    if ($ganjil && $st['siswaBanding'] > 0 && $st['siswaSama'] * 2 > $st['siswaBanding']) {
+        $langkah[] = "5. Naik kelas: {$st['siswaSama']} dari {$st['siswaBanding']} siswa masih di kelas yang sama dengan tahun ajaran lalu.";
     }
-    // Semester dicek dari nama_semester (Ganjil/Genap) atau kolom semester (1/2); format lain dilewati
-    $nama = strtolower(trim((string) $periode['nama_semester']));
-    $nomor = trim((string) $periode['semester']);
-    $semesterAktif = null;
-    if (strpos($nama, 'ganjil') !== false || $nomor === '1') $semesterAktif = 'Ganjil';
-    elseif (strpos($nama, 'genap') !== false || $nomor === '2') $semesterAktif = 'Genap';
-    if ($semesterAktif !== null && $semesterAktif !== $harusSemester) {
-        return "Periode aktif masih $aktif, padahal bulan ini sudah semester $harusSemester ($harus).";
-    }
-    return null;
+    if (!$langkah) return null;
+    return ['judul' => "Pergantian ke periode $harus belum lengkap.", 'langkah' => $langkah];
 }

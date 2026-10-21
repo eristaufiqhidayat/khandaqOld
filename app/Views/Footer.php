@@ -10,10 +10,15 @@
 <?php $peringatanPeriode = peringatanPeriode(); ?>
 <?php if ($peringatanPeriode) { ?>
   <!-- Peringatan periode (admin): dipindah ke atas konten halaman -->
-  <div id="peringatanPeriode" class="alert alert-warning d-flex flex-wrap align-items-center m-3" role="alert" style="gap:8px">
-    <strong>Periode belum sesuai.</strong>
-    <span class="mr-auto"><?= esc($peringatanPeriode) ?></span>
+  <div id="peringatanPeriode" class="alert alert-warning d-flex flex-wrap align-items-start m-3" role="alert" style="gap:8px">
+    <div class="mr-auto">
+      <strong><?= esc($peringatanPeriode['judul']) ?></strong> Langkah yang belum dikerjakan:
+      <ul class="mb-0 pl-3" style="list-style:none">
+        <?php foreach ($peringatanPeriode['langkah'] as $l) { ?><li><?= esc($l) ?></li><?php } ?>
+      </ul>
+    </div>
     <a class="btn btn-sm btn-dark" href="<?= base_url('index.php/TataUsaha/Periode/index/43/1') ?>">Atur periode</a>
+    <a class="btn btn-sm btn-outline-dark" href="<?= base_url('index.php/TataUsaha/Kelas/index/44/1') ?>">Naik kelas</a>
     <button type="button" class="close ml-2" aria-label="Tutup" onclick="this.parentNode.remove()"><span aria-hidden="true">&times;</span></button>
   </div>
   <script>
