@@ -8,7 +8,11 @@ use App\Models\TataUsaha\M_Periode;
 
 class C_Periode extends BaseController
 {
-    private $semester = ['Ganjil' => '1', 'Genap' => '2'];
+    // Pilihan form => isi kolom setup_periode (semester enum('genap','ganjil'))
+    private $semester = [
+        'Ganjil' => ['semester' => 'ganjil', 'nama_semester' => 'Semester 1'],
+        'Genap'  => ['semester' => 'genap', 'nama_semester' => 'Semester 2'],
+    ];
 
     public function  index($menuAktip = '', $moduleAktip = '')
     {
@@ -41,17 +45,13 @@ class C_Periode extends BaseController
             return $this->kembali($menuAktip, $moduleAktip);
         }
         $tahunAjaran = $tahun . '/' . ($tahun + 1);
-        if ($model->sudahAda($tahunAjaran, $namaSemester)) {
-            session()->setFlashdata('error', "Periode $tahunAjaran $namaSemester sudah ada.");
+        $baru = ['tahun_ajaran' => $tahunAjaran] + $this->semester[$namaSemester] + ['status_aktif' => 'no'];
+        if ($model->sudahAda($tahunAjaran, $baru['semester'])) {
+            session()->setFlashdata('error', 'Periode ' . labelPeriode($baru) . ' sudah ada.');
             return $this->kembali($menuAktip, $moduleAktip);
         }
-        $model->tambah([
-            'tahun_ajaran'  => $tahunAjaran,
-            'nama_semester' => $namaSemester,
-            'semester'      => $this->semester[$namaSemester],
-            'status_aktif'  => 'no',
-        ]);
-        session()->setFlashdata('success', "Periode $tahunAjaran $namaSemester ditambahkan (belum aktif).");
+        $model->tambah($baru);
+        session()->setFlashdata('success', 'Periode ' . labelPeriode($baru) . ' ditambahkan (belum aktif).');
         return $this->kembali($menuAktip, $moduleAktip);
     }
 
@@ -62,7 +62,7 @@ class C_Periode extends BaseController
         if (!$periode) {
             session()->setFlashdata('error', 'Periode tidak ditemukan.');
         } elseif ($model->aktifkan($periode['id_periode'])) {
-            session()->setFlashdata('success', $periode['tahun_ajaran'] . ' ' . $periode['nama_semester'] . ' sekarang periode aktif. Lanjutkan dengan Proses ruang.');
+            session()->setFlashdata('success', labelPeriode($periode) . ' sekarang periode aktif. Lanjutkan dengan Proses ruang.');
         } else {
             session()->setFlashdata('error', 'Gagal mengganti periode aktif, tidak ada data yang berubah.');
         }
@@ -81,7 +81,7 @@ class C_Periode extends BaseController
             session()->setFlashdata('error', 'Periode masih punya data tarif, ruang, jadwal, nilai, atau siswa, jadi tidak bisa dihapus.');
         } else {
             $model->hapus($periode['id_periode']);
-            session()->setFlashdata('success', 'Periode ' . $periode['tahun_ajaran'] . ' ' . $periode['nama_semester'] . ' dihapus.');
+            session()->setFlashdata('success', 'Periode ' . labelPeriode($periode) . ' dihapus.');
         }
         return $this->kembali($menuAktip, $moduleAktip);
     }
@@ -95,7 +95,7 @@ class C_Periode extends BaseController
             return $this->kembali($menuAktip, $moduleAktip);
         }
         $jumlah = $model->prosesRuang($periode['id_periode']);
-        session()->setFlashdata('success', "$jumlah siswa disalin ke " . $periode['tahun_ajaran'] . ' ' . $periode['nama_semester']
+        session()->setFlashdata('success', "$jumlah siswa disalin ke " . labelPeriode($periode)
             . '. Siswa yang sudah tercatat (misalnya dari Naik Kelas) tidak diubah.');
         return $this->kembali($menuAktip, $moduleAktip);
     }

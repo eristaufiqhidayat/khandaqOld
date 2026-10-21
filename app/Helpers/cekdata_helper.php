@@ -649,7 +649,7 @@ function peringatanPeriode()
     $harusSemester = $ganjil ? 'Ganjil' : 'Genap';
     $harus = $harusTahun . ' ' . $harusSemester;
 
-    $st = (new M_Helper())->statusPergantianPeriode($harusTahun, $harusSemester, $ganjil ? '1' : '2', ($tahunMulai - 1) . '/' . $tahunMulai);
+    $st = (new M_Helper())->statusPergantianPeriode($harusTahun, strtolower($harusSemester), ($tahunMulai - 1) . '/' . $tahunMulai);
     $p = $st['periode'];
     $langkah = [];
     if (!$p) {
@@ -669,4 +669,17 @@ function peringatanPeriode()
     }
     if (!$langkah) return null;
     return ['judul' => "Pergantian ke periode $harus belum lengkap.", 'langkah' => $langkah];
+}
+
+// Label periode untuk tampilan, mis. "2026/2027 Semester 1 (Ganjil)".
+// setup_periode.semester = enum('genap','ganjil'); nama_semester = "Semester 1" / "Semester 2".
+function labelPeriode($p)
+{
+    if (!$p) return '';
+    $label = $p['tahun_ajaran'] . ' ' . $p['nama_semester'];
+    $semester = strtolower((string) ($p['semester'] ?? ''));
+    if (in_array($semester, ['ganjil', 'genap'], true) && stripos($p['nama_semester'], $semester) === false) {
+        $label .= ' (' . ucfirst($semester) . ')';
+    }
+    return $label;
 }

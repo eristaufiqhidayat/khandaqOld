@@ -25,7 +25,7 @@ class M_Periode extends Model
     {
         $db = db_connect('arafah');
         $rows = $db->query("SELECT id_periode, nama_semester, tahun_ajaran, semester, status_aktif
-            FROM setup_periode ORDER BY tahun_ajaran DESC, semester DESC, id_periode DESC")->getResultArray();
+            FROM setup_periode ORDER BY tahun_ajaran DESC, CASE semester WHEN 'genap' THEN 0 ELSE 1 END, id_periode DESC")->getResultArray();
         $jumlah = [];
         foreach ($this->terkait as $jenis => $tabel) {
             foreach ($tabel as $nama => $kolom) {
@@ -55,9 +55,10 @@ class M_Periode extends Model
         return $this->where('id_periode', $id_periode)->first();
     }
 
-    public function sudahAda($tahunAjaran, $namaSemester)
+    // $semester: 'ganjil' / 'genap'
+    public function sudahAda($tahunAjaran, $semester)
     {
-        return $this->where('tahun_ajaran', $tahunAjaran)->where('nama_semester', $namaSemester)->countAllResults() > 0;
+        return $this->where('tahun_ajaran', $tahunAjaran)->where('semester', $semester)->countAllResults() > 0;
     }
 
     public function tambah($data)

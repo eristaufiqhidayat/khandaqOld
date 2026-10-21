@@ -23,7 +23,7 @@ $url = function ($aksi) use ($menuAktip, $moduleAktip) {
   return base_url('index.php/TataUsaha/Periode/' . $aksi . '/' . $menuAktip . '/' . $moduleAktip);
 };
 $label = function ($p) {
-  return $p['tahun_ajaran'] . ' ' . $p['nama_semester'];
+  return labelPeriode($p);
 };
 $aktif = null;
 // Sama dengan query lain: kalau aktif lebih dari satu, yang dipakai id_periode terbesar
@@ -121,7 +121,7 @@ $jmlAktif = count(array_filter($dataperiode, function ($p) { return $p['status_a
               ?>
                 <tr class="<?= $isAktif ? 'pr-aktif' : '' ?>">
                   <td class="pl-3 font-weight-bold"><?= esc($p['tahun_ajaran']) ?></td>
-                  <td><?= esc($p['nama_semester']) ?></td>
+                  <td><?= esc($p['nama_semester']) ?><?= in_array($p['semester'], ['ganjil', 'genap'], true) && stripos($p['nama_semester'], $p['semester']) === false ? ' <span class="pr-muted">(' . ucfirst($p['semester']) . ')</span>' : '' ?></td>
                   <td><?= $isAktif ? '<span class="badge badge-primary">Aktif</span>' : '<span class="badge badge-light">Tidak aktif</span>' ?></td>
                   <td class="text-right"><?= $p['tarif'] ? $p['tarif'] . ' kelas' : '<span class="pr-kurang">belum diisi</span>' ?></td>
                   <td class="text-right"><?= $kurangRuang ? '<span class="pr-kurang">' . $p['ruang'] . ' / ' . $jmlSiswaAktif . '</span>' : $p['ruang'] ?></td>
