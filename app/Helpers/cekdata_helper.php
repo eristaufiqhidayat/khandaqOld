@@ -635,3 +635,35 @@ function wa1($to, $message, $appkey, $authkey, $file)
     $response = curl_exec($curl);
     curl_close($curl);
 }
+
+// Peringatan untuk admin kalau periode aktif tidak sesuai bulan berjalan.
+// Tahun ajaran mulai Juli: Juli–Desember = Ganjil, Januari–Juni = Genap.
+// Mengembalikan teks peringatan, atau null kalau sudah sesuai / bukan admin.
+function peringatanPeriode()
+{
+    if (!function_exists('in_groups') || !in_groups(['admin', 'superadmin'])) return null;
+    $bulan = (int) date('n');
+    $tahunMulai = $bulan >= 7 ? (int) date('Y') : (int) date('Y') - 1;
+    $harusTahun = $tahunMulai . '/' . ($tahunMulai + 1);
+    $harusSemester = $bulan >= 7 ? 'Ganjil' : 'Genap';
+    $harus = $harusTahun . ' ' . $harusSemester;
+
+    $periode = (new M_Helper())->periodeaktif();
+    if (!$periode) {
+        return "Belum ada periode aktif. Seharusnya periode $harus diaktifkan.";
+    }
+    $aktif = trim($periode['tahun_ajaran'] . ' ' . $periode['nama_semester']);
+    if (trim($periode['tahun_ajaran']) !== $harusTahun) {
+        return "Periode aktif masih $aktif, padahal bulan ini sudah masuk tahun ajaran $harusTahun ($harusSemester).";
+    }
+    // Semester dicek dari nama_semester (Ganjil/Genap) atau kolom semester (1/2); format lain dilewati
+    $nama = strtolower(trim((string) $periode['nama_semester']));
+    $nomor = trim((string) $periode['semester']);
+    $semesterAktif = null;
+    if (strpos($nama, 'ganjil') !== false || $nomor === '1') $semesterAktif = 'Ganjil';
+    elseif (strpos($nama, 'genap') !== false || $nomor === '2') $semesterAktif = 'Genap';
+    if ($semesterAktif !== null && $semesterAktif !== $harusSemester) {
+        return "Periode aktif masih $aktif, padahal bulan ini sudah semester $harusSemester ($harus).";
+    }
+    return null;
+}
