@@ -137,7 +137,7 @@ class M_Report extends Model
         left join setup_periode g on e.periode = g.id_periode
         left join tbl_beasiswa f on a.id_siswa = f.id_siswa
         where b.tanggal between '" . $start_date . "-07-01' and '" . $end_date . "-06-30' and b.kodetransaksi = 'TDSPP'
-        and g.status_aktif = 'yes'
+        and g.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
         group by d.id_kelas order by d.nama_kelas";
         //echo $sql;
         $query = $db->query($sql);
@@ -181,7 +181,7 @@ class M_Report extends Model
 
     JOIN setup_periode g
         ON e.periode = g.id_periode
-        AND g.status_aktif = 'yes'
+        AND g.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
 
     LEFT JOIN tbl_tabungan_siswa s
         ON a.id_siswa = s.kode_siswa
@@ -246,7 +246,7 @@ class M_Report extends Model
 
     JOIN setup_periode g
         ON e.periode = g.id_periode
-        AND g.status_aktif = 'yes'
+        AND g.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
 
     LEFT JOIN tbl_tabungan_siswa s
         ON a.id_siswa = s.kode_siswa
@@ -471,7 +471,12 @@ class M_Report extends Model
         $tahun = (int) $tahun;
         $mulai = $tahun . '-07-01';
         $sampai = ($tahun + 1) . '-07-01';
-        $periode = $db->query("SELECT id_periode FROM setup_periode WHERE tahun_ajaran LIKE ? ORDER BY id_periode DESC LIMIT 1", [$tahun . '/%'])->getRowArray();
+        // Tarif dicatat per periode (semester): pilih periode tahun itu yang punya tarif, utamakan yang aktif
+        $periode = $db->query("SELECT p.id_periode FROM setup_periode p
+            WHERE p.tahun_ajaran LIKE ?
+            ORDER BY EXISTS (SELECT 1 FROM tbl_tarif_spp t WHERE t.periode = p.id_periode) DESC,
+                p.status_aktif = 'yes' DESC, p.id_periode DESC
+            LIMIT 1", [$tahun . '/%'])->getRowArray();
         $idPeriode = $periode['id_periode'] ?? '';
 
         $snapshot = 'tbl_ruangan_' . $tahun;

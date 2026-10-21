@@ -35,7 +35,7 @@ class M_Kelas extends Model
     public function dataPeriodeAktif()
     {
         $db = db_connect('arafah');
-        return $db->query("SELECT * FROM setup_periode WHERE status_aktif = 'yes' LIMIT 1")->getRowArray();
+        return $db->query("SELECT * FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1")->getRowArray();
     }
 
     // $id_kelas: '' = semua kelas, '-' = siswa yang belum punya kelas

@@ -66,7 +66,7 @@ class M_Chart extends Model
                     a.kodetransaksi = 'TDSPP' AND 
                     a.TANGGAL > '$tahunAjaran-06-30' and 
                     c.locked = 'no' and
-                    h.status_aktif = 'yes'
+                    h.id_periode = (SELECT id_periode FROM setup_periode WHERE status_aktif = 'yes' ORDER BY id_periode DESC LIMIT 1)
                     group by c.id_siswa
                     order by e.nama_kelas
         ) a GROUP by a.id_kelas;

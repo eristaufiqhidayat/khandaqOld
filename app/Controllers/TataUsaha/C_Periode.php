@@ -8,216 +8,95 @@ use App\Models\TataUsaha\M_Periode;
 
 class C_Periode extends BaseController
 {
+    private $semester = ['Ganjil' => '1', 'Genap' => '2'];
 
     public function  index($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = "";
-            #$monthyear = date('Y-m');
-        } else {
-            $monthyear = $this->request->getPost('monthyear');
-        }
+        $model = new M_Periode();
         $menu = new M_Menu();
-        $datamenu = $menu->listing();
-        $data = new M_Periode();
-        $dataperiode = $data->listing();
-        $db = db_connect('arafah');
-        foreach ($dataperiode as &$row) {
-            $row['jml_ruang'] = $db->table('tbl_ruangan_periode')
-                ->where('id_periode', $row['id_periode'])
-                ->countAllResults();
-        }
-        unset($row);
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
         $data = array(
-            'title'        => 'Data Menu',
+            'title'        => 'Periode Akademik',
             'menuAktip' => $menuAktip,
             'moduleAktip' => $moduleAktip,
-            'dataperiode'    => $dataperiode,
-            'monthyear' => $monthyear,
-            'menu'   =>  $datamenu,
-
-            'session' => $session
+            'dataperiode'    => $model->listing(),
+            'jmlSiswaAktif' => $model->jumlahSiswaAktif(),
+            'tahunSekarang' => (int) tahunajaran(),
+            'menu'   =>  $menu->listing(),
         );
         return view('TataUsaha/V_Periode', $data);
     }
-    public function cekPeriode($id_periode)
+
+    private function kembali($menuAktip, $moduleAktip)
     {
-        $db = db_connect('arafah');
-
-        $jumlah = $db->table('tbl_ruangan_periode')
-            ->where('id_periode', $id_periode)
-            ->countAllResults();
-
-        if ($jumlah > 0) {
-            session()->setFlashdata(
-                'success',
-                "Periode {$id_periode} sudah memiliki {$jumlah} data ruang."
-            );
-        } else {
-            session()->setFlashdata(
-                'error',
-                "Periode {$id_periode} BELUM memiliki data ruang."
-            );
-        }
-
-        return redirect()->back();
+        return redirect()->to(base_url('index.php/TataUsaha/Periode/index/' . $menuAktip . '/' . $moduleAktip));
     }
+
     public function  insert($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = date('Y-m');
-        } else {
-            $monthyear = $this->request->getPost('monthyear');
+        $model = new M_Periode();
+        $tahun = (int) $this->request->getPost('tahun');
+        $namaSemester = (string) $this->request->getPost('nama_semester');
+        if ($tahun < 2000 || $tahun > 2100 || !isset($this->semester[$namaSemester])) {
+            session()->setFlashdata('error', 'Pilih tahun ajaran dan semester.');
+            return $this->kembali($menuAktip, $moduleAktip);
         }
-
-        $data = new M_Periode();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
-        $validated =  $this->validate([
-            'nama_semester'     => 'required',
-            'tahun_ajaran'     => 'required',
-            'semester'     => 'required',
-            'status_aktif'     => 'required',
+        $tahunAjaran = $tahun . '/' . ($tahun + 1);
+        if ($model->sudahAda($tahunAjaran, $namaSemester)) {
+            session()->setFlashdata('error', "Periode $tahunAjaran $namaSemester sudah ada.");
+            return $this->kembali($menuAktip, $moduleAktip);
+        }
+        $model->tambah([
+            'tahun_ajaran'  => $tahunAjaran,
+            'nama_semester' => $namaSemester,
+            'semester'      => $this->semester[$namaSemester],
+            'status_aktif'  => 'no',
         ]);
-        if ($validated) {
-            $dataTambah = array(
-                'id_periode'    => $this->request->getVar('id_periode'),
-                'nama_semester'    => $this->request->getVar('nama_semester'),
-                'tahun_ajaran'    => $this->request->getVar('tahun_ajaran'),
-                'semester'    => $this->request->getVar('semester'),
-                'status_aktif'    => $this->request->getVar('status_aktif'),
-            );
-            $data->tambah($dataTambah);
-            $session->setFlashdata('sukses', 'Data Berhasil');
-            return redirect()->back()->with('success', 'Data Berhasi disimpan');
-        } else {
-            echo "error";
-        }
-        //return view('Transaksi/V_DataPengeluaran', $data);
+        session()->setFlashdata('success', "Periode $tahunAjaran $namaSemester ditambahkan (belum aktif).");
+        return $this->kembali($menuAktip, $moduleAktip);
     }
-    public function  update($menuAktip = '', $moduleAktip = '')
+
+    public function  aktifkan($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = date('Y-m');
+        $model = new M_Periode();
+        $periode = $model->detail($this->request->getPost('id_periode'));
+        if (!$periode) {
+            session()->setFlashdata('error', 'Periode tidak ditemukan.');
+        } elseif ($model->aktifkan($periode['id_periode'])) {
+            session()->setFlashdata('success', $periode['tahun_ajaran'] . ' ' . $periode['nama_semester'] . ' sekarang periode aktif. Lanjutkan dengan Proses ruang.');
         } else {
-            $monthyear = $this->request->getPost('monthyear');
+            session()->setFlashdata('error', 'Gagal mengganti periode aktif, tidak ada data yang berubah.');
         }
-
-        $data = new M_Periode();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
-        $validated =  $this->validate([
-            'id_periode'     => 'required',
-        ]);
-        if ($validated) {
-            $dataUpdate = array(
-                'id_periode'    => $this->request->getVar('id_periode'),
-                'nama_semester'    => $this->request->getVar('nama_semester'),
-                'tahun_ajaran'    => $this->request->getVar('tahun_ajaran'),
-                'semester'    => $this->request->getVar('semester'),
-                'status_aktif'    => $this->request->getVar('status_aktif'),
-            );
-            $data->edit($dataUpdate);
-            $session->setFlashdata('sukses', 'Data Berhasil di Edit');
-            return redirect()->to(base_url('index.php/TataUsaha/Periode/index/' . $menuAktip . "/" . $moduleAktip));
-        } else {
-            echo "error";
-        }
-        //return view('Transaksi/V_DataPengeluaran', $data);
+        return $this->kembali($menuAktip, $moduleAktip);
     }
+
     public function  delete($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        if (!$this->request->getPost('monthyear')) {
-            $monthyear = date('Y-m');
+        $model = new M_Periode();
+        $periode = $model->detail($this->request->getPost('id_periode'));
+        if (!$periode) {
+            session()->setFlashdata('error', 'Periode tidak ditemukan.');
+        } elseif ($periode['status_aktif'] === 'yes') {
+            session()->setFlashdata('error', 'Periode aktif tidak bisa dihapus.');
+        } elseif ($model->jumlahTerkait($periode['id_periode']) > 0) {
+            session()->setFlashdata('error', 'Periode masih punya data tarif, ruang, jadwal, nilai, atau siswa, jadi tidak bisa dihapus.');
         } else {
-            $monthyear = $this->request->getPost('monthyear');
+            $model->hapus($periode['id_periode']);
+            session()->setFlashdata('success', 'Periode ' . $periode['tahun_ajaran'] . ' ' . $periode['nama_semester'] . ' dihapus.');
         }
-
-        $data = new M_Periode();
-        $newdata = [
-            'monthyear'  => $monthyear
-        ];
-        $config = null;
-        $session = \Config\Services::session($config);
-        $session->set($newdata);
-        $validated =  $this->validate([
-            'id_periode'     => 'required',
-        ]);
-        if ($validated) {
-            $datadelete = array(
-                'id_periode'    => $this->request->getVar('id_periode'),
-            );
-            $data->hapus($datadelete);
-            $session->setFlashdata('sukses', 'Data Berhasil di Delete');
-            return redirect()->to(base_url('index.php/TataUsaha/Periode/index/' . $menuAktip . "/" . $moduleAktip));
-        } else {
-            echo "error";
-        }
-        //return view('Transaksi/V_DataPengeluaran', $data);
+        return $this->kembali($menuAktip, $moduleAktip);
     }
-    public function prosesRuang($id_periode)
+
+    public function prosesRuang($menuAktip = '', $moduleAktip = '')
     {
-        $db = db_connect('arafah');
-
-        // Cek apakah periode sudah diproses
-        $cek = $db->table('tbl_ruangan_periode')
-            ->where('id_periode', $id_periode)
-            ->countAllResults();
-
-        if ($cek > 0) {
-            session()->setFlashdata(
-                'error',
-                "Periode {$id_periode} sudah memiliki data ruang."
-            );
-
-            return redirect()->back();
+        $model = new M_Periode();
+        $periode = $model->detail($this->request->getPost('id_periode'));
+        if (!$periode || $periode['status_aktif'] !== 'yes') {
+            session()->setFlashdata('error', 'Proses ruang hanya untuk periode aktif.');
+            return $this->kembali($menuAktip, $moduleAktip);
         }
-
-        $sql = "
-            INSERT INTO tbl_ruangan_periode
-            (
-                id_siswa,
-                id_kelas,
-                id_periode
-            )
-            SELECT
-                r.id_siswa,
-                r.id_kelas,
-                ?
-            FROM tbl_ruangan r
-            INNER JOIN data_siswa s
-                ON s.id_siswa = r.id_siswa
-            WHERE s.locked = 'no'
-            ";
-
-
-        $db->query($sql, [$id_periode]);
-
-        $jumlah = $db->affectedRows();
-
-        session()->setFlashdata(
-            'success',
-            "{$jumlah} data ruang berhasil dibuat untuk periode {$id_periode}."
-        );
-
-        return redirect()->back();
+        $jumlah = $model->prosesRuang($periode['id_periode']);
+        session()->setFlashdata('success', "$jumlah siswa disalin ke " . $periode['tahun_ajaran'] . ' ' . $periode['nama_semester']
+            . '. Siswa yang sudah tercatat (misalnya dari Naik Kelas) tidak diubah.');
+        return $this->kembali($menuAktip, $moduleAktip);
     }
 }
