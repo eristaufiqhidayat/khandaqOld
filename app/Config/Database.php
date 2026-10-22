@@ -30,11 +30,13 @@ class Database extends Config
      *
      * @var array
      */
+    // Nilai asli (host, nama database, user, password) diisi di file .env di server,
+    // contoh: database.default.password = ...  (lihat file env). Jangan tulis password di sini.
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'lembaha1_igni399',
-        'password' => 'Sp)u38@1rd',
+        'password' => '',
         'database' => 'lembaha1_igni222',
         'DBDriver' => 'MySQLi',
         #'DBPrefix' => 's1',
@@ -60,7 +62,7 @@ class Database extends Config
         'DSN'         => '',
         'hostname'    => '127.0.0.1',
         'username'    => 'lembaha1_sino',
-        'password'    => 'sino240373',
+        'password'    => '',
         'database'    => 'lembaha1_sino',
         'DBDriver'    => 'MySQLi',
         #'DBPrefix'    => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
@@ -80,7 +82,7 @@ class Database extends Config
         'DSN'         => '',
         'hostname'    => '127.0.0.1',
         'username'    => 'lembaha1_daftarsiswa',
-        'password'    => 'Eris@240373',
+        'password'    => '',
         'database'    => 'lembaha1_daftar_siswa',
         'DBDriver'    => 'MySQLi',
         #'DBPrefix'    => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS

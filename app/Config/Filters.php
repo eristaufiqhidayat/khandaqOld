@@ -72,5 +72,11 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        // CSRF untuk halaman admin (Pengguna, Group & Hak Akses, Menu & Modul) dan ganti password
+        'csrf' => ['before' => [
+            'users/tambah/*', 'users/edit/*', 'users/reset/*', 'users/delete/*', 'users/cpassdo/*',
+            'groups/*', 'menu/*', 'module/*',
+        ]],
+    ];
 }

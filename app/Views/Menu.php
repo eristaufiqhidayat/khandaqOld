@@ -59,14 +59,14 @@
 
         ?><li class="<?php echo $navmenu; ?>">
               <a href="#" class="nav-link <?php echo $activem; ?>">
-                <i class="<?php echo $listmenu["micon"]; ?>"></i>
-                <p><?php echo $listmenu["nama_module"]; ?><i class="fas fa-angle-left right"></i></p>
+                <i class="<?= esc($listmenu["micon"], 'attr') ?>"></i>
+                <p><?= esc($listmenu["nama_module"]) ?><i class="fas fa-angle-left right"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url(); ?>/index.php/<?php echo $listmenu["path"]; ?>/<?php echo $listmenu["id_menu"]; ?>/<?php echo $listmenu["id_module"]; ?>" class="nav-link <?php echo $active; ?>">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="<?php echo $listmenu["icon"]; ?>"></i>
-                    <p><?php echo $listmenu["menu"]; ?></p>
+                  <a href="<?php echo base_url(); ?>/index.php/<?= esc($listmenu["path"], 'attr') ?>/<?php echo $listmenu["id_menu"]; ?>/<?php echo $listmenu["id_module"]; ?>" class="nav-link <?php echo $active; ?>">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="<?= esc($listmenu["icon"], 'attr') ?>"></i>
+                    <p><?= esc($listmenu["menu"]) ?></p>
                   </a>
                 </li>
               </ul>
@@ -75,9 +75,9 @@
             ?>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url(); ?>/index.php/<?php echo $listmenu["path"]; ?>/<?php echo $listmenu["id_menu"]; ?>/<?php echo $listmenu["id_module"]; ?>" class="nav-link <?php echo $active; ?>">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="<?php echo $listmenu["icon"]; ?>"></i>
-                    <p><?php echo $listmenu["menu"]; ?> </p>
+                  <a href="<?php echo base_url(); ?>/index.php/<?= esc($listmenu["path"], 'attr') ?>/<?php echo $listmenu["id_menu"]; ?>/<?php echo $listmenu["id_module"]; ?>" class="nav-link <?php echo $active; ?>">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="<?= esc($listmenu["icon"], 'attr') ?>"></i>
+                    <p><?= esc($listmenu["menu"]) ?> </p>
                   </a>
                 </li>
               </ul>

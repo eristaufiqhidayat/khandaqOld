@@ -1,2 +1,5 @@
 writable/logs/*
 !writable/logs/index.html
+
+# Konfigurasi server (password database dll), jangan di-commit
+.env

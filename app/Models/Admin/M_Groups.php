@@ -10,91 +10,64 @@ class M_Groups extends Model
     protected $returnType       = \App\Entities\EGroups::class;
     protected $primaryKey       = "id";
     protected $allowedFields    = ['id', 'name', 'description'];
+
+    // Daftar group beserta jumlah user-nya
     public function listing()
     {
-        $db = db_connect();
-        $query = $db->query('SELECT id, name,description FROM `' . $this->table . '`');
-        return $query->getResult('array');
+        return $this->db->table('auth_groups g')
+            ->select('g.id, g.name, g.description, COUNT(gu.user_id) as jml_user')
+            ->join('auth_groups_users gu', 'gu.group_id = g.id', 'left')
+            ->groupBy('g.id, g.name, g.description')
+            ->orderBy('g.description')
+            ->get()->getResultArray();
     }
-    public function listingGroupsUsers()
+
+    // id modul yang boleh dibuka group (permission_id = id_module)
+    public function modulGroup($group_id)
     {
-        $db = db_connect();
-        $query = $db->query('SELECT * 
-                            FROM auth_groups_users
-                            left join auth_groups on auth_groups.id = auth_groups_users.group_id
-                            left join users on users.id = auth_groups_users.user_id 
-                            ');
-        return $query->getResult('array');
+        $rows = $this->db->table('auth_groups_permissions')
+            ->select('permission_id')
+            ->where('group_id', $group_id)
+            ->get()->getResultArray();
+        return array_map('intval', array_column($rows, 'permission_id'));
     }
-    public function listingGroups()
+
+    // Simpan hak akses satu group saja. Permission yang belum ada dibuat dulu
+    // karena auth_permissions.id selalu sama dengan tbl_module.id_module.
+    public function simpanModulGroup($group_id, array $modul)
     {
-        $db = db_connect();
-        $query = $db->query('SELECT * 
-                            FROM auth_groups
-                            ');
-        return $query->getResult('array');
+        $modulAda = $this->db->table('tbl_module')->select('id_module, nama_module')
+            ->whereIn('id_module', $modul ?: [0])
+            ->get()->getResultArray();
+
+        $this->db->transStart();
+        $permission = new M_DataModule();
+        foreach ($modulAda as $m) {
+            $permission->pastikanPermission($m['id_module'], $m['nama_module']);
+        }
+        $this->db->table('auth_groups_permissions')->where('group_id', $group_id)->delete();
+        foreach ($modulAda as $m) {
+            $this->db->table('auth_groups_permissions')->insert([
+                'group_id'      => $group_id,
+                'permission_id' => $m['id_module'],
+            ]);
+        }
+        $this->db->transComplete();
+        return $this->db->transStatus();
     }
-    public function listingPermissionGroups()
+
+    public function jumlahUser($group_id)
     {
-        $db = db_connect();
-        $query = $db->query('SELECT 
-                             auth_permissions.id as auth_permissions_id, 
-                             auth_permissions.name as auth_permissions_name, 
-                             auth_permissions.description as auth_permissions_description, 
-                             group_id, 
-                             permission_id, 
-                             auth_groups.id as auth_groups_id, 
-                             auth_groups.name auth_groups_name, 
-                             auth_groups.description auth_groups_description 
-                             FROM `auth_groups_permissions`
-                             left join auth_permissions on auth_groups_permissions.permission_id = auth_permissions.id
-                             left join auth_groups on auth_groups_permissions.group_id = auth_groups.id
-                            ');
-        return $query->getResult('array');
+        return $this->db->table('auth_groups_users')->where('group_id', $group_id)->countAllResults();
     }
-    public function listingPermissions()
+
+    // Hapus group beserta hak aksesnya. Group yang masih punya user tidak boleh dihapus.
+    public function hapusGroup($group_id)
     {
-        $db = db_connect();
-        $query = $db->query('SELECT * FROM `auth_permissions`');
-        return $query->getResult('array');
-    }
-    public function listingPermissionGroups2()
-    {
-        $db = db_connect();
-        $query = $db->query('SELECT * FROM `auth_groups_permissions`');
-        return $query->getResult('array');
-    }
-    public function tambah($data)
-    {
-        $this->insert($data);
-    }
-    public function listingPermissionGroupsAdd($data)
-    {
-        $db = db_connect();
-        $db->table('auth_groups_permissions')->insert($data);
-    }
-    public function listingPermissionGroupsTrunc()
-    {
-        $db = db_connect();
-        $db->query('DELETE FROM auth_groups_permissions');
-    }
-    public function cekGroupUser($user_id)
-    {
-        $db = db_connect();
-        $sql = "select user_id from auth_groups_users where user_id = '$user_id'";
-        $query = $db->query($sql);
-        return $query->getRowArray();
-    }
-    public function rubahGroupUser($group_id, $user_id)
-    {
-        $db = db_connect();
-        $sql = "update auth_groups_users set group_id = '$group_id' where user_id = '$user_id'";
-        return $db->query($sql);
-    }
-    public function addGroupUser($group_id, $user_id)
-    {
-        $db = db_connect();
-        $sql = "insert into auth_groups_users (group_id,user_id) values('$group_id','$user_id')";
-        return $db->query($sql);
+        $this->db->transStart();
+        $this->db->table('auth_groups_permissions')->where('group_id', $group_id)->delete();
+        $this->db->table('auth_groups')->where('id', $group_id)->delete();
+        $this->db->transComplete();
+        return $this->db->transStatus();
     }
 }
