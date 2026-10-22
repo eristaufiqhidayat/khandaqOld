@@ -26,10 +26,10 @@ class M_Menu extends Model
                 left join auth_permissions on auth_permissions.id = auth_groups_permissions.permission_id
                 left join tbl_module on tbl_module.id_module = auth_permissions.id
                 left join tbl_menu on tbl_module.id_module = tbl_menu.id_module
-                where users.username = '" . user()->username . "'
+                where users.username = ?
                 order by tbl_module.id_module,tbl_menu.menu
                 ";
-                $query = $db->query($sql);
+                $query = $db->query($sql, [user()->username]);
                 return $query->getResult('array');
                 //return 'Ini adalah Method getData didalam ProductModel';
         }
@@ -44,9 +44,9 @@ class M_Menu extends Model
                 FROM `users` 
                 left join auth_groups_users on auth_groups_users.user_id = users.id 
                 left join auth_groups on auth_groups.id = auth_groups_users.group_id
-                where users.username = '" . user()->username . "'
+                where users.username = ?
                 ";
-                $query = $db->query($sql);
+                $query = $db->query($sql, [user()->username]);
                 return $query->getRowArray();
                 //return 'Ini adalah Method getData didalam ProductModel';
         }

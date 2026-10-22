@@ -172,36 +172,34 @@ $routes->add('/transaksi/pengeluaranFormulir/insertPengeluaran/(:any)/(:any)', '
 $routes->add('/transaksi/pengeluaranFormulir/updatePengeluaran/(:any)/(:any)', 'Transaksi\C_DataPengeluaranFormulir::updatePengeluaran/$1/$2');
 $routes->add('/transaksi/pengeluaranFormulir/deletePengeluaran/(:any)/(:any)', 'Transaksi\C_DataPengeluaranFormulir::deletePengeluaran/$1/$2');
 
-$routes->add('/users/readjson/(:any)/(:any)', 'Admin\C_Users::readjson/$1/$2');
-$routes->add('/users/groupjson/(:any)/(:any)', 'Admin\C_Users::groupjson/$1/$2');
-$routes->add('/users/usergroupjson/(:any)/(:any)', 'Admin\C_Users::usergroupjson/$1/$2');
-$routes->get('/users/index/(:any)/(:any)', 'Admin\C_Users::index/$1/$2', ['filter' => 'role:admin,superadmin']);
-$routes->add('/users/tambah/(:any)/(:any)', 'Admin\C_Users::tambah/$1/$2', ['filter' => 'role:admin,superadmin']);
-$routes->add('/users/edit/(:any)/(:any)', 'Admin\C_Users::edit/$1/$2');
-$routes->add('/users/delete/(:any)/(:any)', 'Admin\C_Users::hapus/$1/$2', ['filter' => 'role:admin,superadmin']);
-$routes->add('/users/cpass/(:any)/(:any)', 'Admin\C_Users::CPass/$1/$2');
-$routes->add('/users/cpassdo/(:any)/(:any)', 'Admin\C_Users::CPassDo/$1/$2');
+// ---- Admin: Pengguna, Group & Hak Akses, Menu & Modul (hanya group admin/superadmin) ----
+$admin = ['filter' => 'role:admin,superadmin'];
+$routes->add('/users/groupjson/(:any)/(:any)', 'Admin\C_Users::groupjson/$1/$2'); // dipakai halaman Formulir TU
+$routes->get('/users/index/(:any)/(:any)', 'Admin\C_Users::index/$1/$2', $admin);
+$routes->post('/users/tambah/(:any)/(:any)', 'Admin\C_Users::tambah/$1/$2', $admin);
+$routes->post('/users/edit/(:any)/(:any)', 'Admin\C_Users::edit/$1/$2', $admin);
+$routes->post('/users/reset/(:any)/(:any)', 'Admin\C_Users::resetPassword/$1/$2', $admin);
+$routes->post('/users/delete/(:any)/(:any)', 'Admin\C_Users::hapus/$1/$2', $admin);
+// Ganti password akun sendiri, untuk semua user yang login
+$routes->get('/users/cpass/(:any)/(:any)', 'Admin\C_Users::CPass/$1/$2');
+$routes->post('/users/cpassdo/(:any)/(:any)', 'Admin\C_Users::CPassDo/$1/$2');
 
-$routes->get('/groups/index/(:any)/(:any)', 'Admin\C_Groups::index/$1/$2');
-$routes->add('/groups/tambah/(:any)/(:any)', 'Admin\C_Groups::tambah/$1/$2');
-$routes->add('/groups/edit/', 'Admin\C_Groups::edit');
-$routes->add('/groups/delete/', 'Admin\C_Groups::delete');
+$routes->get('/groups/index/(:any)/(:any)', 'Admin\C_Groups::index/$1/$2', $admin);
+$routes->post('/groups/simpan/(:any)/(:any)', 'Admin\C_Groups::simpan/$1/$2', $admin);
+$routes->post('/groups/delete/(:any)/(:any)', 'Admin\C_Groups::delete/$1/$2', $admin);
+$routes->post('/groups/akses/(:any)/(:any)', 'Admin\C_Groups::simpanAkses/$1/$2', $admin);
 
-$routes->add('/groupsUsers/ubahGroupUser/(:any)/(:any)', 'Admin\C_Groups::ubahGroupUser/$1/$2');
-$routes->add('/groupsUsers/index/(:any)/(:any)', 'Admin\C_Groups::indexGroupsUsers/$1/$2');
-$routes->add('/groupsUsers/tambah/(:any)/(:any)', 'Admin\C_Groups::tambahGroupsUsers/$1/$2');
-$routes->add('/permissionGroups/index/(:any)/(:any)', 'Admin\C_Groups::indexPermissionGroups/$1/$2');
-$routes->add('/permissionGroups/tambah/(:any)/(:any)', 'Admin\C_Groups::permissionGroupsAdd/$1/$2');
+$routes->get('/menu/index/(:any)/(:any)', 'Admin\C_Menu::index/$1/$2', $admin);
+$routes->post('/menu/simpan/(:any)/(:any)', 'Admin\C_Menu::simpan/$1/$2', $admin);
+$routes->post('/menu/delete/(:any)/(:any)', 'Admin\C_Menu::delete/$1/$2', $admin);
+$routes->post('/module/simpan/(:any)/(:any)', 'Admin\C_Module::simpan/$1/$2', $admin);
+$routes->post('/module/delete/(:any)/(:any)', 'Admin\C_Module::delete/$1/$2', $admin);
 
-$routes->get('/menu/index/(:any)/(:any)', 'Admin\C_Menu::index/$1/$2');
-$routes->add('/menu/tambah/(:any)/(:any)', 'Admin\C_Menu::tambah/$1/$2');
-$routes->add('/menu/edit/(:any)/(:any)', 'Admin\C_Menu::edit/$1/$2');
-$routes->add('/menu/delete/(:any)/(:any)', 'Admin\C_Menu::delete/$1/$2');
-
-$routes->get('/module/index/(:any)/(:any)', 'Admin\C_Module::index/$1/$2');
-$routes->add('/module/tambah/(:any)/(:any)', 'Admin\C_Module::tambah/$1/$2');
-$routes->add('/module/edit/(:any)/(:any)', 'Admin\C_Module::edit/$1/$2');
-$routes->add('/module/delete/(:any)/(:any)', 'Admin\C_Module::delete/$1/$2');
+// Halaman lama, dialihkan ke halaman baru
+$routes->get('/groupsUsers/index/(:any)/(:any)', 'Admin\C_Groups::indexGroupsUsers/$1/$2', $admin);
+$routes->get('/permissionGroups/index/(:any)/(:any)', 'Admin\C_Groups::indexPermissionGroups/$1/$2', $admin);
+$routes->get('/module/index/(:any)/(:any)', 'Admin\C_Module::index/$1/$2', $admin);
+$routes->get('/permission/index/(:any)/(:any)', 'Admin\CPermission::index/$1/$2', $admin);
 
 $routes->get('/kelompokmatapelajaran/index/(:any)/(:any)', 'Nilai\CKelompokMataPelajaran::index/$1/$2');
 $routes->add('/kelompokmatapelajaran/tambah/(:any)/(:any)', 'Nilai\CKelompokMataPelajaran::tambah/$1/$2');
@@ -247,10 +245,6 @@ $routes->post('/nilaisiswa/tambah/', 'Nilai\CNilaiSiswa::tambah');
 $routes->post('/nilaisiswa/edit/', 'Nilai\CNilaiSiswa::edit');
 $routes->add('/nilaisiswa/indexguru/(:any)/(:any)', 'Nilai\CNilaiSiswa::indexguru/$1/$2');
 
-$routes->get('/permission/index/(:any)/(:any)', 'Admin\CPermission::index/$1/$2', ['filter' => 'role:admin']);
-$routes->post('/permission/tambah/(:any)/(:any)', 'Admin\CPermission::tambah/$1/$2', ['filter' => 'role:admin']);
-$routes->post('/permission/hapus/(:any)/(:any)', 'Admin\CPermission::hapus/$1/$2', ['filter' => 'role:admin']);
-$routes->post('/permission/edit/(:any)/(:any)', 'Admin\CPermission::rubah/$1/$2', ['filter' => 'role:admin']);
 
 $routes->get('/Whatsapp/Myapp/index/(:any)/(:any)', 'Whatsapp\C_Myapp::index/$1/$2');
 $routes->add('/Whatsapp/Myapp/readjsonMyapp/(:any)/(:any)', 'Whatsapp\C_Myapp::readjson/$1/$2');

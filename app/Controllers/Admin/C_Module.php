@@ -4,113 +4,71 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Admin\M_DataModule;
-use App\Models\M_Menu;
 
+// Aksi modul (kategori menu). Tampilannya ada di halaman Menu & Modul (C_Menu).
 class C_Module extends BaseController
 {
+    private $rules = [
+        'nama_module' => 'required|max_length[100]',
+        'icon'        => 'permit_empty|max_length[100]|regex_match[/^[A-Za-z0-9 \-]+$/]',
+    ];
+
+    // Halaman lama, sekarang digabung ke Menu & Modul
     public function index($menuAktip = '', $moduleAktip = '')
     {
-        helper('text');
-
-        $menu = new M_Menu();
-        $datamenu = $menu->listing();
-        $model = new M_DataModule();
-        $datamodule = $model->listing();
-
-        $data = array(
-            'title'        => 'Data Module',
-            'DataModule'    => $datamodule,
-            'menu'   =>  $datamenu,
-            'menuAktip' => $menuAktip,
-            'moduleAktip' => $moduleAktip
-        );
-        return view('Admin/V_DataModule', $data);
+        return redirect()->to(base_url('index.php/menu/index/' . (int) $menuAktip . '/' . (int) $moduleAktip));
     }
 
-    public function edit($menuAktip = '', $moduleAktip = '')
+    // Form tambah dan ubah memakai satu modal; id_module kosong berarti tambah
+    public function simpan($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        $menu = new M_Menu();
-        $datamenu = $menu->listing();
-        $session = \Config\Services::session();
-
-        $validated =  $this->validate([
-            'id_module'     => 'required'
-        ]);
-        if ($validated) {
-            $data = array(
-                'id_module'        => $this->request->getVar('id_module'),
-                'nama_module'    => $this->request->getVar('nama_module'),
-                'icon'    => $this->request->getVar('icon')
-            );
-            $model = new M_DataModule();
-            $model->edit($data);
-            $datamodule = $model->listing();
-            $data = array(
-                'title'        => 'Java Web Media - Spesialis Kursus Codeigniter',
-                'DataModule'    => $datamodule,
-                'content'    => 'home/index',
-                'menu'   =>  $datamenu
-            );
-            $session->setFlashdata('sukses', 'Data telah diedit');
-            return redirect()->to(base_url('index.php/module/index/' . $menuAktip . '/' . $moduleAktip));
-            // End masuk database
-        }
+        return $this->request->getPost('id_module') ? $this->edit($menuAktip, $moduleAktip) : $this->tambah($menuAktip, $moduleAktip);
     }
 
     public function tambah($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-        $session = \Config\Services::session();
-        $validated =  $this->validate([
-            'nama_module'     => 'required'
-        ]);
-        if ($validated) {
-            $data = array(
-                'nama_module'    => $this->request->getVar('nama_module'),
-                'icon'    => $this->request->getVar('icon')
-            );
-            $model = new M_DataModule();
-            if ($model->tambah($data)) {
-                $session->setFlashdata('error', 'Data gagal ditambah');
-            } else {
-                $session->setFlashdata('msg', 'Data sukses ditambah');
-            }
-
-            return redirect()->to(base_url('index.php/module/index/' . $menuAktip . '/' . $moduleAktip));
-            // End masuk database
-        } else {
-            $session->setFlashdata('error', 'Data Gagal disimpan Validasi Error');
-            return redirect()->to(base_url('index.php/module/index/' . $menuAktip . '/' . $moduleAktip));
+        if (!$this->validate($this->rules)) {
+            return $this->kembali($menuAktip, $moduleAktip, 'error', implode(' ', $this->validator->getErrors()));
         }
+        $model = new M_DataModule();
+        if (!$model->tambahModul(trim($this->request->getPost('nama_module')), $this->icon())) {
+            return $this->kembali($menuAktip, $moduleAktip, 'error', 'Modul gagal ditambah');
+        }
+        return $this->kembali($menuAktip, $moduleAktip, 'msg', 'Modul ditambah');
     }
+
+    public function edit($menuAktip = '', $moduleAktip = '')
+    {
+        $rules = $this->rules + ['id_module' => 'required|is_natural_no_zero'];
+        if (!$this->validate($rules)) {
+            return $this->kembali($menuAktip, $moduleAktip, 'error', implode(' ', $this->validator->getErrors()));
+        }
+        $model = new M_DataModule();
+        if (!$model->ubahModul((int) $this->request->getPost('id_module'), trim($this->request->getPost('nama_module')), $this->icon())) {
+            return $this->kembali($menuAktip, $moduleAktip, 'error', 'Modul gagal diubah');
+        }
+        return $this->kembali($menuAktip, $moduleAktip, 'msg', 'Modul diubah');
+    }
+
     public function delete($menuAktip = '', $moduleAktip = '')
     {
-        helper('form');
-
-        $session = \Config\Services::session();
-        $validated =  $this->validate([
-            'id_module'     => 'required',
-            'nama_module'     => 'required'
-        ]);
-        if ($validated) {
-            $data = array(
-                'id_module'        => $this->request->getVar('id_module'),
-                'nama_module'    => $this->request->getVar('nama_module'),
-                'icon'    => $this->request->getVar('icon')
-            );
-            $model = new M_DataModule();
-            if ($model->hapus($data)) {
-                $session->setFlashdata('error', 'Data gagal dihapus');
-            } else {
-                $session->setFlashdata('msg', 'Data sukses dihapus');
-            }
-
-            return redirect()->to(base_url('index.php/module/index/' . $menuAktip . '/' . $moduleAktip));
-            // End masuk database
-        } else {
-            $session->setFlashdata('error', 'Data Gagal disimpan Validasi Error');
-            return redirect()->to(base_url('index.php/module/index/' . $menuAktip . '/' . $moduleAktip));
+        if (!$this->validate(['id_module' => 'required|is_natural_no_zero'])) {
+            return $this->kembali($menuAktip, $moduleAktip, 'error', 'Modul tidak ditemukan');
         }
+        $model = new M_DataModule();
+        if (!$model->hapusModul((int) $this->request->getPost('id_module'))) {
+            return $this->kembali($menuAktip, $moduleAktip, 'error', 'Modul gagal dihapus');
+        }
+        return $this->kembali($menuAktip, $moduleAktip, 'msg', 'Modul beserta menu dan hak aksesnya dihapus');
+    }
+
+    private function icon()
+    {
+        return trim($this->request->getPost('icon') ?? '') ?: 'fas fa-folder';
+    }
+
+    private function kembali($menuAktip, $moduleAktip, $jenis, $pesan)
+    {
+        return redirect()->to(base_url('index.php/menu/index/' . (int) $menuAktip . '/' . (int) $moduleAktip))->with($jenis, $pesan);
     }
 }
