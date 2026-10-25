@@ -84,7 +84,7 @@ class C_Formulir extends BaseController
         if ($validated) {
             $image = $this->uploadFoto();
             if ($image === false) {
-                return $this->response->setStatusCode(400)->setJSON('File bukti transfer harus berupa gambar (jpg, jpeg, png)');
+                return $this->response->setStatusCode(400)->setJSON(PESAN_GAMBAR_DITOLAK);
             }
             $dataTambah = array(
                 'nama_siswa'    => $this->request->getVar('nama_siswa'),
@@ -135,7 +135,7 @@ class C_Formulir extends BaseController
         if ($validated) {
             $image = $this->uploadFoto();
             if ($image === false) {
-                return $this->response->setStatusCode(400)->setJSON('File bukti transfer harus berupa gambar (jpg, jpeg, png)');
+                return $this->response->setStatusCode(400)->setJSON(PESAN_GAMBAR_DITOLAK);
             }
             $dataUpdate = array(
                 'no'    => $this->request->getVar('no'),

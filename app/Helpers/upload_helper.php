@@ -3,7 +3,7 @@
 use CodeIgniter\HTTP\Files\UploadedFile;
 
 if (! defined('PESAN_GAMBAR_DITOLAK')) {
-    define('PESAN_GAMBAR_DITOLAK', 'File tidak disimpan: harus berupa gambar JPG, PNG, atau WEBP.');
+    define('PESAN_GAMBAR_DITOLAK', 'File tidak disimpan: harus berupa gambar JPG, PNG, atau WEBP dengan ukuran maksimal ' . ini_get('upload_max_filesize') . '.');
 }
 
 if (! function_exists('simpan_gambar_upload')) {

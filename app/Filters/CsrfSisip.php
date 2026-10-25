@@ -42,7 +42,7 @@ class CsrfSisip implements FilterInterface
             . 'var nama=' . json_encode(csrf_token(), self::JSON) . ',nilai=' . json_encode(csrf_hash(), self::JSON) . ',header=' . json_encode(csrf_header(), self::JSON) . ';'
             . <<<'JS'
 function perlu(method,url){if(/^(GET|HEAD|OPTIONS)$/i.test(method||'GET'))return false;try{return new URL(url,location.href).origin===location.origin}catch(e){return true}}
-function isiForm(f){if(!f||(f.getAttribute('method')||'').toLowerCase()!=='post')return;var el=f.querySelector('input[name="'+nama+'"]');if(!el){el=document.createElement('input');el.type='hidden';el.name=nama;f.appendChild(el)}el.value=nilai}
+function isiForm(f){if(!f||!perlu(f.getAttribute('method'),f.getAttribute('action')||location.href))return;var el=f.querySelector('input[name="'+nama+'"]');if(!el){el=document.createElement('input');el.type='hidden';el.name=nama;f.appendChild(el)}el.value=nilai}
 function isiSemua(a){if(!a||a.nodeType!==1)return;if(a.tagName==='FORM')isiForm(a);if(a.querySelectorAll)Array.prototype.forEach.call(a.querySelectorAll('form'),isiForm)}
 document.addEventListener('submit',function(e){isiForm(e.target)},true);
 isiSemua(document.documentElement);
