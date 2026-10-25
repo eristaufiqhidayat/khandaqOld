@@ -158,14 +158,11 @@ class C_Spp extends BaseController
         if ($validated) {
             $model = new M_DataTransaksiTabungan();
             $sppbln = sppbulan();
-            if ($_FILES["buktitransfer"]['name']) {
-                $img = $this->request->getFile('buktitransfer');
-                $array = explode('.', $_FILES["buktitransfer"]['name']);
-                $ext = end($array);
-                $image = "Bukti" . time() . "." . $ext;
-                $img->move(WRITEPATH . 'uploads', $image);
-            } else {
-                $image = "";
+            $image = simpan_gambar_upload($this->request->getFile('buktitransfer'), WRITEPATH . 'uploads', 'Bukti');
+            if ($image === false) {
+                return redirect()->to(base_url('index.php/TataUsaha/Spp/index/' . $menuAktip . '/' . $moduleAktip))
+                    ->with('id_siswa', $this->request->getPost('id_siswa'))
+                    ->with('peringatan', PESAN_GAMBAR_DITOLAK);
             }
             $dataTambah = array(
                 'notransaksi'    => $this->request->getVar('notransaksi'),
@@ -198,14 +195,9 @@ class C_Spp extends BaseController
         $config = null;
         $model = new M_DSB();
         $sppbln = sppbulan();
-        if ($this->request->getVar('buktitransfer')) {
-            $img = $this->request->getFile('buktitransfer');
-            $array = explode('.', $_FILES["buktitransfer"]['name']);
-            $ext = end($array);
-            $image = "Bukti" . time() . "." . $ext;
-            $img->move(WRITEPATH . 'uploads', $image);
-        } else {
-            $image = "";
+        $image = simpan_gambar_upload($this->request->getFile('buktitransfer'), WRITEPATH . 'uploads', 'Bukti');
+        if ($image === false) {
+            return $this->response->setStatusCode(400)->setBody(PESAN_GAMBAR_DITOLAK);
         }
         $dataTambah = array(
             'id_siswa'    => $this->request->getVar('id_siswa'),
@@ -229,14 +221,9 @@ class C_Spp extends BaseController
         $config = null;
         $model = new M_DU();
         $sppbln = sppbulan();
-        if ($this->request->getVar('buktitransfer')) {
-            $img = $this->request->getFile('buktitransfer');
-            $array = explode('.', $_FILES["buktitransfer"]['name']);
-            $ext = end($array);
-            $image = "Bukti" . time() . "." . $ext;
-            $img->move(WRITEPATH . 'uploads', $image);
-        } else {
-            $image = "";
+        $image = simpan_gambar_upload($this->request->getFile('buktitransfer'), WRITEPATH . 'uploads', 'Bukti');
+        if ($image === false) {
+            return $this->response->setStatusCode(400)->setBody(PESAN_GAMBAR_DITOLAK);
         }
         $dataTambah = array(
             'id_siswa'    => $this->request->getVar('id_siswa'),

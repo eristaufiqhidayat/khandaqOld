@@ -74,7 +74,7 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">Bukti Transfer</span>
-                                                    <input name="foto" type="file" class="form-control" id="recipient-name" value="">
+                                                    <input name="foto" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">Keterangan</span>

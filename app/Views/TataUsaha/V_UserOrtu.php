@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">photo</span>
-                                                    <input name="photo" type="file" class="form-control" id="recipient-name" value="">
+                                                    <input name="photo" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">User Name</span>
@@ -197,7 +197,7 @@
                                                             </div>
                                                             <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon3">photo</span>
-                                                                <input name="photo" type="file" class="form-control" id="recipient-name" value="">
+                                                                <input name="photo" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                             </div>
                                                             <div class="input-group mb-3">
                                                                 <span class="input-group-text" id="basic-addon3">User Name</span>

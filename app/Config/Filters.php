@@ -26,6 +26,9 @@ class Filters extends BaseConfig
         'login'      => \Myth\Auth\Filters\LoginFilter::class,
         'role'       => \Myth\Auth\Filters\RoleFilter::class,
         'permission' => \Myth\Auth\Filters\PermissionFilter::class,
+        'aksesmenu'  => \App\Filters\AksesMenu::class,
+        'csrfcek'    => \App\Filters\Csrf::class,
+        'csrfsisip'  => \App\Filters\CsrfSisip::class,
     ];
 
     /**
@@ -37,14 +40,12 @@ class Filters extends BaseConfig
     public $globals = [
         'before' => [
             'login',
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+            'aksesmenu', // hanya menu yang dimiliki group user yang bisa dibuka
+            'csrfcek',   // semua POST wajib membawa token CSRF
         ],
         'after' => [
+            'csrfsisip', // sisipkan token CSRF ke form & AJAX di setiap halaman
             'toolbar',
-            // 'honeypot',
-            // 'secureheaders',
         ],
     ];
 
@@ -72,11 +73,5 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [
-        // CSRF untuk halaman admin (Pengguna, Group & Hak Akses, Menu & Modul) dan ganti password
-        'csrf' => ['before' => [
-            'users/tambah/*', 'users/edit/*', 'users/reset/*', 'users/delete/*', 'users/cpassdo/*',
-            'groups/*', 'menu/*', 'module/*',
-        ]],
-    ];
+    public $filters = [];
 }

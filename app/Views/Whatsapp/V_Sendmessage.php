@@ -223,5 +223,5 @@
     var JSONLogger = '<?php echo site_url('Whatsapp/sendwa/readjsonlog') ?>';
     var JSONTemplate = '<?php echo site_url('Whatsapp/sendwa/readjsontemplate') ?>';
 </script>
-<script src="<?php echo BPATH; ?>/asset/js/sendwa.min.js"></script>
+<script src="<?php echo BPATH; ?>/asset/js/sendwa.min.js?v=20261026"></script>
 <?= $this->endSection() ?>

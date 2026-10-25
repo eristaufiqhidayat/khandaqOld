@@ -173,7 +173,7 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">Bukti Transfer</span>
-                                                    <input name="buktitransfer" type="file" class="form-control" id="recipient-name" value="">
+                                                    <input name="buktitransfer" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -216,7 +216,7 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">Bukti Transfer</span>
-                                                    <input name="buktitransfer" type="file" class="form-control" id="recipient-name" value="">
+                                                    <input name="buktitransfer" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -259,7 +259,7 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">Bukti Transfer</span>
-                                                    <input name="buktitransfer" type="file" class="form-control" id="recipient-name" value="">
+                                                    <input name="buktitransfer" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -611,7 +611,7 @@
 <script src="<?php echo BPATH; ?>/asset/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="<?php echo BPATH; ?>/asset/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?php echo BPATH; ?>/asset/plugins/sweetalert/sweetalert.min.js"></script>
-<script src="<?php echo BPATH; ?>/asset/js/VSpp.js"></script>
+<script src="<?php echo BPATH; ?>/asset/js/VSpp.js?v=20261026"></script>
 
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="<?php //echo BPATH; 

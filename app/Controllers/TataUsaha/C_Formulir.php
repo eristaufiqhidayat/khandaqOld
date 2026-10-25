@@ -84,7 +84,7 @@ class C_Formulir extends BaseController
         if ($validated) {
             $image = $this->uploadFoto();
             if ($image === false) {
-                return $this->response->setStatusCode(400)->setJSON('File bukti transfer harus berupa gambar (jpg, jpeg, png)');
+                return $this->response->setStatusCode(400)->setJSON(PESAN_GAMBAR_DITOLAK);
             }
             $dataTambah = array(
                 'nama_siswa'    => $this->request->getVar('nama_siswa'),
@@ -135,7 +135,7 @@ class C_Formulir extends BaseController
         if ($validated) {
             $image = $this->uploadFoto();
             if ($image === false) {
-                return $this->response->setStatusCode(400)->setJSON('File bukti transfer harus berupa gambar (jpg, jpeg, png)');
+                return $this->response->setStatusCode(400)->setJSON(PESAN_GAMBAR_DITOLAK);
             }
             $dataUpdate = array(
                 'no'    => $this->request->getVar('no'),
@@ -179,16 +179,6 @@ class C_Formulir extends BaseController
     // Simpan file bukti transfer; "" jika tidak ada file, false jika bukan gambar
     private function uploadFoto()
     {
-        $img = $this->request->getFile('foto');
-        if (!$img || !$img->isValid() || $img->hasMoved()) {
-            return "";
-        }
-        $ext = strtolower($img->getClientExtension());
-        if (!in_array($ext, ['jpg', 'jpeg', 'png'], true) || strpos($img->getMimeType(), 'image/') !== 0) {
-            return false;
-        }
-        $image = "Formulir" . time() . "." . $ext;
-        $img->move(FCPATH . 'uploads/formulir', $image);
-        return $image;
+        return simpan_gambar_upload($this->request->getFile('foto'), FCPATH . 'uploads/formulir', 'Formulir');
     }
 }

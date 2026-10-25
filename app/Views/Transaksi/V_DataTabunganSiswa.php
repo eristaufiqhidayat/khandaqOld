@@ -376,7 +376,7 @@ for ($i = 1; $i <= 12; $i++) {
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">Bukti Transfer</span>
-                                                    <input name="buktitransfer" type="file" class="form-control" id="recipient-name" value="">
+                                                    <input name="buktitransfer" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                 </div>
                                                 <div class="modal-footer" id="savenonspp1">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -436,7 +436,7 @@ for ($i = 1; $i <= 12; $i++) {
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon3">Bukti Transfer</span>
-                                                    <input name="buktitransfer" type="file" class="form-control" id="recipient-name" value="">
+                                                    <input name="buktitransfer" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" id="recipient-name" value="">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
