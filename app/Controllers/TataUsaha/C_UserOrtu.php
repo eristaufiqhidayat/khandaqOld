@@ -166,14 +166,10 @@ class C_UserOrtu extends BaseController
             'username'     => 'required'
         ]);
         if ($validated) {
-            if ($_FILES["photo"]['name']) {
-                $img = $this->request->getFile('photo');
-                $array = explode('.', $_FILES["photo"]['name']);
-                $ext = end($array);
-                $image = "FotoOrtu" . time() . "." . $ext;
-                $img->move('../public/uploads/photoortu', $image);
-            } else {
-                $image = "";
+            $image = simpan_gambar_upload($this->request->getFile('photo'), FCPATH . 'uploads/photoortu', 'FotoOrtu');
+            if ($image === false) {
+                return redirect()->to(base_url('index.php/TataUsaha/UserOrtu/index/' . $menuAktip . '/' . $moduleAktip))
+                    ->with('peringatan', PESAN_GAMBAR_DITOLAK);
             }
 
             $data = array(
@@ -197,6 +193,9 @@ class C_UserOrtu extends BaseController
                 'force_pass_reset' => '0',
                 'ortu' => '1'
             );
+            if ($image === '') {
+                unset($data['photo']); // tidak upload foto baru: foto lama tetap dipakai
+            }
             $model = new M_Ortu();
             if ($model->rubah($this->request->getPost('id_orangtua'), $data)) {
                 $model = new M_Users();
@@ -231,14 +230,10 @@ class C_UserOrtu extends BaseController
             'username'     => 'required'
         ]);
         if ($validated) {
-            if ($_FILES["photo"]['name']) {
-                $img = $this->request->getFile('photo');
-                $array = explode('.', $_FILES["photo"]['name']);
-                $ext = end($array);
-                $image = "FotoOrtu" . time() . "." . $ext;
-                $img->move('../public/uploads/photoortu', $image);
-            } else {
-                $image = "";
+            $image = simpan_gambar_upload($this->request->getFile('photo'), FCPATH . 'uploads/photoortu', 'FotoOrtu');
+            if ($image === false) {
+                return redirect()->to(base_url('index.php/TataUsaha/UserOrtu/index/' . $menuAktip . '/' . $moduleAktip))
+                    ->with('peringatan', PESAN_GAMBAR_DITOLAK);
             }
             $data = array(
                 'id_orangtua' => $this->request->getPost('id_orangtua'),

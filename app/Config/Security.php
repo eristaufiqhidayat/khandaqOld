@@ -69,10 +69,12 @@ class Security extends BaseConfig
      * Expiration time for Cross Site Request Forgery protection cookie.
      *
      * Defaults to two hours (in seconds).
+     * 0 = berlaku sampai browser ditutup, supaya halaman yang dibuka lama
+     * (misalnya di meja TU seharian) tidak tiba-tiba gagal menyimpan.
      *
      * @var int
      */
-    public $expires = 7200;
+    public $expires = 0;
 
     /**
      * --------------------------------------------------------------------------
@@ -80,10 +82,12 @@ class Security extends BaseConfig
      * --------------------------------------------------------------------------
      *
      * Regenerate CSRF Token on every submission.
+     * Dimatikan: banyak halaman mengirim beberapa AJAX dari satu halaman
+     * tanpa memuat ulang, jadi token harus tetap sama selama sesi.
      *
      * @var bool
      */
-    public $regenerate = true;
+    public $regenerate = false;
 
     /**
      * --------------------------------------------------------------------------

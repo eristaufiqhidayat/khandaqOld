@@ -12,7 +12,7 @@ function addDataDSB() {
   if (cek_null_entriDSB() == true) {
     $.ajax({
       url: addDSBUrl,
-      type: "get",
+      type: "post",
       data: $("#modalEntriDSB").serialize(),
       success: (a) => {
         Swal.fire("Sukses", "Sukses Menambahkan Data", "success"),
@@ -33,7 +33,7 @@ function addDataDU() {
   if (cek_null_entriDU() == true) {
     $.ajax({
       url: addDUUrl,
-      type: "get",
+      type: "post",
       data: $("#modalEntriDU").serialize(),
       success: (a) => {
         Swal.fire("Sukses", "Sukses Menambahkan Data", "success"),
@@ -171,7 +171,7 @@ function remove(e, idsiswa, b) {
     if (isConfirm) {
       $.ajax({
         url: url,
-        type: "GET",
+        type: "POST",
         dataType: "JSON",
         data: {
           no: e,

@@ -227,14 +227,9 @@ class C_DataTransaksiTabungan extends BaseController
             $model = new M_DataTransaksiTabungan();
             $sppbln = sppbulan();
 
-            if ($file && $file->isValid() && !$file->hasMoved()) {
-
-                $ext = $file->getExtension();
-                $image = 'Bukti' . time() . '.' . $ext;
-
-                $file->move(FCPATH . 'uploads/tabungan', $image);
-            } else {
-                $image = '';
+            $image = simpan_gambar_upload($file, FCPATH . 'uploads/tabungan', 'Bukti');
+            if ($image === false) {
+                return redirect()->back()->with('peringatan', PESAN_GAMBAR_DITOLAK);
             }
             $dataTambah = array(
                 'notransaksi'    => $this->request->getVar('notransaksi'),
@@ -325,14 +320,9 @@ class C_DataTransaksiTabungan extends BaseController
         if ($validated) {
             $model = new M_DataTransaksiTabungan();
 
-            if ($file && $file->isValid() && !$file->hasMoved()) {
-
-                $ext = $file->getExtension();
-                $image = 'Bukti' . time() . '.' . $ext;
-
-                $file->move(FCPATH . 'uploads/tabungan', $image);
-            } else {
-                $image = '';
+            $image = simpan_gambar_upload($file, FCPATH . 'uploads/tabungan', 'Bukti');
+            if ($image === false) {
+                return redirect()->back()->with('peringatan', PESAN_GAMBAR_DITOLAK);
             }
             $dataTambah = array(
                 'notransaksi'    => $this->request->getVar('notransaksi'),
