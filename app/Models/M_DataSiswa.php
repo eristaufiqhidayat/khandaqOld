@@ -254,21 +254,25 @@ class M_DataSiswa extends Model
 	/**
 	 * Kelengkapan data siswa: daftar [label, terisi] yang sama dengan panel di form.
 	 */
-	public static function kelengkapan(array $s): array
+	public static function kelengkapan(array $s, bool $denganFoto = true): array
 	{
 		$isi = static function ($v) {
 			return trim((string) $v) !== '' && $v !== '0000-00-00';
 		};
-
-		return [
-			['Nama lengkap', $isi($s['nama_siswa'] ?? '')],
-			['Jenis kelamin', $isi($s['kelamin'] ?? '')],
-			['Tanggal lahir', $isi($s['tanggal_lahir'] ?? '')],
-			['NISN', $isi($s['nisn'] ?? '')],
-			['Nama orang tua', $isi($s['nama_ortu'] ?? '')],
-			['No. HP / WhatsApp', $isi($s['telpon_siswa'] ?? '')],
-			['Foto siswa', ! empty($s['ada_foto'])],
+		// [label, terisi, nama isian di form]
+		$hasil = [
+			['Nama lengkap', $isi($s['nama_siswa'] ?? ''), 'nama_siswa'],
+			['Jenis kelamin', $isi($s['kelamin'] ?? ''), 'kelamin'],
+			['Tanggal lahir', $isi($s['tanggal_lahir'] ?? ''), 'tanggal_lahir'],
+			['NISN', $isi($s['nisn'] ?? ''), 'nisn'],
+			['Nama orang tua', $isi($s['nama_ortu'] ?? ''), 'nama_ortu'],
+			['No. HP / WhatsApp', $isi($s['telpon_siswa'] ?? ''), 'telpon_siswa'],
 		];
+		if ($denganFoto) {
+			$hasil[] = ['Foto siswa', ! empty($s['ada_foto']), 'image'];
+		}
+
+		return $hasil;
 	}
 
 	/** 'L' / 'P' dari isian lama yang bentuknya bermacam-macam (L, l, Laki-laki, Perempuan, ...). */

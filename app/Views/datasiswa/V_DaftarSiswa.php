@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\C_DataSiswa;
 use App\Models\M_DataSiswa;
 
 $dasar = 'index.php/datasiswa/';
@@ -109,7 +110,7 @@ $sampai = min($total, $halaman * $perHalaman);
                   <td>
                     <div style="display: flex; align-items: center; gap: 12px">
                       <span class="ds-avatar" style="position: relative; background: <?= $warna[0] ?>; color: <?= $warna[1] ?>" aria-hidden="true"><?= esc($inisial) ?>
-                        <?php if ($s['ada_foto']) : ?>
+                        <?php if (C_DataSiswa::TAMPIL_FOTO && $s['ada_foto']) : ?>
                           <img class="ds-avatar" style="position: absolute; inset: 0" src="<?= esc(base_url($dasar . 'foto/' . $id) . '?ukuran=kecil&v=' . (int) $s['foto_v'], 'attr') ?>" alt="" loading="lazy" width="40" height="40" onerror="this.remove()">
                         <?php endif ?>
                       </span>
@@ -141,7 +142,7 @@ $sampai = min($total, $halaman * $perHalaman);
                         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="#334155"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
                       </summary>
                       <div class="ds-menu-isi">
-                        <?php if ($s['ada_foto']) : ?>
+                        <?php if (C_DataSiswa::TAMPIL_FOTO && $s['ada_foto']) : ?>
                           <a href="<?= esc(base_url($dasar . 'foto/' . $id), 'attr') ?>" target="_blank" rel="noopener">Lihat foto</a>
                         <?php endif ?>
                         <form method="post" action="<?= esc(base_url($dasar . 'hapus/' . $mm), 'attr') ?>" data-konfirmasi="<?= esc('Hapus data ' . $s['nama_siswa'] . '? Data yang dihapus tidak bisa dikembalikan. Untuk siswa yang lulus atau pindah, sebaiknya ubah statusnya menjadi Tidak aktif.', 'attr') ?>">
