@@ -108,11 +108,11 @@ $sampai = min($total, $halaman * $perHalaman);
                 <tr>
                   <td>
                     <div style="display: flex; align-items: center; gap: 12px">
-                      <?php if ($s['ada_foto']) : ?>
-                        <img class="ds-avatar" src="<?= esc(base_url($dasar . 'foto/' . $id), 'attr') ?>" alt="" loading="lazy" width="40" height="40">
-                      <?php else : ?>
-                        <span class="ds-avatar" style="background: <?= $warna[0] ?>; color: <?= $warna[1] ?>" aria-hidden="true"><?= esc($inisial) ?></span>
-                      <?php endif ?>
+                      <span class="ds-avatar" style="position: relative; background: <?= $warna[0] ?>; color: <?= $warna[1] ?>" aria-hidden="true"><?= esc($inisial) ?>
+                        <?php if ($s['ada_foto']) : ?>
+                          <img class="ds-avatar" style="position: absolute; inset: 0" src="<?= esc(base_url($dasar . 'foto/' . $id), 'attr') ?>" alt="" loading="lazy" width="40" height="40" onerror="this.remove()">
+                        <?php endif ?>
+                      </span>
                       <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
                         <a class="ds-nama" href="<?= esc($urlUbah, 'attr') ?>"><?= esc($s['nama_siswa']) ?></a>
                         <span class="ds-kecil">NIS <?= esc($s['nis'] ?: '—') ?> · NISN <?= esc($s['nisn'] ?: '—') ?></span>

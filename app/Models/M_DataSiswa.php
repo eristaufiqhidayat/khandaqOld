@@ -270,8 +270,14 @@ class M_DataSiswa extends Model
 	/** 'L' / 'P' dari isian lama yang bentuknya bermacam-macam (L, l, Laki-laki, Perempuan, ...). */
 	public static function kodeKelamin($kelamin): string
 	{
-		$k = strtoupper(substr(trim((string) $kelamin), 0, 1));
+		$k = strtolower(trim((string) $kelamin));
+		if (in_array($k, ['l', 'lk', 'laki', 'laki-laki', 'laki laki', 'lelaki', 'pria', 'putra', 'm', 'male'], true)) {
+			return 'L';
+		}
+		if (in_array($k, ['p', 'pr', 'pr.', 'perempuan', 'wanita', 'putri', 'f', 'female'], true)) {
+			return 'P';
+		}
 
-		return in_array($k, ['L', 'P'], true) ? $k : '';
+		return '';
 	}
 }

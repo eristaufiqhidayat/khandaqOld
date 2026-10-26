@@ -168,7 +168,17 @@ class C_DataSiswa extends BaseController
         if ($id <= 0 || ! $model->dataForm($id)) {
             return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip))->with('peringatan', 'Data siswa tidak ditemukan.');
         }
-        if (! $this->validate($this->aturan())) {
+        // Isian lama yang tidak diubah tidak dicek ulang, supaya data lama yang
+        // formatnya tidak baku (NISN "-", email "-", dsb.) tidak menghalangi simpan.
+        $lama   = $model->dataForm($id);
+        $aturan = $this->aturan();
+        foreach (['nis', 'nisn', 'email', 'telpon_siswa', 'id_periode', 'tanggal_lahir', 'tanggal_masuk'] as $kolom) {
+            $isian = trim((string) $this->request->getPost($kolom));
+            if ($isian === trim((string) $lama[$kolom]) || ($kolom === 'telpon_siswa' && $this->rapikanHp($isian) === trim((string) $lama[$kolom]))) {
+                unset($aturan[$kolom]);
+            }
+        }
+        if (! $this->validate($aturan)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
         $foto = baca_gambar_upload($this->request->getFile('image'));
@@ -267,8 +277,8 @@ class C_DataSiswa extends BaseController
                 'errors' => ['valid_email' => 'Format email tidak benar, contoh: nama@contoh.com.'],
             ],
             'telpon_siswa' => [
-                'rules'  => 'permit_empty|regex_match[/^[0-9 +\-]{6,20}$/]',
-                'errors' => ['regex_match' => 'No. HP hanya berisi angka, contoh: 812 3456 7890.'],
+                'rules'  => 'permit_empty|max_length[50]',
+                'errors' => ['max_length' => 'No. HP terlalu panjang.'],
             ],
             'tanggal_lahir' => [
                 'rules'  => 'permit_empty|regex_match[/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/]',
@@ -296,17 +306,18 @@ class C_DataSiswa extends BaseController
         return $data;
     }
 
-    /** Simpan No. HP dengan awalan 0 (0812...), dari isian "812 ...", "0812..." atau "+62 812...". */
+    /**
+     * Nomor seluler disimpan dengan awalan 0 (0812...), dari isian "812 ...",
+     * "0812-..." atau "+62 812...". Isian lain (telepon rumah, dua nomor, ada
+     * catatan) disimpan apa adanya supaya tidak berubah tanpa disadari.
+     */
     private function rapikanHp(string $hp): string
     {
-        $angka = preg_replace('/\D+/', '', $hp);
-        if ($angka === '') {
-            return '';
-        }
-        if (strpos($angka, '62') === 0) {
-            $angka = substr($angka, 2);
+        $hp = trim($hp);
+        if (preg_match('/^(?:\+?62|0)?(8[0-9]{7,12})$/', preg_replace('/[\s\-.]/', '', $hp), $m)) {
+            return '0' . $m[1];
         }
 
-        return $angka[0] === '0' ? $angka : '0' . $angka;
+        return $hp;
     }
 }

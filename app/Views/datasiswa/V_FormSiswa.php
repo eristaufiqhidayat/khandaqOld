@@ -7,7 +7,7 @@ $mm    = $menuAktip . '/' . $moduleAktip;
 
 // Nilai isian: isian sebelumnya (kalau gagal validasi), atau data siswa
 $nilai = static function (string $kolom) use ($siswa) {
-    $lama = old($kolom);
+    $lama = old($kolom, null, false); // mentah; di-escape saat ditampilkan
 
     return (string) ($lama !== null ? $lama : ($siswa[$kolom] ?? ''));
 };
@@ -26,9 +26,12 @@ $descGalat = static function (string $kolom) use ($errors) {
     return isset($errors[$kolom]) ? ' aria-invalid="true" aria-describedby="galat-' . esc($kolom, 'attr') . '"' : '';
 };
 
-// No. HP ditampilkan tanpa awalan 0 / 62 karena kotaknya sudah berawalan +62
-$hp = preg_replace('/\D+/', '', $nilai('telpon_siswa'));
-$hp = preg_replace('/^(62|0)/', '', $hp);
+// No. HP seluler ditampilkan tanpa awalan 0 / 62 karena kotaknya sudah berawalan +62.
+// Isian lama yang bukan nomor seluler (telepon rumah, dua nomor, ada catatan) ditampilkan apa adanya.
+$hp = $nilai('telpon_siswa');
+if (preg_match('/^(?:\+?62|0)?(8[0-9]{7,12})$/', preg_replace('/[\s\-.]/', '', $hp), $m)) {
+    $hp = $m[1];
+}
 
 $judul    = $baru ? 'Tambah Data Siswa' : 'Ubah Data Siswa';
 $aksiForm = base_url($dasar . ($baru ? 'tambah/' : 'edit/') . $mm);
