@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\C_DataSiswa;
 use App\Models\M_DataSiswa;
 
 $dasar = 'index.php/datasiswa/';
@@ -35,7 +36,7 @@ if (preg_match('/^(?:\+?62|0)?(8[0-9]{7,12})$/', preg_replace('/[\s\-.]/', '', $
 
 $judul    = $baru ? 'Tambah Data Siswa' : 'Ubah Data Siswa';
 $aksiForm = base_url($dasar . ($baru ? 'tambah/' : 'edit/') . $mm);
-$adaFoto  = ! $baru && ! empty($siswa['ada_foto']);
+$adaFoto  = C_DataSiswa::TAMPIL_FOTO && ! $baru && ! empty($siswa['ada_foto']);
 $status   = [
     'baru' => ['Siswa baru', 'Pendaftar tahun ini'],
     'no'   => ['Aktif', 'Sudah masuk kelas'],
@@ -44,8 +45,7 @@ $status   = [
 $cek = M_DataSiswa::kelengkapan(array_merge($siswa, [
     'nama_siswa' => $nilai('nama_siswa'), 'kelamin' => $nilai('kelamin'), 'tanggal_lahir' => $nilai('tanggal_lahir'),
     'nisn' => $nilai('nisn'), 'nama_ortu' => $nilai('nama_ortu'), 'telpon_siswa' => $nilai('telpon_siswa'),
-]));
-$kunciCek = ['nama_siswa', 'kelamin', 'tanggal_lahir', 'nisn', 'nama_ortu', 'telpon_siswa', 'image'];
+]), C_DataSiswa::TAMPIL_FOTO);
 ?>
 <?= $this->extend('Views\layout.php') ?>
 
@@ -238,7 +238,7 @@ $kunciCek = ['nama_siswa', 'kelamin', 'tanggal_lahir', 'nisn', 'nama_ortu', 'tel
                 <input type="checkbox" name="hapus_foto" value="1" id="hapus_foto"> Hapus foto yang sekarang
               </label>
             <?php endif ?>
-            <span class="ds-bantu">Foto tegak, latar polos.</span>
+            <span class="ds-bantu"><?= (! C_DataSiswa::TAMPIL_FOTO && ! $baru) ? 'Foto yang tersimpan tidak ditampilkan di sini. Pilih file hanya bila ingin mengganti fotonya.' : 'Foto tegak, latar polos.' ?></span>
           </section>
 
           <section class="ds-kartu ds-bagian" style="padding: 20px; gap: 12px" aria-labelledby="h-cek">
@@ -248,8 +248,8 @@ $kunciCek = ['nama_siswa', 'kelamin', 'tanggal_lahir', 'nisn', 'nama_ortu', 'tel
             </div>
             <div class="ds-bar" style="width: 100%; height: 8px"><div id="barCek" style="height: 8px; background: #0F766E; width: <?= (int) round(count(array_filter(array_column($cek, 1))) / count($cek) * 100) ?>%"></div></div>
             <ul class="ds-cek" id="daftarCek">
-              <?php foreach ($cek as $i => [$label, $ok]) : ?>
-                <li class="<?= $ok ? 'ok' : '' ?>" data-kolom="<?= $kunciCek[$i] ?>"><span aria-hidden="true">✓</span><?= esc($label) ?><span class="ds-tersembunyi"><?= $ok ? '(sudah diisi)' : '(belum diisi)' ?></span></li>
+              <?php foreach ($cek as [$label, $ok, $kolom]) : ?>
+                <li class="<?= $ok ? 'ok' : '' ?>" data-kolom="<?= $kolom ?>"><span aria-hidden="true">✓</span><?= esc($label) ?><span class="ds-tersembunyi"><?= $ok ? '(sudah diisi)' : '(belum diisi)' ?></span></li>
               <?php endforeach ?>
             </ul>
             <p class="ds-bantu" style="margin: 0">Data yang belum lengkap tetap bisa disimpan dan dilengkapi nanti.</p>
