@@ -48,6 +48,10 @@ $routes->post('/transaksi/KasBankTabungan/update/(:any)/(:any)', 'Transaksi\C_Ka
 $routes->post('/transaksi/KasBankTabungan/delete/(:any)/(:any)', 'Transaksi\C_KasBankTabungan::delete/$1/$2');
 
 $routes->get('/datasiswa/index/(:any)/(:any)', 'C_DataSiswa::index/$1/$2');
+$routes->get('/datasiswa/tambah/(:any)/(:any)', 'C_DataSiswa::tambahForm/$1/$2');
+$routes->get('/datasiswa/ubah/(:any)/(:any)/(:num)', 'C_DataSiswa::ubahForm/$1/$2/$3');
+$routes->get('/datasiswa/ekspor/(:any)/(:any)', 'C_DataSiswa::ekspor/$1/$2');
+$routes->get('/datasiswa/foto/(:num)', 'C_DataSiswa::foto/$1');
 $routes->post('/datasiswa/edit/(:any)/(:any)', 'C_DataSiswa::edit/$1/$2');
 $routes->post('/datasiswa/tambah/(:any)/(:any)', 'C_DataSiswa::tambah/$1/$2');
 $routes->post('/datasiswa/hapus/(:any)/(:any)', 'C_DataSiswa::hapus/$1/$2');
