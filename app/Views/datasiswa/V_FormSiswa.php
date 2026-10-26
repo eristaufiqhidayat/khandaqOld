@@ -36,7 +36,7 @@ if (preg_match('/^(?:\+?62|0)?(8[0-9]{7,12})$/', preg_replace('/[\s\-.]/', '', $
 
 $judul    = $baru ? 'Tambah Data Siswa' : 'Ubah Data Siswa';
 $aksiForm = base_url($dasar . ($baru ? 'tambah/' : 'edit/') . $mm);
-$adaFoto  = C_DataSiswa::TAMPIL_FOTO && ! $baru && ! empty($siswa['ada_foto']);
+$adaFoto  = C_DataSiswa::TAMPIL_FOTO_UBAH && ! $baru && ! empty($siswa['ada_foto']);
 $status   = [
     'baru' => ['Siswa baru', 'Pendaftar tahun ini'],
     'no'   => ['Aktif', 'Sudah masuk kelas'],
@@ -45,7 +45,7 @@ $status   = [
 $cek = M_DataSiswa::kelengkapan(array_merge($siswa, [
     'nama_siswa' => $nilai('nama_siswa'), 'kelamin' => $nilai('kelamin'), 'tanggal_lahir' => $nilai('tanggal_lahir'),
     'nisn' => $nilai('nisn'), 'nama_ortu' => $nilai('nama_ortu'), 'telpon_siswa' => $nilai('telpon_siswa'),
-]), C_DataSiswa::TAMPIL_FOTO);
+]), C_DataSiswa::TAMPIL_FOTO_UBAH);
 ?>
 <?= $this->extend('Views\layout.php') ?>
 
@@ -238,7 +238,7 @@ $cek = M_DataSiswa::kelengkapan(array_merge($siswa, [
                 <input type="checkbox" name="hapus_foto" value="1" id="hapus_foto"> Hapus foto yang sekarang
               </label>
             <?php endif ?>
-            <span class="ds-bantu"><?= (! C_DataSiswa::TAMPIL_FOTO && ! $baru) ? 'Foto yang tersimpan tidak ditampilkan di sini. Pilih file hanya bila ingin mengganti fotonya.' : 'Foto tegak, latar polos.' ?></span>
+            <span class="ds-bantu"><?= (! C_DataSiswa::TAMPIL_FOTO_UBAH && ! $baru) ? 'Foto yang tersimpan tidak ditampilkan di sini. Pilih file hanya bila ingin mengganti fotonya.' : 'Foto tegak, latar polos.' ?></span>
           </section>
 
           <section class="ds-kartu ds-bagian" style="padding: 20px; gap: 12px" aria-labelledby="h-cek">
