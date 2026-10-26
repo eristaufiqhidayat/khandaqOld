@@ -134,4 +134,144 @@ class M_DataSiswa extends Model
 		$this->where('id_siswa', $data['id_siswa']);
 		$this->delete();
 	}
+
+	// ------------------------------------------------------------------
+	// Halaman Data Siswa (daftar + form). Semua query memakai binding.
+	// ------------------------------------------------------------------
+
+	/** Kolom yang diisi lewat form Tambah/Ubah Data Siswa. */
+	public const KOLOM_FORM = [
+		'nama_siswa', 'nis', 'nisn', 'unik', 'kelamin', 'tempat_lahir', 'tanggal_lahir',
+		'nama_ortu', 'telpon_siswa', 'email', 'alamat_siswa', 'locked', 'id_periode',
+		'tanggal_masuk', 'photo', 'keterangan',
+	];
+
+	/** Status siswa: nilai kolom locked => label. */
+	public const STATUS = ['baru' => 'Siswa baru', 'no' => 'Aktif', 'yes' => 'Tidak aktif'];
+
+	/**
+	 * Query dasar daftar siswa + kelas terakhir. Filter: q (nama/NIS/NISN),
+	 * kelas (id_kelas), status (baru/no/yes).
+	 */
+	private function queryDaftar(array $filter, bool $pakaiStatus = true)
+	{
+		$db = db_connect($this->DBGroup);
+		$builder = $db->table('data_siswa s')
+			->join('(SELECT id_siswa, MAX(id_kelas) id_kelas FROM tbl_ruangan GROUP BY id_siswa) r', 'r.id_siswa = s.id_siswa', 'left', false)
+			->join('setup_kelas k', 'k.id_kelas = r.id_kelas', 'left');
+
+		$q = trim((string) ($filter['q'] ?? ''));
+		if ($q !== '') {
+			$builder->groupStart()
+				->like('s.nama_siswa', $q)
+				->orLike('s.nis', $q)
+				->orLike('s.nisn', $q)
+				->groupEnd();
+		}
+		if (! empty($filter['kelas'])) {
+			$builder->where('r.id_kelas', (int) $filter['kelas']);
+		}
+		if ($pakaiStatus && isset(self::STATUS[$filter['status'] ?? ''])) {
+			$builder->where('s.locked', $filter['status']);
+		}
+
+		return $builder;
+	}
+
+	/** Satu halaman daftar siswa (tanpa isi foto, hanya penanda ada/tidak). */
+	public function cariSiswa(array $filter, int $limit, int $offset): array
+	{
+		return $this->queryDaftar($filter)
+			->select("s.id_siswa, s.nama_siswa, s.nis, s.nisn, s.kelamin, s.tanggal_lahir, s.nama_ortu,
+				s.telpon_siswa, s.email, s.alamat_siswa, s.locked, s.tempat_lahir, s.tanggal_masuk,
+				s.keterangan, k.nama_kelas, CASE WHEN s.image IS NULL OR s.image = '' THEN 0 ELSE 1 END AS ada_foto", false)
+			->orderBy('s.nama_siswa', 'ASC')
+			->limit($limit, $offset)
+			->get()->getResultArray();
+	}
+
+	/** Jumlah siswa per status untuk tab filter (mengikuti pencarian & kelas). */
+	public function hitungPerStatus(array $filter): array
+	{
+		$hasil = ['semua' => 0, 'baru' => 0, 'no' => 0, 'yes' => 0];
+		$rows = $this->queryDaftar($filter, false)
+			->select('s.locked, COUNT(*) AS jml', false)
+			->groupBy('s.locked')
+			->get()->getResultArray();
+		foreach ($rows as $r) {
+			$hasil['semua'] += (int) $r['jml'];
+			if (isset($hasil[$r['locked']])) {
+				$hasil[$r['locked']] += (int) $r['jml'];
+			}
+		}
+
+		return $hasil;
+	}
+
+	/** Semua baris sesuai filter, untuk ekspor. */
+	public function semuaSiswa(array $filter): array
+	{
+		return $this->cariSiswa($filter, 100000, 0);
+	}
+
+	/** Data satu siswa untuk form Ubah (tanpa isi foto). */
+	public function dataForm($id_siswa): ?array
+	{
+		$db = db_connect($this->DBGroup);
+
+		return $db->table('data_siswa')
+			->select(implode(', ', array_merge(['id_siswa'], self::KOLOM_FORM)) . ", CASE WHEN image IS NULL OR image = '' THEN 0 ELSE 1 END AS ada_foto", false)
+			->where('id_siswa', $id_siswa)
+			->get()->getRowArray();
+	}
+
+	/** Isi foto (base64) satu siswa, atau null. */
+	public function fotoSiswa($id_siswa): ?string
+	{
+		$db = db_connect($this->DBGroup);
+		$row = $db->table('data_siswa')->select('image')->where('id_siswa', $id_siswa)->get()->getRowArray();
+
+		return ($row && $row['image'] !== null && $row['image'] !== '') ? $row['image'] : null;
+	}
+
+	public function daftarKelas(): array
+	{
+		return db_connect($this->DBGroup)->table('setup_kelas')
+			->select('id_kelas, nama_kelas')->orderBy('nama_kelas')->get()->getResultArray();
+	}
+
+	public function daftarPeriode(): array
+	{
+		return db_connect($this->DBGroup)->table('setup_periode')
+			->select('id_periode, tahun_ajaran, semester, status_aktif')
+			->orderBy('id_periode', 'DESC')->get()->getResultArray();
+	}
+
+	/**
+	 * Kelengkapan data siswa: daftar [label, terisi] yang sama dengan panel di form.
+	 */
+	public static function kelengkapan(array $s): array
+	{
+		$isi = static function ($v) {
+			return trim((string) $v) !== '' && $v !== '0000-00-00';
+		};
+
+		return [
+			['Nama lengkap', $isi($s['nama_siswa'] ?? '')],
+			['Jenis kelamin', $isi($s['kelamin'] ?? '')],
+			['Tanggal lahir', $isi($s['tanggal_lahir'] ?? '')],
+			['NISN', $isi($s['nisn'] ?? '')],
+			['Nama orang tua', $isi($s['nama_ortu'] ?? '')],
+			['No. HP / WhatsApp', $isi($s['telpon_siswa'] ?? '')],
+			['Foto siswa', ! empty($s['ada_foto'])],
+		];
+	}
+
+	/** 'L' / 'P' dari isian lama yang bentuknya bermacam-macam (L, l, Laki-laki, Perempuan, ...). */
+	public static function kodeKelamin($kelamin): string
+	{
+		$k = strtoupper(substr(trim((string) $kelamin), 0, 1));
+
+		return in_array($k, ['L', 'P'], true) ? $k : '';
+	}
 }
