@@ -399,7 +399,6 @@ class M_Helper extends Model
         left join `tbl_tabungan_transaksi`
         on tbl_tabungan_siswa.kode_tab = tbl_tabungan_transaksi.kode_tab_trans
         where kode_siswa = '$id_siswa' and tahunajaran = '$tahunajaran' and kodetransaksi = 'TDSPP'";
-        echo $query;
         $query = $db->query($query);
         return $query->getResultArray();
         //return $query->getResult('array');

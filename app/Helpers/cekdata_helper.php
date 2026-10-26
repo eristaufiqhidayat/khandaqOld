@@ -309,17 +309,16 @@ function sppxbulan()
     }
     return $xspp;
 }
+// Daftar bulan SPP yang dicentang (1 = Juli ... 12 = Juni), dari besar ke kecil, mis. "5,4".
+// Dulu memeriksa $_REQUEST[...][$x] (huruf ke-x dari nilai isian), sehingga bulan 7-12
+// tidak pernah tercatat bila nilai isiannya pendek.
 function sppbulan()
 {
-    $queryrp2 = "";
-    for ($x = 1; $x <= 12; $x++) {
-        $sppbulan = "sppbulan" . $x;
-        if (isset($_REQUEST[$sppbulan][$x])) $queryrp = "$x,";
-        else $queryrp = "";
-        $queryrp2 = $queryrp . $queryrp2;
+    $bulan = [];
+    for ($x = 12; $x >= 1; $x--) {
+        if (isset($_REQUEST['sppbulan' . $x])) $bulan[] = $x;
     }
-    $queryrp2 = substr($queryrp2, 0, -1);
-    return $queryrp2;
+    return implode(',', $bulan);
 }
 function convertbulan($bulanquery)
 {
@@ -425,7 +424,6 @@ function debetkes()
     $tanggal = $request->getPost('tanggal');
     $sppxbulan = sppxbulan();
     $sppbulan = sppbulan();
-    echo $sppbulan;
     $rptotal = $rploundry * $sppxbulan;
     $cek = $cek->debetkes($kode_tab, $tanggal, $rptotal, $sppbulan);
 }
