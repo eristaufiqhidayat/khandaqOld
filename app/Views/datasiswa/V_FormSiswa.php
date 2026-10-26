@@ -223,7 +223,7 @@ $kunciCek = ['nama_siswa', 'kelamin', 'tanggal_lahir', 'nisn', 'nama_ortu', 'tel
             <label for="image" class="ds-unggah">
               <span class="ds-pratinjau" id="pratinjau">
                 <?php if ($adaFoto) : ?>
-                  <img src="<?= esc(base_url($dasar . 'foto/' . (int) $siswa['id_siswa']), 'attr') ?>" alt="Foto <?= esc($siswa['nama_siswa'], 'attr') ?>">
+                  <img src="<?= esc(base_url($dasar . 'foto/' . (int) $siswa['id_siswa']) . '?ukuran=kecil&v=' . (int) ($siswa['foto_v'] ?? 0), 'attr') ?>" alt="Foto <?= esc($siswa['nama_siswa'], 'attr') ?>">
                 <?php else : ?>
                   <svg aria-hidden="true" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
                 <?php endif ?>

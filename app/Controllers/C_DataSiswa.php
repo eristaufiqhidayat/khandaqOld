@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Libraries\FotoSiswa;
 use App\Models\M_DataSiswa;
 use App\Models\M_Menu;
 
@@ -36,7 +37,10 @@ class C_DataSiswa extends BaseController
         $halaman    = min(max(1, (int) $this->request->getGet('hal')), $jmlHalaman);
 
         $siswa = $model->cariSiswa($filter, self::PER_HALAMAN, ($halaman - 1) * self::PER_HALAMAN);
+        $foto  = FotoSiswa::status(array_column($siswa, 'id_siswa'));
         foreach ($siswa as &$s) {
+            $s['foto_v']      = $foto[(int) $s['id_siswa']] ?? 0;
+            $s['ada_foto']    = $s['foto_v'] > 0;
             $s['kelengkapan'] = M_DataSiswa::kelengkapan($s);
         }
         unset($s);
@@ -90,10 +94,40 @@ class C_DataSiswa extends BaseController
             ->setBody($csv);
     }
 
-    /** Foto siswa (disimpan base64 di data_siswa.image). */
+    /**
+     * Foto siswa (disimpan base64 di data_siswa.image). ?ukuran=kecil memberi foto
+     * kecil dari cache untuk daftar dan form; tanpa itu, foto asli.
+     */
     public function foto($id_siswa = 0)
     {
-        $b64 = (new M_DataSiswa())->fotoSiswa((int) $id_siswa);
+        // Sesi tidak dipakai lagi; lepas kuncinya supaya foto-foto bisa dimuat bersamaan
+        session_write_close();
+        $id = (int) $id_siswa;
+
+        if ($this->request->getGet('ukuran') === 'kecil') {
+            $versi = FotoSiswa::status([$id])[$id] ?? 0;
+            $file  = FotoSiswa::file($id);
+            if (! $versi || ! is_file($file)) {
+                return $this->response->setStatusCode(404);
+            }
+            $etag = '"' . $id . '-' . $versi . '"';
+            $this->response
+                ->setHeader('ETag', $etag)
+                ->setHeader('X-Content-Type-Options', 'nosniff')
+                ->setHeader('Cache-Control', 'private, max-age=2592000'); // URL berisi versi (v=...)
+            if (trim((string) $this->request->getHeaderLine('If-None-Match')) === $etag) {
+                return $this->response->setStatusCode(304);
+            }
+            $bin  = (string) file_get_contents($file);
+            $mime = (new \finfo(FILEINFO_MIME_TYPE))->buffer($bin);
+            if (! in_array($mime, ['image/jpeg', 'image/png', 'image/webp', 'image/gif'], true)) {
+                return $this->response->setStatusCode(404);
+            }
+
+            return $this->response->setHeader('Content-Type', $mime)->setBody($bin);
+        }
+
+        $b64 = (new M_DataSiswa())->fotoSiswa($id);
         $bin = $b64 !== null ? base64_decode($b64, true) : false;
         if ($bin === false || $bin === '') {
             return $this->response->setStatusCode(404);
@@ -134,6 +168,8 @@ class C_DataSiswa extends BaseController
             return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip))->with('peringatan', 'Data siswa tidak ditemukan.');
         }
         $siswa['kelamin'] = M_DataSiswa::kodeKelamin($siswa['kelamin']);
+        $siswa['foto_v']  = FotoSiswa::status([(int) $siswa['id_siswa']])[(int) $siswa['id_siswa']] ?? 0;
+        $siswa['ada_foto'] = $siswa['foto_v'] > 0;
 
         return $this->tampilForm($menuAktip, $moduleAktip, $siswa, false);
     }
@@ -193,6 +229,9 @@ class C_DataSiswa extends BaseController
             $data['image'] = '';
         }
         $model->update($id, $data);
+        if (array_key_exists('image', $data)) {
+            FotoSiswa::lupakan($id);
+        }
 
         return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip, ['q' => $data['nama_siswa']]))
             ->with('sukses', 'Perubahan data ' . $data['nama_siswa'] . ' tersimpan.');
@@ -206,6 +245,7 @@ class C_DataSiswa extends BaseController
             return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip))->with('peringatan', 'Data siswa tidak ditemukan.');
         }
         (new M_DataSiswa())->hapus(['id_siswa' => $id]);
+        FotoSiswa::lupakan($id);
 
         return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip))->with('sukses', 'Data ' . $nama . ' telah dihapus.');
     }

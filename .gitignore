@@ -3,3 +3,6 @@ writable/logs/*
 
 # Konfigurasi server (password database dll), jangan di-commit
 .env
+
+# Foto kecil siswa (dibuat otomatis dari database)
+writable/cache/foto-siswa/
