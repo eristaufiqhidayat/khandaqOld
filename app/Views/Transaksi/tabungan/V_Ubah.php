@@ -53,15 +53,17 @@ $adaDiDaftar = in_array($trx['kodetransaksi'], array_column($kodeList, 'kode'), 
             <label for="jumlah" class="ds-label">Jumlah <span class="ds-wajib">*</span></label>
             <div class="tb-rp-isian">
               <span aria-hidden="true">Rp</span>
-              <input id="jumlah" class="ds-isian" type="text" inputmode="numeric" autocomplete="off" value="<?= esc(number_format((int) preg_replace('/\D/', '', $lama('rp', (string) (int) $trx['rp'])), 0, ',', '.'), 'attr') ?>">
+              <?php $rpAsli = $lama('rp', (string) $trx['rp']); $desimal = (float) $rpAsli != floor((float) $rpAsli) ? 2 : 0; ?>
+              <input id="jumlah" class="ds-isian" type="text" inputmode="numeric" autocomplete="off" value="<?= esc(number_format((float) $rpAsli, $desimal, ',', '.'), 'attr') ?>">
             </div>
-            <input type="hidden" name="rp" id="rp" value="<?= esc((string) (int) preg_replace('/\D/', '', $lama('rp', (string) (int) $trx['rp'])), 'attr') ?>">
+            <input type="hidden" name="rp" id="rp" value="<?= esc(preg_replace('/[^0-9.]/', '', $rpAsli), 'attr') ?>">
+            <span class="ds-bantu">Jumlah hanya berubah bila kolom ini diketik ulang.</span>
           </div>
           <div class="ds-kolom ds-penuh">
             <label for="kodetransaksi" class="ds-label">Jenis <span class="ds-wajib">*</span></label>
             <select id="kodetransaksi" name="kodetransaksi" class="ds-isian">
               <?php if (! $adaDiDaftar) : ?>
-                <option value="<?= esc($trx['kodetransaksi'], 'attr') ?>" selected disabled><?= esc($trx['kodetransaksi']) ?> (tidak bisa dipilih untuk akun ini)</option>
+                <option value="<?= esc($trx['kodetransaksi'], 'attr') ?>" selected><?= esc((T::NAMA_JENIS[$trx['kodetransaksi']] ?? $trx['kodetransaksi']) . ' · ' . $trx['kodetransaksi']) ?> (jenis sekarang)</option>
               <?php endif ?>
               <?php foreach ($kodeList as $k) : $kd = $k['kode']; ?>
                 <option value="<?= esc($kd, 'attr') ?>" <?= $kodeSekarang === $kd ? 'selected' : '' ?>><?= esc((T::NAMA_JENIS[$kd] ?? $k['keterangan_kode']) . ' · ' . $kd) ?></option>

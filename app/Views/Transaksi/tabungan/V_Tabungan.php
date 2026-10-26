@@ -213,7 +213,8 @@ $urlTa = static function (array $ubah) use ($dasar, $siswa, $ta, $jenis) {
                       <td><span class="tb-jenis <?= $gayaJenis($r['kodetransaksi'], $r['kode_tran']) ?>"><?= esc($r['nama']) ?></span><br><span class="ds-kecil" style="font-size: 11px"><?= esc($r['kodetransaksi']) ?></span></td>
                       <td style="color: #334155">
                         <?= esc($r['keterangan_trans'] ?: '—') ?>
-                        <?php if ($r['buktitransfer']) : ?> · <a href="<?= esc(base_url('uploads/tabungan/' . rawurlencode($r['buktitransfer'])), 'attr') ?>" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 600">Lihat bukti</a><?php endif ?>
+                        <?php if ($r['buktitransfer']) :
+                          $folderBukti = in_array(strtolower(pathinfo($r['buktitransfer'], PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'gif', 'webp'], true) ? 'uploads/tabungan/' : 'uploads/buktitransfer/'; ?> · <a href="<?= esc(base_url($folderBukti . rawurlencode($r['buktitransfer'])), 'attr') ?>" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 600">Lihat bukti</a><?php endif ?>
                       </td>
                       <td class="tb-rp tb-masuk" style="font-weight: 700"><?= $isMasuk ? $rp($r['rp']) : '' ?></td>
                       <td class="tb-rp tb-keluar" style="font-weight: 700"><?= ! $isMasuk && $r['kode_tran'] === 'D' ? $rp($r['rp']) : '' ?></td>

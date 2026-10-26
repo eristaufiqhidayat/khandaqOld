@@ -12,7 +12,7 @@ $lama = static function ($k, $bawaan = '') {
     return $v !== null ? (string) $v : (string) $bawaan;
 };
 $kodeAda   = array_column($kodeList, 'kode');
-$kodeAwal  = $lama('NKKodeTransaksi', in_array('TKSPP', $kodeAda, true) ? 'TKSPP' : ($kodeAda[0] ?? ''));
+$kodeAwal  = $lama('NKKodeTransaksi'); // sengaja tidak ada pilihan bawaan: petugas memilih sendiri
 ?>
 <?= $this->extend('Views\layout.php') ?>
 
@@ -78,7 +78,7 @@ $kodeAwal  = $lama('NKKodeTransaksi', in_array('TKSPP', $kodeAda, true) ? 'TKSPP
           <section class="ds-kartu ds-bagian" aria-labelledby="h-tagihan" id="bagianTagihan">
             <div class="ds-judul">
               <h2 id="h-tagihan" style="font-size: 17px">Bulan SPP yang dibayar dari setoran ini</h2>
-              <p class="ds-sub" style="font-size: 13px">Untuk setiap bulan SPP yang dipilih, laundry (<?= $rp(T::TARIF_LAUNDRY) ?>) dan kesehatan (<?= $rp(T::TARIF_KESEHATAN) ?>) ikut dipotong. Bulan yang sudah lunas terkunci. Sisa setoran masuk ke saldo uang saku.</p>
+              <p class="ds-sub" style="font-size: 13px">Pilih sampai bulan berapa SPP dibayar; bulan dibayar berurutan mulai bulan pertama yang belum lunas. Untuk setiap bulan, laundry (<?= $rp(T::TARIF_LAUNDRY) ?>) dan kesehatan (<?= $rp(T::TARIF_KESEHATAN) ?>) ikut dipotong. Sisa setoran masuk ke saldo uang saku.</p>
             </div>
             <?php if ($tarifSpp <= 0) : ?>
               <p class="ds-pesan ds-pesan-salah" style="margin: 0">Tarif SPP untuk kelas siswa ini belum diatur. Atur dulu di menu Tarif SPP sebelum membayar SPP.</p>
@@ -179,7 +179,15 @@ $kodeAwal  = $lama('NKKodeTransaksi', in_array('TKSPP', $kodeAda, true) ? 'TKSPP
       document.getElementById('tombolSimpan').textContent = angka ? 'Simpan setoran ' + rupiah(angka) : 'Simpan setoran';
       return { angka: angka, sisa: sisa, j: j };
     }
-    form.querySelectorAll('[data-bulan]').forEach(function (c) { c.dataset.lunas = c.disabled ? '1' : ''; });
+    var kotakBulan = Array.prototype.slice.call(form.querySelectorAll('[data-bulan]'));
+    kotakBulan.forEach(function (c) { c.dataset.lunas = c.disabled ? '1' : ''; });
+    // Bulan dipilih berurutan: klik satu bulan = bayar dari bulan pertama yang belum lunas sampai bulan itu
+    kotakBulan.forEach(function (c, i) {
+      c.addEventListener('click', function () {
+        var sampai = c.checked ? i : i - 1;
+        kotakBulan.forEach(function (k, j) { if (k.dataset.lunas !== '1') k.checked = j <= sampai; });
+      });
+    });
     form.addEventListener('input', hitung);
     form.addEventListener('change', hitung);
     form.addEventListener('submit', function (e) {
@@ -188,6 +196,8 @@ $kodeAwal  = $lama('NKKodeTransaksi', in_array('TKSPP', $kodeAda, true) ? 'TKSPP
       if (!form.elements.tanggal.value) masalah.push('tanggal');
       if (!h.j) masalah.push('jenis setoran');
       if (!h.angka) masalah.push('jumlah setoran');
+      if (h.j === 'TKSPP' && tarif.spp <= 0) masalah.push('jenis setoran lain (tarif SPP kelas ini belum diatur)');
+      else if (h.j === 'TKSPP' && !form.querySelector('[data-bulan]:checked:not([disabled])')) masalah.push('bulan SPP yang dibayar (minimal satu)');
       if (masalah.length) { e.preventDefault(); alert('Lengkapi dulu: ' + masalah.join(', ') + '.'); return; }
       if (h.sisa < 0) { e.preventDefault(); alert('Setoran kurang untuk membayar bulan yang dipilih.'); return; }
       if (!confirm('Simpan setoran ' + rupiah(h.angka) + ' untuk <?= esc($siswa['nama_siswa'], 'js') ?>?')) e.preventDefault();

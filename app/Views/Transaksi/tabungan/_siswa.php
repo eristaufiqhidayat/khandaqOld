@@ -22,11 +22,11 @@ $mm      = $menuAktip . '/' . $moduleAktip;
   </div>
   <?php if (! empty($tombol) && $kode) : ?>
     <div class="ds-baris">
-      <a class="ds-tombol" style="border-color: #B45309; color: #92400E !important; background: #FFFFFF" href="<?= esc(base_url('index.php/transaksi/tabungan/tarik/' . $mm), 'attr') ?>">
+      <a class="ds-tombol" style="border-color: #B45309; color: #92400E !important; background: #FFFFFF" href="<?= esc(base_url('index.php/transaksi/tabungan/tarik/' . $mm . '?siswa=' . (int) $siswa['id_siswa']), 'attr') ?>">
         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
         Tarik / bayar
       </a>
-      <a class="ds-tombol ds-tombol-utama" href="<?= esc(base_url('index.php/transaksi/tabungan/setor/' . $mm), 'attr') ?>">
+      <a class="ds-tombol ds-tombol-utama" href="<?= esc(base_url('index.php/transaksi/tabungan/setor/' . $mm . '?siswa=' . (int) $siswa['id_siswa']), 'attr') ?>">
         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
         Setor
       </a>

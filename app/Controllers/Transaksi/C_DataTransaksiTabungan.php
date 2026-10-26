@@ -203,16 +203,13 @@ class C_DataTransaksiTabungan extends BaseController
         if (! is_array($dasar)) {
             return $dasar;
         }
-        $model    = new M_Tabungan();
-        $id       = (int) $dasar['siswa']['id_siswa'];
-        $taAktif  = (int) tahunajaran();
-        $bayar    = $model->jumlahPerKode($id, $taAktif . '-07-01', ($taAktif + 1) . '-06-30', ['TDSPP']);
-        $tarifSpp = (float) sppkelas($id);
+        $id = (int) $dasar['siswa']['id_siswa'];
+        [$tarifSpp, $lunasSpp] = $this->statusSpp($id);
 
         return view('Transaksi/tabungan/V_Setor', $dasar + [
-            'taAktif'   => $taAktif,
+            'taAktif'   => (int) tahunajaran(),
             'tarifSpp'  => $tarifSpp,
-            'lunasSpp'  => $tarifSpp > 0 ? min(12, (int) floor($bayar['TDSPP'] / $tarifSpp)) : 0,
+            'lunasSpp'  => $lunasSpp,
         ]);
     }
 
@@ -247,13 +244,29 @@ class C_DataTransaksiTabungan extends BaseController
         return view('Transaksi/tabungan/V_Ubah', $dasar + ['trx' => $trx]);
     }
 
+    /**
+     * Tarif SPP siswa dan jumlah bulan SPP yang sudah lunas di tahun ajaran aktif
+     * (total potongan TDSPP dibagi tarif, dihitung mulai Juli).
+     */
+    private function statusSpp(int $id): array
+    {
+        $taAktif  = (int) tahunajaran();
+        $tarifSpp = (float) sppkelas($id);
+        $bayar    = (new M_Tabungan())->jumlahPerKode($id, $taAktif . '-07-01', ($taAktif + 1) . '-06-30', ['TDSPP']);
+
+        return [$tarifSpp, $tarifSpp > 0 ? min(12, (int) floor($bayar['TDSPP'] / $tarifSpp)) : 0];
+    }
+
     /** Data bersama form setor/tarik/ubah; atau redirect bila siswa/kode tabungan belum ada. */
     private function dataForm($menuAktip, $moduleAktip, string $jenis)
     {
         $model = new M_Tabungan();
-        $id    = (int) session('id_siswa');
+        $id    = (int) ($this->request->getGet('siswa') ?: session('id_siswa'));
         $siswa = $id ? $model->siswa($id) : null;
         $kode  = $siswa ? $model->kodeTabungan($id) : null;
+        if ($siswa) {
+            session()->set('id_siswa', $id);
+        }
         if (! $siswa || ! $kode) {
             return redirect()->to(base_url('index.php/transaksi/indexTabungan/' . $menuAktip . '/' . $moduleAktip))
                 ->with('peringatan', $siswa ? 'Siswa ini belum punya kode tabungan.' : 'Pilih siswa dulu.');
@@ -290,10 +303,10 @@ class C_DataTransaksiTabungan extends BaseController
         if (! ctype_digit((string) $id) || (int) $id <= 0) {
             return 'Siswa tidak valid.';
         }
-        if (! preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $tanggal)) {
+        if (! preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})\z/', $tanggal, $t) || ! checkdate((int) $t[2], (int) $t[3], (int) $t[1])) {
             return 'Tanggal tidak valid.';
         }
-        if (! preg_match('/^[0-9]+$/', $rp) || (int) $rp <= 0) {
+        if (! preg_match('/^[0-9]+\z/', $rp) || (int) $rp <= 0) {
             return 'Jumlah harus angka lebih dari 0.';
         }
         $user    = (new M_Menu())->cekUsers();
@@ -308,6 +321,26 @@ class C_DataTransaksiTabungan extends BaseController
         }
         if ($jenis === 'D' && in_array($kode, self::CEK_SALDO, true) && (int) $rp > $model->saldo((int) $id)) {
             return 'Saldo tidak cukup untuk transaksi ini.';
+        }
+        if ($kode === 'TKSPP') {
+            // Helper SPP butuh minimal satu bulan dan tarif kelas; bulan harus berurutan
+            // mulai bulan pertama yang belum lunas (status lunas dihitung dari jumlah bulan).
+            [$tarif, $lunas] = $this->statusSpp((int) $id);
+            if ($tarif <= 0) {
+                return 'Tarif SPP kelas siswa ini belum diatur. Pilih jenis setoran lain atau atur tarif SPP dulu.';
+            }
+            $bulan = [];
+            for ($x = 1; $x <= 12; $x++) {
+                if ($this->request->getPost('sppbulan' . $x) !== null) {
+                    $bulan[] = $x;
+                }
+            }
+            if (! $bulan) {
+                return 'Setoran SPP harus memilih minimal satu bulan SPP. Untuk setoran uang saku saja, pilih "Setoran transfer" atau "Setoran tunai".';
+            }
+            if ($bulan !== range($lunas + 1, $lunas + count($bulan))) {
+                return 'Bulan SPP harus berurutan mulai bulan pertama yang belum lunas.';
+            }
         }
 
         return null;
@@ -375,7 +408,7 @@ class C_DataTransaksiTabungan extends BaseController
                 return redirect()->back()->with('peringatan', PESAN_GAMBAR_DITOLAK);
             }
             $dataTambah = array(
-                'notransaksi'    => $this->request->getVar('notransaksi'),
+                'notransaksi'    => null, // selalu transaksi baru
                 'kode_tab_trans'    => $this->request->getVar('kode_tab_trans'),
                 'kodetransaksi'    => $this->request->getVar('NKKodeTransaksi'),
                 'tanggal'    => $this->request->getVar('tanggal'),
@@ -430,7 +463,8 @@ class C_DataTransaksiTabungan extends BaseController
             );
             $session->setFlashdata('sukses', 'Setoran tersimpan.');
             $session->set('id_siswa', $this->request->getPost('id_siswa'));
-            return redirect()->to(base_url('index.php/transaksi/indexTabungan/' . $menuAktip . '/' . $moduleAktip))->with('id_siswa', $detilsiswa['id_siswa']);
+            $session->set('id_siswa', (int) $this->request->getPost('id_siswa'));
+            return redirect()->to(base_url('index.php/transaksi/indexTabungan/' . $menuAktip . '/' . $moduleAktip . '?siswa=' . (int) $this->request->getPost('id_siswa')));
         } else {
             $session->setFlashdata('error', 'Data Gagal di simpan');
             $session->set('id_siswa', $this->request->getPost('id_siswa'));
@@ -472,7 +506,7 @@ class C_DataTransaksiTabungan extends BaseController
                 return redirect()->back()->with('peringatan', PESAN_GAMBAR_DITOLAK);
             }
             $dataTambah = array(
-                'notransaksi'    => $this->request->getVar('notransaksi'),
+                'notransaksi'    => null, // selalu transaksi baru
                 'kode_tab_trans'    => $this->request->getVar('kode_tab_trans'),
                 'kodetransaksi'    => $this->request->getVar('NKKodeTransaksi'),
                 'tanggal'    => $this->request->getVar('tanggal'),
@@ -506,7 +540,8 @@ class C_DataTransaksiTabungan extends BaseController
             );
             $session->setFlashdata('sukses', 'Transaksi tersimpan.');
             //return view('Transaksi/V_DataTabunganSiswa', $data);
-            return redirect()->to(base_url('index.php/transaksi/indexTabungan/' . $menuAktip . '/' . $moduleAktip))->with('id_siswa', $detilsiswa['id_siswa']);
+            $session->set('id_siswa', (int) $this->request->getPost('id_siswa'));
+            return redirect()->to(base_url('index.php/transaksi/indexTabungan/' . $menuAktip . '/' . $moduleAktip . '?siswa=' . (int) $this->request->getPost('id_siswa')));
             //return redirect()->to(base_url('index.php/transaksi/indexTabungan/'.$menuAktip.'/'.$moduleAktip));
             // End masuk database
         } else {
@@ -533,10 +568,13 @@ class C_DataTransaksiTabungan extends BaseController
             $trx   = (new M_Tabungan())->transaksi((int) $this->request->getPost('notransaksi'));
             $user  = $menu->cekUsers();
             $boleh = $trx ? array_column((new M_DataKodeTransaksi())->listing($trx['kode_tran'] === 'D' ? 'D' : 'K', $user['name'] ?? ''), 'kode') : [];
+            if ($trx) {
+                $boleh[] = $trx['kodetransaksi']; // jenis lama boleh dipertahankan
+            }
             $kode  = (string) $this->request->getPost('kodetransaksi');
             $tgl   = (string) $this->request->getPost('tanggal');
             $rp    = (string) $this->request->getPost('rp');
-            if (! $trx || ! in_array($kode, $boleh, true) || ! preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $tgl) || ! preg_match('/^[0-9]+$/', $rp)) {
+            if (! $trx || ! in_array($kode, $boleh, true) || ! preg_match('/^([0-9]{4})-([0-9]{2})-([0-9]{2})\z/', $tgl, $tt) || ! checkdate((int) $tt[2], (int) $tt[3], (int) $tt[1]) || ! preg_match('/^[0-9]+(\.[0-9]+)?\z/', $rp)) {
                 return redirect()->back()->withInput()->with('peringatan', 'Perubahan tidak valid. Periksa tanggal, jenis, dan jumlah.');
             }
             (new M_DataTransaksiTabungan())->edit([
@@ -640,7 +678,7 @@ class C_DataTransaksiTabungan extends BaseController
         $config = null;
         saveNewDataTabungan($this->request->getPost('id_siswa'), $this->request->getPost('kode_tab'), $tanggal);
         $session = \Config\Services::session($config);
-        $session->setFlashdata('id_siswa', $this->request->getPost('id_siswa'));
-        return redirect()->back()->with('id_siswa', $this->request->getPost('id_siswa'));
+        $session->set('id_siswa', (int) $this->request->getPost('id_siswa'));
+        return redirect()->to(base_url('index.php/transaksi/indexTabungan/' . $menuAktip . '/' . $moduleAktip . '?siswa=' . (int) $this->request->getPost('id_siswa')));
     }
 }
