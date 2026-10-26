@@ -208,7 +208,7 @@ class C_DataSiswa extends BaseController
                 ->with('sukses', $pesan . ' Silakan isi siswa berikutnya.');
         }
 
-        return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip, ['q' => $data['nama_siswa']]))->with('sukses', $pesan);
+        return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip, ['q' => $data['nama_siswa'], 'status' => 'semua']))->with('sukses', $pesan);
     }
 
     public function edit($menuAktip = '', $moduleAktip = '')
@@ -247,7 +247,7 @@ class C_DataSiswa extends BaseController
             FotoSiswa::lupakan($id);
         }
 
-        return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip, ['q' => $data['nama_siswa']]))
+        return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip, ['q' => $data['nama_siswa'], 'status' => 'semua']))
             ->with('sukses', 'Perubahan data ' . $data['nama_siswa'] . ' tersimpan.');
     }
 
@@ -284,7 +284,12 @@ class C_DataSiswa extends BaseController
 
     private function filter(): array
     {
+        // Tanpa pilihan status, daftar langsung menampilkan siswa Aktif.
+        // status=semua menampilkan semua status.
         $status = (string) $this->request->getGet('status');
+        if ($status === '') {
+            $status = 'no';
+        }
 
         return [
             'q'      => trim((string) $this->request->getGet('q')),
