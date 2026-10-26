@@ -138,6 +138,9 @@ $routes->add('/siswa/raport/(:any)/(:any)', 'orangtua\C_Ortu::raport/$1/$2');
 
 $routes->add('/mutasi/index/(:any)/(:any)', 'Transaksi\C_MutasiTabungan::index/$1/$2');
 $routes->add('/transaksi/indexTabungan/(:any)/(:any)', 'Transaksi\C_DataTransaksiTabungan::indexTabungan/$1/$2');
+$routes->get('/transaksi/tabungan/setor/(:any)/(:any)', 'Transaksi\C_DataTransaksiTabungan::formSetor/$1/$2');
+$routes->get('/transaksi/tabungan/tarik/(:any)/(:any)', 'Transaksi\C_DataTransaksiTabungan::formTarik/$1/$2');
+$routes->get('/transaksi/tabungan/ubah/(:any)/(:any)/(:num)', 'Transaksi\C_DataTransaksiTabungan::formUbah/$1/$2/$3');
 $routes->add('/transaksi/index/(:any)/(:any)', 'Transaksi\C_DataTransaksiTabungan::index/$1/$2');
 $routes->post('/transaksi/readjson/(:any)/(:any)', 'Transaksi\C_DataTransaksiTabungan::readjson/$1/$2');
 $routes->post('/transaksi/delete/(:any)/(:any)', 'Transaksi\C_DataTransaksiTabungan::delete/$1/$2');
