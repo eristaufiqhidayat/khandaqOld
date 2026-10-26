@@ -11,11 +11,15 @@ class C_DataSiswa extends BaseController
     private const PER_HALAMAN = 25;
 
     /**
-     * Tampilkan foto siswa di daftar dan form? Foto disimpan sebagai blob/base64 di
-     * data_siswa.image; selama false, kolom itu tidak dibaca sama sekali (tidak ada
-     * avatar, pratinjau foto lama, atau menu "Lihat foto"). Upload foto baru tetap bisa.
+     * Foto siswa disimpan sebagai blob/base64 di data_siswa.image.
+     * - TAMPIL_FOTO_DAFTAR: avatar & menu "Lihat foto" di daftar. false = kolom image
+     *   tidak dibaca sama sekali saat membuka daftar.
+     * - TAMPIL_FOTO_UBAH: foto di form Ubah; hanya blob satu siswa itu yang dibaca
+     *   (lalu disimpan sebagai foto kecil di writable/cache/foto-siswa/).
+     * Upload foto baru tetap bisa apa pun pengaturannya.
      */
-    public const TAMPIL_FOTO = false;
+    public const TAMPIL_FOTO_DAFTAR = false;
+    public const TAMPIL_FOTO_UBAH   = true;
 
     /** Detail siswa (JSON), masih dipakai halaman lain. */
     public function JSON()
@@ -44,11 +48,11 @@ class C_DataSiswa extends BaseController
         $halaman    = min(max(1, (int) $this->request->getGet('hal')), $jmlHalaman);
 
         $siswa = $model->cariSiswa($filter, self::PER_HALAMAN, ($halaman - 1) * self::PER_HALAMAN);
-        $foto  = self::TAMPIL_FOTO ? FotoSiswa::status(array_column($siswa, 'id_siswa')) : [];
+        $foto  = self::TAMPIL_FOTO_DAFTAR ? FotoSiswa::status(array_column($siswa, 'id_siswa')) : [];
         foreach ($siswa as &$s) {
             $s['foto_v']      = $foto[(int) $s['id_siswa']] ?? 0;
             $s['ada_foto']    = $s['foto_v'] > 0;
-            $s['kelengkapan'] = M_DataSiswa::kelengkapan($s, self::TAMPIL_FOTO);
+            $s['kelengkapan'] = M_DataSiswa::kelengkapan($s, self::TAMPIL_FOTO_DAFTAR);
         }
         unset($s);
 
@@ -107,7 +111,7 @@ class C_DataSiswa extends BaseController
      */
     public function foto($id_siswa = 0)
     {
-        if (! self::TAMPIL_FOTO) {
+        if (! self::TAMPIL_FOTO_DAFTAR && ! self::TAMPIL_FOTO_UBAH) {
             return $this->response->setStatusCode(404);
         }
         // Sesi tidak dipakai lagi; lepas kuncinya supaya foto-foto bisa dimuat bersamaan
@@ -178,7 +182,7 @@ class C_DataSiswa extends BaseController
             return redirect()->to($this->urlDaftar($menuAktip, $moduleAktip))->with('peringatan', 'Data siswa tidak ditemukan.');
         }
         $siswa['kelamin'] = M_DataSiswa::kodeKelamin($siswa['kelamin']);
-        $siswa['foto_v']  = self::TAMPIL_FOTO ? (FotoSiswa::status([(int) $siswa['id_siswa']])[(int) $siswa['id_siswa']] ?? 0) : 0;
+        $siswa['foto_v']  = self::TAMPIL_FOTO_UBAH ? (FotoSiswa::status([(int) $siswa['id_siswa']])[(int) $siswa['id_siswa']] ?? 0) : 0;
         $siswa['ada_foto'] = $siswa['foto_v'] > 0;
 
         return $this->tampilForm($menuAktip, $moduleAktip, $siswa, false);
