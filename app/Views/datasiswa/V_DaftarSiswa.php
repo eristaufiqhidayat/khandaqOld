@@ -110,7 +110,7 @@ $sampai = min($total, $halaman * $perHalaman);
                     <div style="display: flex; align-items: center; gap: 12px">
                       <span class="ds-avatar" style="position: relative; background: <?= $warna[0] ?>; color: <?= $warna[1] ?>" aria-hidden="true"><?= esc($inisial) ?>
                         <?php if ($s['ada_foto']) : ?>
-                          <img class="ds-avatar" style="position: absolute; inset: 0" src="<?= esc(base_url($dasar . 'foto/' . $id), 'attr') ?>" alt="" loading="lazy" width="40" height="40" onerror="this.remove()">
+                          <img class="ds-avatar" style="position: absolute; inset: 0" src="<?= esc(base_url($dasar . 'foto/' . $id) . '?ukuran=kecil&v=' . (int) $s['foto_v'], 'attr') ?>" alt="" loading="lazy" width="40" height="40" onerror="this.remove()">
                         <?php endif ?>
                       </span>
                       <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">

@@ -178,13 +178,17 @@ class M_DataSiswa extends Model
 		return $builder;
 	}
 
-	/** Satu halaman daftar siswa (tanpa isi foto, hanya penanda ada/tidak). */
+	/**
+	 * Satu halaman daftar siswa. Kolom image (foto base64) sengaja tidak disentuh:
+	 * memeriksanya untuk semua baris membuat MySQL membaca semua foto dan halaman
+	 * jadi lambat. Status foto diambil dari App\Libraries\FotoSiswa.
+	 */
 	public function cariSiswa(array $filter, int $limit, int $offset): array
 	{
 		return $this->queryDaftar($filter)
 			->select("s.id_siswa, s.nama_siswa, s.nis, s.nisn, s.kelamin, s.tanggal_lahir, s.nama_ortu,
 				s.telpon_siswa, s.email, s.alamat_siswa, s.locked, s.tempat_lahir, s.tanggal_masuk,
-				s.keterangan, k.nama_kelas, CASE WHEN s.image IS NULL OR s.image = '' THEN 0 ELSE 1 END AS ada_foto", false)
+				s.keterangan, k.nama_kelas", false)
 			->orderBy('s.nama_siswa', 'ASC')
 			->limit($limit, $offset)
 			->get()->getResultArray();
@@ -214,13 +218,13 @@ class M_DataSiswa extends Model
 		return $this->cariSiswa($filter, 100000, 0);
 	}
 
-	/** Data satu siswa untuk form Ubah (tanpa isi foto). */
+	/** Data satu siswa untuk form Ubah (tanpa isi foto; status foto dari FotoSiswa). */
 	public function dataForm($id_siswa): ?array
 	{
 		$db = db_connect($this->DBGroup);
 
 		return $db->table('data_siswa')
-			->select(implode(', ', array_merge(['id_siswa'], self::KOLOM_FORM)) . ", CASE WHEN image IS NULL OR image = '' THEN 0 ELSE 1 END AS ada_foto", false)
+			->select(implode(', ', array_merge(['id_siswa'], self::KOLOM_FORM)))
 			->where('id_siswa', $id_siswa)
 			->get()->getRowArray();
 	}
