@@ -9,13 +9,15 @@ $mm    = $menuAktip . '/' . $moduleAktip;
 // URL daftar dengan filter sekarang, ditimpa oleh $ubah
 $urlDaftar = static function (array $ubah = []) use ($filter, $dasar, $mm) {
     $q = array_merge(['q' => $filter['q'], 'kelas' => $filter['kelas'] ?: '', 'status' => $filter['status']], $ubah);
+    // Tanpa status = Aktif (bawaan), jadi "Semua" ditulis sebagai status=semua
+    $q['status'] = ($q['status'] === '' || $q['status'] === null) ? 'semua' : ($q['status'] === 'no' ? '' : $q['status']);
     $q = array_filter($q, static function ($v) {
         return $v !== '' && $v !== null;
     });
 
     return base_url($dasar . 'index/' . $mm) . ($q ? '?' . http_build_query($q) : '');
 };
-$tabs = ['' => 'Semua'] + M_DataSiswa::STATUS;
+$tabs = ['no' => 'Aktif', 'baru' => 'Siswa baru', 'yes' => 'Tidak aktif', '' => 'Semua'];
 $warnaAvatar = [['#CCFBF1', '#115E59'], ['#FEF3C7', '#92400E'], ['#E0E7FF', '#3730A3'], ['#FCE7F3', '#9D174D']];
 $dari = $total ? ($halaman - 1) * $perHalaman + 1 : 0;
 $sampai = min($total, $halaman * $perHalaman);
@@ -61,7 +63,7 @@ $sampai = min($total, $halaman * $perHalaman);
           <?php endforeach ?>
         </nav>
         <form method="get" action="<?= esc(base_url($dasar . 'index/' . $mm), 'attr') ?>" class="ds-baris" style="flex: 1 1 260px; justify-content: flex-end" role="search">
-          <?php if ($filter['status'] !== '') : ?><input type="hidden" name="status" value="<?= esc($filter['status'], 'attr') ?>"><?php endif ?>
+          <?php if ($filter['status'] !== 'no') : ?><input type="hidden" name="status" value="<?= esc($filter['status'] === '' ? 'semua' : $filter['status'], 'attr') ?>"><?php endif ?>
           <div class="ds-cari">
             <label for="cari" class="ds-tersembunyi">Cari siswa</label>
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
